@@ -12,11 +12,12 @@
 
 
 // GLOBALS
-var UUID = require('uuid');
+//var UUID = require('uuid');
 
 // Initializing server
 var app = require("express")(); // initialize express server
-var server = app.listen(8000); // listen on port 8000
+var server = app.listen(8000); // DEBUGGING listen on port 8000
+//var server = app.listen(80); // PROD listen on port 80
 var io = require("socket.io")(server); // initialize socket.io
 
 game_server = require(__dirname + "/" + "game.js"); // object for keeping track of games
@@ -31,7 +32,8 @@ app.get("/*", function(req, res) {
 // socket.io will call this function when a client connects
 io.on("connection", function (client) {
     console.log("app.js:\t New user connected");
-    client.userid = UUID()
+    //client.userid = UUID()
+    client.userid = Date.now();
     // tell the client it connected successfully (pass along data in subsequent object)
     client.emit("onconnected", {id: client.userid, status: "connected"}); // TODO does the app need to know any statuses?
 
