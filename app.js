@@ -7,18 +7,17 @@
  * To run this locally:
  * 1. cd /rps
  * 2. `node app.js`
- * 3. in browser, visit http://localhost:8000/index.html
+ * 3. in browser, visit http://localhost:3000/index.html
  */
 
 
 // GLOBALS
-//var UUID = require('uuid');
+var UUID = require('uuid');
 
 // Initializing server
 var app = require("express")(); // initialize express server
-var server = app.listen(8000); // DEBUGGING listen on port 8000
-//var server = app.listen(80); // PROD listen on port 80
-var io = require("socket.io")(server); // initialize socket.io
+var server = app.listen(3000); // listen on port 3000 (nginx will proxy requests on 80 to 3000)
+var io = require("socket.io").listen(server); // initialize socket.io
 
 game_server = require(__dirname + "/" + "game.js"); // object for keeping track of games
 
@@ -32,12 +31,17 @@ app.get("/*", function(req, res) {
 // socket.io will call this function when a client connects
 io.on("connection", function (client) {
     console.log("app.js:\t New user connected");
-    //client.userid = UUID()
-    client.userid = Date.now();
+    client.userid = UUID()
+    //client.userid = Date.now();
     // tell the client it connected successfully (pass along data in subsequent object)
     client.emit("onconnected", {id: client.userid, status: "connected"}); // TODO does the app need to know any statuses?
 
+    initializeClient(client);
+});
+
+var initializeClient = function(client) {
     // Assign client to an existing game or start a new one
     game_server.findGame(client);
 
-});
+    // TODO set up disconnect logic here (client.on('disconnect'...), end game)
+}

@@ -15,7 +15,9 @@ rps_game = function(game_id = null, player1 = null, player2 = null) {
     this.game_status = ""; // game_status item: current status of game (e.g. in play, completed)
     this.game_begin_ts = 0; // numeric: unix timestamp when both players began the game
     this.player1 = player1; // rps_player object: first player to join
+    this.player1_client = null; // client connection to player 1 (used by server for passing messages)
     this.player2 = player2; // rps_player object: second player to join
+    this.player2_client = null; // client connection to player 2 (used by server for passing messages)
     this.current_round = 0; // numeric: current round
     this.player1_points_total = 0; // numeric: total points for player1
     this.player2_points_total = 0; // numeric: total points for player2
@@ -43,6 +45,8 @@ rps_round = function(game) {
 rps_player = function(client_id) {
     this.client_id = client_id; // numeric: id for this client
     this.status = null; // status encoding: current status for this player
+    this.game = null; // game this player is part of
+    //this.client_connection = null; // used by the server only to send messages to the client
 };
 
 // Objects for formalizing RPS outcomes
@@ -65,14 +69,14 @@ rps_game_server.prototype.findGame = function(client) {
             if (game.game_status == "player_waiting" && (!game.player1 || !game.player2)) {
                 // Add client to this game, update both clients accordingly
                 this.addPlayerToGame(game_id, client);
-                console.log(this);
+                console.log("Adding player to new existing game: ", this);
                 return;
             }
         }
     }
     // If unable to find an existing game for the client, create a new one
     this.createGame(client);
-    console.log(this);
+    console.log("Creating new game: ", this);
 }
 
 
@@ -81,15 +85,18 @@ rps_game_server.prototype.createGame = function(client) {
     // Create new player for this client
     newplayer = new rps_player(client.userid);
     newplayer.status = "waiting_for_partner";
+    //newplayer.client_connection = client;
 
     // Create new game and add client
     newgame_id = Date.now(); // use unix timestamp as unique identifier (not totally safe if two people join at the same second)
     var newgame = new rps_game(game_id = newgame_id, player1 = newplayer, player2 = null);
     newgame.game_status = "player_waiting";
+    newgame.player1_client = client;
     if (newgame_id in this.active_games) {console.error("HASH COLLISION IN GAME SERVER");}
     else {this.active_games[newgame_id] = newgame;}
 
-    // Update client
+    // Update client telling them they're waiting and giving them latest game status
+    client.emit('newgame', {"game_status": newgame.game_status});
 
 }
 
@@ -101,6 +108,7 @@ rps_game_server.prototype.addPlayerToGame = function(game_id, client) {
     // Add new player to existing game
     game = this.active_games[game_id];
     game.player2 = newplayer;
+    game.player2_client = client;
     // Modify relevant fields in existing game
     game.player1.status = "in_play";
     game.game_status = "in_play";
@@ -108,6 +116,8 @@ rps_game_server.prototype.addPlayerToGame = function(game_id, client) {
     game.game_begin_ts = Date.now();
 
     // Update both clients
+    game.player1_client.emit('roundbegin', {"current_round": game.current_round});
+    game.player2_client.emit('roundbegin', {"current_round": game.current_round});
 }
 
 
