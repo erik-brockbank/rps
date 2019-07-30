@@ -30,7 +30,7 @@ app.get("/*", function(req, res) {
 
 // socket.io will call this function when a client connects
 io.on("connection", function (client) {
-    console.log("app.js:\t New user connected");
+    console.log("app.js:\t new user connected");
     client.userid = UUID()
     //client.userid = Date.now();
     // tell the client it connected successfully (pass along data in subsequent object)
@@ -43,5 +43,18 @@ var initializeClient = function(client) {
     // Assign client to an existing game or start a new one
     game_server.findGame(client);
 
+    // handle player move submissions
+    client.on("player_move", function(data) {
+        console.log("app.js:\t detected player move: ", data);
+        game_server.processMove(client, data);
+    });
+
+    // handle player signal that they're ready for the next round
+    client.on("player_round_complete", function(data) {
+        console.log("app.js:\t detected player round complete: ", data);
+        game_server.nextRound(client, data);
+    });
+
     // TODO set up disconnect logic here (client.on('disconnect'...), end game)
-}
+
+};
