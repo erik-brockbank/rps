@@ -4,6 +4,9 @@
  */
 
 
+// TODO is there a better solution for constants? separate constants.js doesn't seem to be available to this module...
+const GAME_ROUNDS = 10; // number of rounds opponents play in each game (default 100)
+
 // Object for keeping track of the RPS games being played
 rps_game_server = function() {
     this.active_games = {}; // dict: mapping from game_id to rps_game objects currently in play or awaiting more players
@@ -226,6 +229,13 @@ rps_game_server.prototype.nextRound = function(client, data) {
         current_game = this.active_games[data.game_id];
         current_round = current_game.current_round;
 
+        // If this was the final round in the game, notify client that the game is over
+        if (current_game.current_round_index == GAME_ROUNDS) {
+            client.emit('gameover', {});
+            // TODO write results to file here
+            return;
+        }
+
         // Determine which client sent this request and update status accordingly
         if (client.userid == current_game.player1.client_id) {
             console.log("game.js:\t player 1 submitted next round call");
@@ -264,10 +274,18 @@ rps_game_server.prototype.nextRound = function(client, data) {
 }
 
 
-// TODO (high level):
-// 1. review statuses (game, player, etc.) and have a more systematic approach
-// 2. Clean up circularity of objects (game.current_round.player1 has a game field that's null, etc.)
+/*
+TODO (clean up):
+1. review statuses (game, player, etc.) and have a more systematic approach
+2. clean up circularity of objects (game.current_round.player1 has a game field that's null, etc.)
 
+TODO (process):
+1. Add time constraint
+2. Write each round to file
+3. Add instructions
+4. Show full info (rounds, cumulative points)
+5. Terminate when session ends
+*/
 
 // NB: this causes a reference error in the browser because module.exports is a node thing,
 //      not a standard js browser thing. Doesn't seem to break anything so far...

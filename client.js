@@ -43,6 +43,7 @@ connectToServer = function(game) {
     game.socket.on('roundbegin', client_begin_round.bind(game));
     game.socket.on('roundwaiting', client_waiting.bind(game));
     game.socket.on('roundcomplete', client_display_results.bind(game));
+    game.socket.on('gameover', client_finish_game.bind(game));
 
 }
 
@@ -74,6 +75,11 @@ client_wait_for_server = function() {
     $("body").load("server_wait.html");
 };
 
+// Util function to tell client that the game is over
+// client calls this function when finished playing rounds or if opponent exits unexpectedly
+client_exit_page = function() {
+    $("body").load("game_over.html");
+};
 
 // The server told us we've been assigned to a game but are waiting for a partner.
 // We update the state of our game to reflect that, and load a page saying "waiting for partner"
@@ -102,6 +108,10 @@ client_begin_round = function(data) {
     that = this; // copy game object to pass in to move handling code below
     // load "choose your move" page
     $("body").load("round_begin.html", function() {
+        // Display relevant status info
+        // TODO move this to a separate function
+        $("#current-round").text(data.current_round_index + "/" + GAME_ROUNDS);
+
         // TODO figure out a better way to do this...
         $("#rock-button").click(function() {
             client_submit_move('rock', that);
@@ -163,6 +173,8 @@ client_display_results = function(data) {
             client_finish_round(that);
         });
         // Display results
+        // TODO move this to another function
+        $("#current-round").text(data.current_round_index + "/" + GAME_ROUNDS);
         $("#client-move").text(client_move);
         $("#opponent-move").text(opponent_move);
         $("#result").text(outcome_text);
@@ -176,4 +188,11 @@ client_finish_round = function(game) {
     game.socket.emit("player_round_complete", {"game_id": game.game_id});
     // load "waiting for server" page until server updates otherwise
     client_wait_for_server();
+};
+
+// Received message from server that game is complete (or opponent left unexpectedly)
+// Take participant to relevant termination page
+client_finish_game = function(data) {
+    console.log("client.js:\t received game over.");
+    client_exit_page();
 };
