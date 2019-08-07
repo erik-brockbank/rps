@@ -55,9 +55,10 @@ var initializeClient = function(client) {
         game_server.nextRound(client, data);
     });
 
+    // handle disconnect
     client.on('disconnect', function() {
-        console.log("app.js:\t detected client disconnect.");
-        // TODO call game server function to end game gracefully
+        console.log("app.js:\t detected client disconnect");
+        game_server.clientDisconnect(client);
     });
 
 };

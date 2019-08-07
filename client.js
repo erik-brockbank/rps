@@ -185,7 +185,7 @@ client_display_results = function(data) {
 client_finish_round = function(game) {
     console.log("client.js:\t ready for next round.");
     // send status to server
-    game.socket.emit("player_round_complete", {"game_id": game.game_id});
+    game.socket.emit("player_round_complete", {});
     // load "waiting for server" page until server updates otherwise
     client_wait_for_server();
 };

@@ -5,7 +5,7 @@
 
 
 // TODO is there a better solution for constants? separate constants.js doesn't seem to be available to this module...
-const GAME_ROUNDS = 10; // number of rounds opponents play in each game (default 100)
+const GAME_ROUNDS = 3; // number of rounds opponents play in each game (default 100)
 
 // Object for keeping track of the RPS games being played
 rps_game_server = function() {
@@ -64,6 +64,7 @@ var client_status = ["connected", "waiting_for_opponent", "in_play"]; // Valid r
 var round_status = ["waiting_for_player1", "waiting_for_player2", "complete"]; // Valid rps_round status values
 
 
+// Util function to copy over relevant game attributes for sending to client
 rps_game_server.prototype.copyGameVals = function(game) {
     return {
         "game_id": game.game_id,
@@ -77,6 +78,17 @@ rps_game_server.prototype.copyGameVals = function(game) {
         "player2_points_total": game.player2_points_total,
         "previous_rounds": game.previous_rounds,
     };
+};
+
+// Util function to fetch the current game that a particular client belongs to
+rps_game_server.prototype.getCurrentGame = function(client) {
+    for (game_id in this.active_games) {
+        game = this.active_games[game_id];
+        if ((game.player1 && game.player1.client_id == client.userid) ||
+            (game.player2 && game.player2.client_id == client.userid)) {
+            return game;
+        }
+    }
 };
 
 rps_game_server.prototype.findGame = function(client) {
@@ -189,7 +201,6 @@ rps_game_server.prototype.processMove = function(client, data) {
 
             game.player1_client.emit('roundcomplete', this.copyGameVals(current_game));
             game.player2_client.emit('roundcomplete', this.copyGameVals(current_game));
-            // TODO write results
         }
 
         console.log(current_round);
@@ -225,35 +236,50 @@ rps_game_server.prototype.evaluateRoundOutcome = function(rps_round) {
 // we update them accordingly.
 rps_game_server.prototype.nextRound = function(client, data) {
     console.log("game.js:\t received next round call from client: ", client.userid);
-    if (data.game_id in this.active_games) {
-        current_game = this.active_games[data.game_id];
-        current_round = current_game.current_round;
+    // Identify game and round information based on the client
+    current_game = this.getCurrentGame(client);
+    current_round = current_game.current_round;
 
-        // If this was the final round in the game, notify client that the game is over
+    // Determine which player the client represents and update status accordingly
+    if (client.userid == current_game.player1.client_id) {
+        console.log("game.js:\t player 1 submitted next round call");
         if (current_game.current_round_index == GAME_ROUNDS) {
-            client.emit('gameover', {});
-            // TODO write results to file here
-            return;
-        }
-
-        // Determine which client sent this request and update status accordingly
-        if (client.userid == current_game.player1.client_id) {
-            console.log("game.js:\t player 1 submitted next round call");
+            current_game.player1.status = "exited";
+        } else {
             current_game.player1.status = "waiting_for_opponent"; // TODO should this be unique? or any time we're waiting?
-        } else if (client.userid == current_game.player2.client_id) {
-            console.log("game.js:\t player 2 submitted next round call");
-            current_game.player2.status = "waiting_for_opponent";
         }
+    } else if (client.userid == current_game.player2.client_id) {
+        console.log("game.js:\t player 2 submitted next round call");
+        if (current_game.current_round_index == GAME_ROUNDS) {
+            current_game.player2.status = "exited";
+        } else {
+            current_game.player2.status = "waiting_for_opponent"; // TODO should this be unique? or any time we're waiting?
+        }
+    }
 
+    // Based on player status(es) set above, respond accordingly
+    // If this was the final round of the game, notify client that the game is over
+    if (current_game.current_round_index == GAME_ROUNDS) {
+        this.endGame(client);
+        // If both players have now finished, write the results to a file and remove game from active game list
+        if (current_game.player1.status == "exited" && current_game.player2.status == "exited") {
+            console.log("game.js:\t writing results to file");
+            // TODO write results to file
+
+            // Remove game from game_server
+            delete this.active_games[current_game.game_id];
+        }
+    // If this wasn't the final round of the game, proceed to next round as usual
+    } else {
         // If only one client is ready, update that client that they're waiting for opponent
         if (current_game.player1.status != "waiting_for_opponent") {
             game.player2_client.emit('roundwaiting', {"status": current_game.player2.status});
+            return;
         } else if (current_game.player2.status != "waiting_for_opponent") {
             game.player1_client.emit('roundwaiting', {"status": current_game.player1.status});
-        }
-
+            return;
         // If both clients are ready, update them by starting the next round
-        if (current_game.player1.status == "waiting_for_opponent" &&
+        } else if (current_game.player1.status == "waiting_for_opponent" &&
             current_game.player2.status == "waiting_for_opponent") {
             // Create new round and add to game, send current round to previous_rounds object
             var newround = new rps_round(current_game);
@@ -269,9 +295,51 @@ rps_game_server.prototype.nextRound = function(client, data) {
             // TODO send along all relevant info to clients
             current_game.player1_client.emit('roundbegin', this.copyGameVals(current_game));
             current_game.player2_client.emit('roundbegin', this.copyGameVals(current_game));
+            return;
         }
     }
-}
+};
+
+// One of the clients disconnected
+// If this was unexpected, notify the other client and end this game
+// If the game was already over, don't do anything
+// TODO stress test this function a bit by ensuring that a client can leave at any time
+rps_game_server.prototype.clientDisconnect = function(client) {
+    console.log("game.js:\t received disconnect call from client: ", client.userid);
+    // Identify game and round information based on the client
+    current_game = this.getCurrentGame(client);
+
+    // If there's still a game in progress, notify the other player
+    if (current_game) {
+        // Determine which player the client represents and update *other* player if needed
+        if (client.userid == current_game.player1.client_id) {
+            // Only notify player 2 if this isn't a normal disconnect at the end of the game
+            if (current_game.player1.status != "exited") {
+                console.log("game.js:\t unexpected disconnect from player 1.");
+                this.endGame(current_game.player2_client);
+                // Remove game from game_server
+                delete this.active_games[current_game.game_id];
+            }
+        } else if (client.userid == current_game.player2.client_id) {
+            // Only notify player 1 if this isn't a normal disconnect at the end of the game
+            if (current_game.player2.status != "exited") {
+                console.log("game.js:\t unexpected disconnect from player 2.");
+                this.endGame(current_game.player1_client);
+                // Remove game from game_server
+                delete this.active_games[current_game.game_id];
+            }
+        }
+
+    }
+};
+
+// Send game over signal to client
+rps_game_server.prototype.endGame = function(client) {
+    client.emit('gameover', {});
+};
+
+
+
 
 
 /*
@@ -280,11 +348,11 @@ TODO (clean up):
 2. clean up circularity of objects (game.current_round.player1 has a game field that's null, etc.)
 
 TODO (process):
-1. Add time constraint
-2. Write each round to file
+1. Add time constraint, show time remaining
+2. Add points calculation, show points
+2. Write each round (or whole game) to file
 3. Add instructions
-4. Show full info (rounds, cumulative points)
-5. Terminate when session ends
+4. Make things look nice...
 */
 
 // NB: this causes a reference error in the browser because module.exports is a node thing,
