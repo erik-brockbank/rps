@@ -109,8 +109,18 @@ client_begin_round = function(data) {
     // load "choose your move" page
     $("body").load("round_begin.html", function() {
         // Display relevant status info
-        // TODO move this to a separate function
+        if (player.client_id == data.player1.client_id) {
+            client_total_points = data.player1_points_total;
+            opponent_total_points = data.player2_points_total;
+        } else if (player.client_id == data.player2.client_id) {
+            client_total_points = data.player2_points_total;
+            opponent_total_points = data.player1_points_total;
+        }
+        // TODO move this to another function that shows stuff on every screen
         $("#current-round").text(data.current_round_index + "/" + GAME_ROUNDS);
+        $("#client-total-points").text(client_total_points);
+        $("#opponent-total-points").text(opponent_total_points);
+
 
         // TODO figure out a better way to do this...
         $("#rock-button").click(function() {
@@ -153,10 +163,16 @@ client_display_results = function(data) {
         client_move = data.current_round.player1_move;
         opponent_move = data.current_round.player2_move;
         client_outcome = data.current_round.player1_outcome;
+        client_round_points = data.current_round.player1_points;
+        client_total_points = data.player1_points_total;
+        opponent_total_points = data.player2_points_total;
     } else if (player.client_id == data.player2.client_id) {
         client_move = data.current_round.player2_move;
         opponent_move = data.current_round.player1_move;
         client_outcome = data.current_round.player2_outcome;
+        client_round_points = data.current_round.player2_points;
+        client_total_points = data.player2_points_total;
+        opponent_total_points = data.player1_points_total;
     }
     if (client_outcome == "win") {
         outcome_text = "You won this round!";
@@ -166,6 +182,8 @@ client_display_results = function(data) {
         outcome_text = "This round was a tie.";
     }
 
+
+
     // Display results and transition to next round
     var that = this;
     $("body").load("round_results.html", function() {
@@ -173,11 +191,15 @@ client_display_results = function(data) {
             client_finish_round(that);
         });
         // Display results
-        // TODO move this to another function
+        // TODO move this to another function that shows stuff on every screen
         $("#current-round").text(data.current_round_index + "/" + GAME_ROUNDS);
+        $("#client-total-points").text(client_total_points);
+        $("#opponent-total-points").text(opponent_total_points);
+        // TODO move this to another function that shows stuff on every results
         $("#client-move").text(client_move);
         $("#opponent-move").text(opponent_move);
         $("#result").text(outcome_text);
+        $("#client-points").text(client_round_points);
     });
 };
 

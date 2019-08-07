@@ -57,6 +57,7 @@ rps_player = function(client_id) {
 // Objects for formalizing RPS outcomes
 var rps_player_move = ["rock", "paper", "scissors", "none"]; // Valid rps_player moves
 var rps_outcome = ["win", "loss", "tie"]; // Valid rps_round outcomes
+var rps_points = {"win": 3, "loss": -1, "tie": 0}; // points awared for valid rps_round outcomes
 
 // Objects for formalizing client and server state
 var game_status = ["player_waiting", "in_play", "complete"]; // Valid rps_game status values
@@ -196,8 +197,11 @@ rps_game_server.prototype.processMove = function(client, data) {
         if (current_round.player1_move && current_round.player2_move) {
             console.log("game.js:\t evaluating round outcome");
             current_round = this.evaluateRoundOutcome(current_round);
+            // TODO move the below into a separate updateGame function
             current_round.round_status = "complete";
             current_game.current_round = current_round;
+            current_game.player1_points_total += current_round.player1_points;
+            current_game.player2_points_total += current_round.player2_points;
 
             game.player1_client.emit('roundcomplete', this.copyGameVals(current_game));
             game.player2_client.emit('roundcomplete', this.copyGameVals(current_game));
@@ -213,19 +217,25 @@ rps_game_server.prototype.evaluateRoundOutcome = function(rps_round) {
     if (rps_player_move.indexOf(rps_round.player1_move) != -1 && rps_player_move.indexOf(rps_round.player2_move) != -1) {
         // all possible tie outcomes
         if (rps_round.player1_move == rps_round.player2_move) {
-            rps_round.player1_outcome = rps_round.player2_outcome = "tie";
+            player1_outcome = "tie";
+            player2_outcome = "tie";
         // player 1 wins
         } else if ((rps_round.player1_move == "rock" && rps_round.player2_move == "scissors") ||
             (rps_round.player1_move == "paper" && rps_round.player2_move == "rock") ||
             (rps_round.player1_move == "scissors" && rps_round.player2_move == "paper") ||
             (rps_round.player2_move == "no_choice")) {
-            rps_round.player1_outcome = "win";
-            rps_round.player2_outcome = "loss";
+            player1_outcome = "win";
+            player2_outcome = "loss";
         } else {
         // all other: player 2 wins
-            rps_round.player1_outcome = "loss";
-            rps_round.player2_outcome = "win";
+            player1_outcome = "loss";
+            player2_outcome = "win";
         }
+
+        rps_round.player1_outcome = player1_outcome;
+        rps_round.player2_outcome = player2_outcome;
+        rps_round.player1_points = rps_points[player1_outcome];
+        rps_round.player2_points = rps_points[player2_outcome];
     }
 
     return rps_round;
