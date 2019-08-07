@@ -121,17 +121,32 @@ client_begin_round = function(data) {
         $("#client-total-points").text(client_total_points);
         $("#opponent-total-points").text(opponent_total_points);
 
+        // Start the countdown clock for selecting a move
+        start_time = Date.parse(new Date());
+        end_time = start_time + (1000 * ROUND_TIMEOUT); // number of seconds for each round * 1000 since timestamp includes ms
+        var interval = setInterval(function() {
+            remaining = (end_time - (Date.parse(new Date()))) / 1000; // calculate seconds remaining
+            $("#seconds-remaining").text(remaining);
+            if (remaining <= 0) {
+                clearInterval(interval);
+                client_submit_move('none', that);
+            }
+        }, 1000);
 
-        // TODO figure out a better way to do this...
+        // Add button interactivity
         $("#rock-button").click(function() {
+            clearInterval(interval);
             client_submit_move('rock', that);
         });
         $("#paper-button").click(function() {
+            clearInterval(interval);
             client_submit_move('paper', that);
         });
         $("#scissors-button").click(function() {
+            clearInterval(interval);
             client_submit_move('scissors', that);
         });
+
     });
 };
 

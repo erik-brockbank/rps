@@ -6,6 +6,7 @@
 
 // TODO is there a better solution for constants? separate constants.js doesn't seem to be available to this module...
 const GAME_ROUNDS = 3; // number of rounds opponents play in each game (default 100)
+const ROUND_TIMEOUT = 11; // number of seconds for players to make a decision each round (includes some buffer for loading)
 
 // Object for keeping track of the RPS games being played
 rps_game_server = function() {
@@ -161,54 +162,52 @@ rps_game_server.prototype.addPlayerToGame = function(game_id, client) {
     game.player2_client.emit('roundbegin', this.copyGameVals(game));
 };
 
+// Find game that this client is playing and update state of the current round to reflect the new move
+// if waiting for other player's move, update status. If not, process winner and update both clients
 rps_game_server.prototype.processMove = function(client, data) {
     console.log("game.js:\t received move: ", data.move, " from client: ", client.userid);
-    // find game that this client is playing and update state of the current round to reflect the new move
-    // if waiting for other player's move, update status. If not, process winner and update both clients
-    // TODO this probably should find the game_id based on the client rather than having the client send that along...
     if (!data.hasOwnProperty("move") || (rps_player_move.indexOf(data.move) == -1)) {
         console.error("ERROR game.js:\t Invalid move in data: ", data); // TODO validate conditions above work
     }
-    if (data.game_id in this.active_games) {
-        current_game = this.active_games[data.game_id];
-        current_round = current_game.current_round;
-        if (client.userid == current_game.player1.client_id) {
-            console.log("game.js:\t player 1 submitted move");
-            current_round.player1_move = data.move;
-        } else if (client.userid == current_game.player2.client_id) {
-            console.log("game.js:\t player 2 submitted move");
-            current_round.player2_move = data.move;
-        }
-
-        // TODO set status as needed
-        if (!current_round.player1_move) {
-            console.log("game.js:\t waiting for player 1 move");
-            current_round.round_status = "waiting_for_player1";
-            current_game.current_round = current_round;
-            game.player2_client.emit('roundwaiting', {"round_status": current_game.current_round.round_status});
-        } else if (!current_round.player2_move) {
-            console.log("game.js:\t waiting for player 2 move");
-            current_round.round_status = "waiting_for_player2";
-            current_game.current_round = current_round;
-            game.player1_client.emit('roundwaiting', {"round_status": current_game.current_round.round_status});
-        }
-
-        // If both players have chosen a move, determine winner and update players
-        if (current_round.player1_move && current_round.player2_move) {
-            console.log("game.js:\t evaluating round outcome");
-            current_round = this.evaluateRoundOutcome(current_round);
-            // TODO move the below into a separate updateGame function
-            current_round.round_status = "complete";
-            current_game.current_round = current_round;
-            current_game.player1_points_total += current_round.player1_points;
-            current_game.player2_points_total += current_round.player2_points;
-
-            game.player1_client.emit('roundcomplete', this.copyGameVals(current_game));
-            game.player2_client.emit('roundcomplete', this.copyGameVals(current_game));
-        }
-
-        console.log(current_round);
+    // find the game_id based on the client
+    current_game = this.getCurrentGame(client);
+    current_round = current_game.current_round;
+    if (client.userid == current_game.player1.client_id) {
+        console.log("game.js:\t player 1 submitted move");
+        current_round.player1_move = data.move;
+    } else if (client.userid == current_game.player2.client_id) {
+        console.log("game.js:\t player 2 submitted move");
+        current_round.player2_move = data.move;
     }
+
+    // TODO set status as needed
+    if (!current_round.player1_move) {
+        console.log("game.js:\t waiting for player 1 move");
+        current_round.round_status = "waiting_for_player1";
+        current_game.current_round = current_round;
+        game.player2_client.emit('roundwaiting', {"round_status": current_game.current_round.round_status});
+    } else if (!current_round.player2_move) {
+        console.log("game.js:\t waiting for player 2 move");
+        current_round.round_status = "waiting_for_player2";
+        current_game.current_round = current_round;
+        game.player1_client.emit('roundwaiting', {"round_status": current_game.current_round.round_status});
+    }
+
+    // If both players have chosen a move, determine winner and update players
+    if (current_round.player1_move && current_round.player2_move) {
+        console.log("game.js:\t evaluating round outcome");
+        current_round = this.evaluateRoundOutcome(current_round);
+        // TODO move the below into a separate updateGame function
+        current_round.round_status = "complete";
+        current_game.current_round = current_round;
+        current_game.player1_points_total += current_round.player1_points;
+        current_game.player2_points_total += current_round.player2_points;
+
+        game.player1_client.emit('roundcomplete', this.copyGameVals(current_game));
+        game.player2_client.emit('roundcomplete', this.copyGameVals(current_game));
+    }
+
+    console.log(current_round);
 };
 
 // Take in an rps_round object and determine the winner, fill in other relevant data.
@@ -223,7 +222,7 @@ rps_game_server.prototype.evaluateRoundOutcome = function(rps_round) {
         } else if ((rps_round.player1_move == "rock" && rps_round.player2_move == "scissors") ||
             (rps_round.player1_move == "paper" && rps_round.player2_move == "rock") ||
             (rps_round.player1_move == "scissors" && rps_round.player2_move == "paper") ||
-            (rps_round.player2_move == "no_choice")) {
+            (rps_round.player2_move == "none")) {
             player1_outcome = "win";
             player2_outcome = "loss";
         } else {
@@ -358,8 +357,6 @@ TODO (clean up):
 2. clean up circularity of objects (game.current_round.player1 has a game field that's null, etc.)
 
 TODO (process):
-1. Add time constraint, show time remaining
-2. Add points calculation, show points
 2. Write each round (or whole game) to file
 3. Add instructions
 4. Make things look nice...
