@@ -12,6 +12,7 @@
 
 
 // GLOBALS
+const JSPATH = '/lib'; // path to static js files
 var UUID = require('uuid');
 
 // Initializing server
@@ -20,9 +21,10 @@ var server = app.listen(3000); // listen on port 3000 (nginx will proxy requests
 var io = require("socket.io").listen(server); // initialize socket.io
 
 // internal requirements
-game_server = require(__dirname + "/" + "game.js"); // object for keeping track of games
+game_server = require(__dirname + JSPATH + "/" + "game.js"); // object for keeping track of games
 
-// General purpose getter for html files
+
+// General purpose getter for js files
 app.get("/*", function(req, res) {
     var file = req.params[0];
     res.sendFile(__dirname + "/" + file);
