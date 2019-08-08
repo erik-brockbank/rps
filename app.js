@@ -19,8 +19,8 @@ var app = require("express")(); // initialize express server
 var server = app.listen(3000); // listen on port 3000 (nginx will proxy requests on 80 to 3000)
 var io = require("socket.io").listen(server); // initialize socket.io
 
+// internal requirements
 game_server = require(__dirname + "/" + "game.js"); // object for keeping track of games
-
 
 // General purpose getter for html files
 app.get("/*", function(req, res) {

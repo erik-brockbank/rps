@@ -3,10 +3,9 @@
  * Note: exports new rps_game_server() for use by app.js when clients connect
  */
 
-
-// TODO is there a better solution for constants? separate constants.js doesn't seem to be available to this module...
-const GAME_ROUNDS = 3; // number of rounds opponents play in each game (default 100)
-const ROUND_TIMEOUT = 11; // number of seconds for players to make a decision each round (includes some buffer for loading)
+fs = require('fs');
+server_constants = require("./server_constants.js"); // constants
+const GAME_ROUNDS = server_constants.constants.GAME_ROUNDS;
 
 // Object for keeping track of the RPS games being played
 rps_game_server = function() {
@@ -14,8 +13,9 @@ rps_game_server = function() {
 };
 
 // Object for keeping track of each RPS "game", i.e. 100 rounds of RPS between two players
-rps_game = function(game_id = null, player1 = null, player2 = null) {
+rps_game = function(game_id = null, player1 = null, player2 = null, game_rounds = null) {
     this.game_id = game_id; // numeric: unique id for this game
+    this.game_rounds = game_rounds; // total number of rounds to play in this game
     this.game_status = ""; // game_status item: current status of game (e.g. in play, completed)
     this.game_begin_ts = 0; // numeric: unix timestamp when both players began the game
     this.player1 = player1; // rps_player object: first player to join
@@ -45,6 +45,8 @@ rps_round = function(game) {
     this.player2_outcome = null; // rps_outcome item for player 2
     this.player1_points = 0; // numeric: points for player1 in this round
     this.player2_points = 0; // numeric: points for player2 in this round
+    this.player1_points_total = game.player1_points_total; // numeric: total points for player 1 *at beginning of round*
+    this.player2_points_total = game.player2_points_total; // numeric: total points for player 2 *at beginning of round*
 };
 
 // Object for keeping track of each RPS "player"
@@ -70,6 +72,7 @@ var round_status = ["waiting_for_player1", "waiting_for_player2", "complete"]; /
 rps_game_server.prototype.copyGameVals = function(game) {
     return {
         "game_id": game.game_id,
+        "game_rounds": game.game_rounds,
         "game_status": game.game_status,
         "game_begin_ts": game.game_begin_ts,
         "player1": game.player1,
@@ -121,7 +124,7 @@ rps_game_server.prototype.createGame = function(client) {
 
     // Create new game and add client
     newgame_id = Date.now(); // use unix timestamp as unique identifier (not totally safe if two people join at the same second)
-    var newgame = new rps_game(game_id = newgame_id, player1 = newplayer, player2 = null);
+    var newgame = new rps_game(game_id = newgame_id, player1 = newplayer, player2 = null, total_rounds = GAME_ROUNDS);
     newgame.game_id = newgame_id;
     newgame.game_status = "player_waiting";
     newgame.player1_client = client;
@@ -175,9 +178,11 @@ rps_game_server.prototype.processMove = function(client, data) {
     if (client.userid == current_game.player1.client_id) {
         console.log("game.js:\t player 1 submitted move");
         current_round.player1_move = data.move;
+        current_round.player1_rt = data.rt;
     } else if (client.userid == current_game.player2.client_id) {
         console.log("game.js:\t player 2 submitted move");
         current_round.player2_move = data.move;
+        current_round.player2_rt = data.rt;
     }
 
     // TODO set status as needed
@@ -200,8 +205,8 @@ rps_game_server.prototype.processMove = function(client, data) {
         // TODO move the below into a separate updateGame function
         current_round.round_status = "complete";
         current_game.current_round = current_round;
-        current_game.player1_points_total += current_round.player1_points;
-        current_game.player2_points_total += current_round.player2_points;
+        current_game.player1_points_total += current_round.player1_points; // update game total points
+        current_game.player2_points_total += current_round.player2_points; // update game total points
 
         game.player1_client.emit('roundcomplete', this.copyGameVals(current_game));
         game.player2_client.emit('roundcomplete', this.copyGameVals(current_game));
@@ -272,9 +277,10 @@ rps_game_server.prototype.nextRound = function(client, data) {
         this.endGame(client);
         // If both players have now finished, write the results to a file and remove game from active game list
         if (current_game.player1.status == "exited" && current_game.player2.status == "exited") {
-            console.log("game.js:\t writing results to file");
-            // TODO write results to file
-
+            // Finish game and write data to server, remove from active game list
+            current_game.previous_rounds.push(current_round);
+            game.game_status = "complete";
+            this.writeData(this.copyGameVals(current_game)); // TODO is this copy too expensive for many rounds?
             // Remove game from game_server
             delete this.active_games[current_game.game_id];
         }
@@ -297,7 +303,7 @@ rps_game_server.prototype.nextRound = function(client, data) {
             // Update relevant variables for current game
             game.player1.status = "in_play";
             game.player2.status = "in_play";
-            game.game_status = "in_play";
+            game.game_status = "in_play"; // TODO is this ever necessary?
             game.current_round_index += 1;
 
             // Update both clients
@@ -347,6 +353,34 @@ rps_game_server.prototype.endGame = function(client) {
     client.emit('gameover', {});
 };
 
+// Write results of this game to a csv
+rps_game_server.prototype.writeData = function(current_game) {
+    console.log("game.js:\t writing results to file");
+    filename = "TEST_" + current_game.game_id.toString() + ".json"; // TODO create proper test handling
+    //ws = fs.createWriteStream(filename);
+    for (round_idx in current_game.previous_rounds) {
+        round = current_game.previous_rounds[round_idx];
+        data_obj = {
+            "game_id": current_game.game_id,
+            "round_index": round.round,
+            "player1_id": current_game.player1.client_id,
+            "player2_id": current_game.player2.client_id,
+            "player1_move": round.player1_move,
+            "player2_move": round.player2_move,
+            "player1_rt": round.player1_rt,
+            "player2_rt": round.player2_rt,
+            "player1_outcome": round.player1_outcome,
+            "player2_outcome": round.player2_outcome,
+            "player1_points": round.player1_points,
+            "player2_points": round.player2_points,
+            "player1_total": round.player1_points_total,
+            "player2_total": round.player2_points_total
+        };
+        row_str = JSON.stringify(data_obj);
+        console.log(row_str);
+        //ws.write(row_str); // TODO add some error handling
+    }
+};
 
 
 
@@ -355,6 +389,9 @@ rps_game_server.prototype.endGame = function(client) {
 TODO (clean up):
 1. review statuses (game, player, etc.) and have a more systematic approach
 2. clean up circularity of objects (game.current_round.player1 has a game field that's null, etc.)
+3. split out dense code into more distinct functions
+4. move html files into static folder, consider consolidating them a bit...
+
 
 TODO (process):
 2. Write each round (or whole game) to file

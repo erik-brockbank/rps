@@ -29,7 +29,6 @@ clickConsent = function() {
 
 connectToServer = function(game) {
     // TODO Initialize client game object (may need to initialize other aspects of the game)
-    game = new rps_game();
     initialize_game(game);
 
     // store a local reference to our connection to the server
@@ -56,9 +55,8 @@ initialize_game = function(game) {
 // The server responded that we are now connected, this lets us store the information about ourselves
 // We then load a page saying "waiting for server" while we're assigned to a game
 client_onconnected = function(data) {
-    player = new rps_player(data.id); // create a new player with this information
+    player.client_id = data.id;
     player.status = data.status;
-    //player.game = this;
     // load "waiting for server" page
     client_wait_for_server();
 };
@@ -90,7 +88,6 @@ client_waitingroom_enter = function(data) {
     this.game_id = data.game_id;
     this.game_status = data.game_status;
     this.current_round = JSON.parse(JSON.stringify(data.current_round));
-    //console.log(player.game.game_status); // confirms that the player's game is properly bound based on assignment above
     client_wait_for_opponent();
 };
 
@@ -117,44 +114,50 @@ client_begin_round = function(data) {
             opponent_total_points = data.player1_points_total;
         }
         // TODO move this to another function that shows stuff on every screen
-        $("#current-round").text(data.current_round_index + "/" + GAME_ROUNDS);
+        $("#current-round").text(data.current_round_index + "/" + data.game_rounds);
         $("#client-total-points").text(client_total_points);
         $("#opponent-total-points").text(opponent_total_points);
 
         // Start the countdown clock for selecting a move
         start_time = Date.parse(new Date());
         end_time = start_time + (1000 * ROUND_TIMEOUT); // number of seconds for each round * 1000 since timestamp includes ms
+        remaining = (end_time - (Date.parse(new Date()))) / 1000; // calculate seconds remaining
+        $("#seconds-remaining").text(remaining);
         var interval = setInterval(function() {
             remaining = (end_time - (Date.parse(new Date()))) / 1000; // calculate seconds remaining
             $("#seconds-remaining").text(remaining);
             if (remaining <= 0) {
+                resp_time = ROUND_TIMEOUT * 1000 // max response time (ms)
                 clearInterval(interval);
-                client_submit_move('none', that);
+                client_submit_move('none', resp_time, that);
             }
         }, 1000);
 
         // Add button interactivity
         $("#rock-button").click(function() {
+            resp_time = new Date().getTime() - start_time; // ms since start_time
             clearInterval(interval);
-            client_submit_move('rock', that);
+            client_submit_move('rock', resp_time, that);
         });
         $("#paper-button").click(function() {
+            resp_time = new Date().getTime() - start_time; // ms since start_time
             clearInterval(interval);
-            client_submit_move('paper', that);
+            client_submit_move('paper', resp_time, that);
         });
         $("#scissors-button").click(function() {
+            resp_time = new Date().getTime() - start_time; // ms since start_time
             clearInterval(interval);
-            client_submit_move('scissors', that);
+            client_submit_move('scissors', resp_time, that);
         });
 
     });
 };
 
 // We've chosen a move, send it to the server and wait until we hear back
-client_submit_move = function(move, game) {
+client_submit_move = function(move, rt, game) {
     console.log("client.js:\t move chosen: ", move);
     // send move to server
-    game.socket.emit("player_move", {"game_id": game.game_id, "move": move});
+    game.socket.emit("player_move", {"move": move, "rt": rt});
     // load "waiting for server" page until server updates otherwise
     client_wait_for_server();
 };
@@ -165,7 +168,6 @@ client_waiting = function(data) {
     console.log("client.js:\t waiting for opponent");
     console.log("client.js:\t data: ", data);
     // TODO update the local game with all relevant info in data
-    // this.current_round.round_status = data.round_status; // TODO is this necessary??
     client_wait_for_opponent();
 };
 
@@ -207,7 +209,7 @@ client_display_results = function(data) {
         });
         // Display results
         // TODO move this to another function that shows stuff on every screen
-        $("#current-round").text(data.current_round_index + "/" + GAME_ROUNDS);
+        $("#current-round").text(data.current_round_index + "/" + data.game_rounds);
         $("#client-total-points").text(client_total_points);
         $("#opponent-total-points").text(opponent_total_points);
         // TODO move this to another function that shows stuff on every results
