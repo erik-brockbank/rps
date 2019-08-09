@@ -1,0 +1,13 @@
+#experiment-container {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    width: 500px;
+    font-size: 20px;
+}
+
+#exp-button-container {
+    text-align: center;
+    width: 500px;
+    font-size: 36px;
+}
