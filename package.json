@@ -2,6 +2,7 @@
   "name": "rps",
   "description": "Platform for running two player rock, paper, scissors experiments",
   "version": "1.0.0",
+  "repository": "https://github.com/erik-brockbank/rps.git",
   "dependencies": {
     "express": "^4.17.1",
     "socket.io": "^2.2.0",

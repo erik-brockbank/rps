@@ -1,9 +1,67 @@
 #experiment-container {
+    width: 500px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
-    width: 500px;
     font-size: 20px;
+}
+
+#message-container {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 28px;
+}
+
+#game-container {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#game-banner {
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    font-size: 24px;
+}
+
+#client-info {
+    width: 250px;
+}
+
+#client-header {
+    font-size: 20px;
+}
+
+#opponent-info {
+    width: 250px;
+}
+
+#opponent-header {
+    font-size: 20px;
+}
+
+#game-info {
+    width: 500px;
+}
+
+.move-button {
+    height: 100px;
+}
+
+.move-button-container{
+    height:100px;
+    padding: 5px;
+}
+
+.opponent-move {
+    height: 100px;
+    padding: 5px;
+}
+
+.opponent-move-img {
+    height: 100px;
 }
 
 #exp-button-container {

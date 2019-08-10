@@ -34,16 +34,18 @@ app.get("/*", function(req, res) {
 io.on("connection", function (client) {
     console.log("app.js:\t new user connected");
     client.userid = UUID()
-    //client.userid = Date.now();
     // tell the client it connected successfully (pass along data in subsequent object)
     client.emit("onconnected", {id: client.userid, status: "connected"}); // TODO does the app need to know any statuses?
-
     initializeClient(client);
 });
 
 var initializeClient = function(client) {
+    // Determine whether this is a test run
+    var istest = client.handshake.query.istest == "true";
+    console.log("app.js:\t istest:");
+    console.log(istest);
     // Assign client to an existing game or start a new one
-    game_server.findGame(client);
+    game_server.findGame(client, istest);
 
     // handle player move submissions
     client.on("player_move", function(data) {
