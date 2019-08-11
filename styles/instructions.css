@@ -1,4 +1,5 @@
 #instructions-container {
+    font-family: 'Average Sans';
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
@@ -7,7 +8,24 @@
 }
 
 #inst-button-container {
-    text-align: center;
     width: 500px;
+    text-align: center;
+}
+
+#next-inst {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
     font-size: 20px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+}
+
+#next-inst:hover {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
 }

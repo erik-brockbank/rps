@@ -1,4 +1,5 @@
 #experiment-container {
+    font-family: 'Average Sans';
     width: 500px;
     margin-left: auto;
     margin-right: auto;
@@ -11,20 +12,27 @@
     margin-left: auto;
     margin-right: auto;
     font-size: 28px;
+    font-style: italic;
+    text-align: center;
 }
 
 #game-container {
     width: 500px;
     margin-left: auto;
     margin-right: auto;
+    text-align: center;
 }
 
 #game-banner {
     width: 500px;
     margin-left: auto;
     margin-right: auto;
-    font-size: 24px;
+    font-size: 20px;
     text-align: center;
+}
+
+#round-text, #round-index, #time-text, #countdown {
+    display: inline-flex;
 }
 
 #client-info {
@@ -33,6 +41,17 @@
 }
 
 #client-header {
+    width: 250px;
+    font-size: 28px;
+}
+
+#client-points-update {
+    width: 250px;
+    font-size: 20px;
+}
+
+#client-points-total {
+    width: 250px;
     font-size: 20px;
 }
 
@@ -42,6 +61,16 @@
 }
 
 #opponent-header {
+    font-size: 28px;
+}
+
+#opponent-points-update {
+    width: 250px;
+    font-size: 20px;
+}
+
+#opponent-points-total {
+    width: 250px;
     font-size: 20px;
 }
 
@@ -62,6 +91,10 @@
     display: inline-flex;
 }
 
+.move-button-container:hover {
+    background:gray;
+}
+
 .opponent-move {
     height: 50px;
     width: 50px;
@@ -77,5 +110,27 @@
 #exp-button-container {
     text-align: center;
     width: 500px;
+}
+
+#next-round {
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
     font-size: 20px;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+}
+
+#next-round:hover {
+    background-color: #4CAF50;
+    color: white;
+    font-size: 16px;
+}
+
+#schematic-img {
+    width: 300px;
+    padding: 20px;
 }
