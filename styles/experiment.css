@@ -24,10 +24,12 @@
     margin-left: auto;
     margin-right: auto;
     font-size: 24px;
+    text-align: center;
 }
 
 #client-info {
     width: 250px;
+    float: left;
 }
 
 #client-header {
@@ -36,6 +38,7 @@
 
 #opponent-info {
     width: 250px;
+    float: right;
 }
 
 #opponent-header {
@@ -44,24 +47,31 @@
 
 #game-info {
     width: 500px;
+    text-align: center;
 }
 
 .move-button {
-    height: 100px;
+    height: 50px;
+    width: 50px;
 }
 
 .move-button-container{
-    height:100px;
+    height:50px;
+    width: 50px;
     padding: 5px;
+    display: inline-flex;
 }
 
 .opponent-move {
-    height: 100px;
+    height: 50px;
+    width: 50px;
     padding: 5px;
+    display: inline-flex;
 }
 
 .opponent-move-img {
-    height: 100px;
+    height: 50px;
+    width: 50px;
 }
 
 #exp-button-container {
