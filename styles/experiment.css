@@ -1,34 +1,23 @@
 #experiment-container {
     font-family: 'Average Sans';
-    width: 500px;
+    width: 900px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 50px;
-    font-size: 20px;
 }
 
 #message-container {
-    width: 500px;
-    margin-left: auto;
-    margin-right: auto;
     font-size: 28px;
     font-style: italic;
     text-align: center;
 }
 
 #game-container {
-    width: 500px;
-    margin-left: auto;
-    margin-right: auto;
     text-align: center;
 }
 
 #game-banner {
-    width: 500px;
-    margin-left: auto;
-    margin-right: auto;
     font-size: 20px;
-    text-align: center;
     padding: 8px;
 }
 
@@ -37,32 +26,33 @@
 }
 
 #client-info {
-    width: 250px;
+    width: 400px;
     float: left;
 }
 
 #client-header {
-    width: 250px;
     font-size: 28px;
     text-decoration: underline;
 }
 
 #client-points-update {
-    width: 250px;
     font-size: 24px;
     font-weight: bold;
     padding: 4px;
 }
 
 #client-points-total {
-    width: 250px;
     font-size: 20px;
     font-style: italic;
     padding: 4px;
 }
 
+#client-body {
+    padding: 10px;
+}
+
 #opponent-info {
-    width: 250px;
+    width: 400px;
     float: right;
 }
 
@@ -72,32 +62,29 @@
 }
 
 #opponent-points-update {
-    width: 250px;
     font-size: 24px;
     font-weight: bold;
     padding: 4px;
 }
 
 #opponent-points-total {
-    width: 250px;
     font-size: 20px;
     font-style: italic;
     padding: 4px;
 }
 
-#game-info {
-    width: 500px;
-    text-align: center;
+#opponent-body {
+    padding: 10px;
 }
 
 .move-button {
-    height: 50px;
-    width: 50px;
+    height: 100px;
+    width: 100px;
 }
 
 .move-button-container{
-    height:50px;
-    width: 50px;
+    height: 100px;
+    width: 100px;
     padding: 5px;
     display: inline-flex;
     border: 5px solid transparent;
@@ -108,21 +95,16 @@
 }
 
 .opponent-move {
-    height: 50px;
-    width: 50px;
+    height: 100px;
+    width: 100px;
     padding: 5px;
     display: inline-flex;
     border: 5px solid transparent;
 }
 
 .opponent-move-img {
-    height: 50px;
-    width: 50px;
-}
-
-#exp-button-container {
-    text-align: center;
-    width: 500px;
+    height: 100px;
+    width: 100px;
 }
 
 #next-round {
