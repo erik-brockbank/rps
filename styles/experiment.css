@@ -29,6 +29,7 @@
     margin-right: auto;
     font-size: 20px;
     text-align: center;
+    padding: 8px;
 }
 
 #round-text, #round-index, #time-text, #countdown {
@@ -43,16 +44,21 @@
 #client-header {
     width: 250px;
     font-size: 28px;
+    text-decoration: underline;
 }
 
 #client-points-update {
     width: 250px;
-    font-size: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 4px;
 }
 
 #client-points-total {
     width: 250px;
     font-size: 20px;
+    font-style: italic;
+    padding: 4px;
 }
 
 #opponent-info {
@@ -62,16 +68,21 @@
 
 #opponent-header {
     font-size: 28px;
+    text-decoration: underline;
 }
 
 #opponent-points-update {
     width: 250px;
-    font-size: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 4px;
 }
 
 #opponent-points-total {
     width: 250px;
     font-size: 20px;
+    font-style: italic;
+    padding: 4px;
 }
 
 #game-info {
