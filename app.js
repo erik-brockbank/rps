@@ -12,15 +12,15 @@
 
 
 // GLOBALS
-const JSPATH = '/lib'; // path to static js files
-var UUID = require('uuid');
+const JSPATH = "/lib"; // path to static js files
 
 // Initializing server
 var app = require("express")(); // initialize express server
 var server = app.listen(3000); // listen on port 3000 (nginx will proxy requests on 80 to 3000)
 var io = require("socket.io").listen(server); // initialize socket.io
+var UUID = require("uuid"); // UUID library for generating unique IDs
 
-// internal requirements
+// Internal requirements
 game_server = require(__dirname + JSPATH + "/" + "game.js"); // object for keeping track of games
 
 
@@ -34,17 +34,15 @@ app.get("/*", function(req, res) {
 io.on("connection", function (client) {
     console.log("app.js:\t new user connected");
     client.userid = UUID()
-    // tell the client it connected successfully (pass along data in subsequent object)
-    client.emit("onconnected", {id: client.userid, status: "connected"}); // TODO does the app need to know any statuses?
+    // tell the client it connected successfully and pass along unique ID
+    client.emit("onconnected", {id: client.userid, status: "connected"}); // TODO does the client need to know this status?
     initializeClient(client);
 });
 
 var initializeClient = function(client) {
-    // Determine whether this is a test run
+    // determine whether this is a test run
     var istest = client.handshake.query.istest == "true";
-    console.log("app.js:\t istest:");
-    console.log(istest);
-    // Assign client to an existing game or start a new one
+    // assign client to an existing game or start a new one
     game_server.findGame(client, istest);
 
     // handle player move submissions
@@ -60,7 +58,7 @@ var initializeClient = function(client) {
     });
 
     // handle disconnect
-    client.on('disconnect', function() {
+    client.on("disconnect", function() {
         console.log("app.js:\t detected client disconnect");
         game_server.clientDisconnect(client);
     });
