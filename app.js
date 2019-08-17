@@ -14,13 +14,15 @@
 // GLOBALS
 const JSPATH = "/lib"; // path to static js files
 
-// Initializing server
+// Server variables
 var app = require("express")(); // initialize express server
 var server = app.listen(3000); // listen on port 3000 (nginx will proxy requests on 80 to 3000)
 var io = require("socket.io").listen(server); // initialize socket.io
 var UUID = require("uuid"); // UUID library for generating unique IDs
 var gameServer = require(__dirname + JSPATH + "/" + "game.js"); // object for keeping track of games
 
+
+// Initializing server
 // General purpose getter for js files
 app.get("/*", function(req, res) {
     var file = req.params[0];
@@ -36,7 +38,8 @@ io.on("connection", function (client) {
     initializeClient(client);
 });
 
-var initializeClient = function(client) {
+// Function to handle socket interactions between gameServer and clients
+initializeClient = function(client) {
     // assign client to an existing game or start a new one
     var istest = client.handshake.query.istest == "true";
     gameServer.findGame(client, istest);
@@ -58,5 +61,4 @@ var initializeClient = function(client) {
         console.log("app.js:\t detected client disconnect");
         gameServer.clientDisconnect(client);
     });
-
 };
