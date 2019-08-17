@@ -15,7 +15,7 @@
     font-family: "Times New Roman", Times, serif;
 }
 #consent-button:hover {
-    background-color: gray;
-    color: white;
+    background-color: lightgray;
+    color: black;
     font-size: 16px;
 }
