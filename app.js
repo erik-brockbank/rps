@@ -8,6 +8,8 @@
  * 1. cd /rps
  * 2. `node app.js`
  * 3. in browser, visit http://localhost:3000/index.html
+ *    -> to run a test version, visit http://localhost:3000/index.html?&mode=test
+ *    -> to view status of gameServer, visit http://localhost:3000/admin
  */
 
 
@@ -26,7 +28,12 @@ var gameServer = require(__dirname + JSPATH + "/" + "game.js"); // object for ke
 // General purpose getter for js files
 app.get("/*", function(req, res) {
     var file = req.params[0];
-    res.sendFile(__dirname + "/" + file);
+    if (file == "admin") { // admin endpoint returns state of game server for quick debugging
+        res.setHeader('Content-Type', 'application/json');
+        res.end(JSON.stringify(gameServer.getState(), null, 3));
+    } else {
+        res.sendFile(__dirname + "/" + file);
+    }
 });
 
 // socket.io will call this function when a client connects
