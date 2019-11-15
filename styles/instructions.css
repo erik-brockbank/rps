@@ -16,16 +16,15 @@
     background-color: white;
     color: black;
     border: 2px solid #4CAF50;
-    font-size: 20px;
     padding: 10px 20px;
+    margin: 4px 2px;
     text-align: center;
     text-decoration: none;
     font-size: 16px;
-    margin: 4px 2px;
 }
 
 #next-inst:hover {
-    background-color: #4CAF50;
     color: white;
+    background-color: #4CAF50;
     font-size: 16px;
 }
