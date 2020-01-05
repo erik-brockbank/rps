@@ -58,9 +58,9 @@ initializeClient = function(client) {
     });
 
     // handle player signal that they're ready for the next round
-    client.on("player_round_complete", function() {
+    client.on("player_round_complete", function(data) {
         console.log("app.js:\t detected player round complete");
-        gameServer.nextRound(client);
+        gameServer.nextRound(client, data);
     });
 
     // handle disconnect
