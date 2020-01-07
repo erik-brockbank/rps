@@ -63,6 +63,18 @@ initializeClient = function(client) {
         gameServer.nextRound(client, data);
     });
 
+    // handle player submitting exit survey free response data
+    client.on("free_response_submit", function(data) {
+        console.log("app.js:\t detected player free response submission");
+        gameServer.writeFreeRespData(data);
+    });
+
+    // handle player submitting exit survey slider data
+    client.on("slider_submit", function(data) {
+        console.log("app.js:\t detected player Likert slider submission");
+        gameServer.writeSliderData(data);
+    });
+
     // handle disconnect
     client.on("disconnect", function() {
         console.log("app.js:\t detected client disconnect");
