@@ -1,0 +1,6 @@
+{
+  "game_id": "3bae28c6-f499-4b70-aa9b-1b39ecff6e39",
+  "player_id": "f3bab366-a0a7-4dc8-b79f-13cca016bb1a",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I tried to look for patterns. If my opponent chose scissors to beat my paper, then they are likely to choose scissors again to beat my paper. Therefore, the next time I will not choose paper, I will choose rock to beat the scissors."
+}

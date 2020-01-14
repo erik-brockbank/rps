@@ -1,0 +1,6 @@
+{
+  "game_id": "6efc2377-be23-4135-a54e-fa82e7a25128",
+  "player_id": "d92dc120-d3d6-47ae-87d4-cea9293688d0",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I realized there was a pattern to my opponent's playing style. Also I noticed that when I chose either rock, paper, or scissors, copying their choice in the previous round, there was a higher chance of me winning the following round. I also would also try to get more ties, in which I don't lose any points and my opponent wouldn't gain. I played the \"safe\" game rather than trying to win each round."
+}

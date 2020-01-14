@@ -1,0 +1,6 @@
+{
+  "game_id": "d801f0d5-8c27-419c-b864-9f36bc44ce00",
+  "player_id": "34869fd3-29f0-4354-83c8-10bb36575b04",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "If he lost against me, I would assume that he would try to use the symbol that is stronger than the one I just used and beat me. So I would use the one that would beat him in the next round so he couldn't win against me."
+}

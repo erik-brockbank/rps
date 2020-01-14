@@ -1,0 +1,6 @@
+{
+  "game_id": "b3ab2dd6-f1b5-4539-8ae2-503b7721b7e6",
+  "player_id": "f84739f2-c24b-414e-8a9b-caf1a72b5205",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I basically analyzed what my \"opponent\" would think I would do next and use that against them. For example, if they had beat me with scissors against paper, I would assume they would think that I would be using a rock against their scissors on the next round, making them use paper against me. Instead, I would use scissors to beat their paper. I tried to think like another person would think and try to play around that. I also noticed there were some sequences on their choices, with some variations, of course. They would often go from scissors, to paper and from paper to rock, repeating scissors, paper or rock if that had been successful in the previous round, so it would tend to go: Scissors, scissors, paper, rock, rock, rock. Scissors, paper, paper, paper, rock, rock. This is just an example and not a real sequence but it explains what I noticed."
+}

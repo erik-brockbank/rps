@@ -1,0 +1,6 @@
+{
+  "game_id": "edf469cb-7a50-449a-8bf8-308e9c5c3d86",
+  "player_id": "17452e7c-5d9d-49bb-af4c-60f1948f7ae8",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I tried to predict the moves of the other person based on the outcome of the current game. So if I chose, paper and they chose rock, I win. Considering this, they would adjust their choice by choosing paper, then I would adjust my choice to be the scissors, in which case, I beat my opponent again. Sometimes, I saw a pattern to their moves so I would try to go one step ahead of them. For example, in our current game, I would pick scissors and they would pick rock, in which case, I lose. I guessed that in the next round they would use rock again because they won with that, in which case, I would adjust my move to be paper, so I can win. "
+}

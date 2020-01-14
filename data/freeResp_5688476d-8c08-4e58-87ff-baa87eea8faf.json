@@ -1,0 +1,6 @@
+{
+  "game_id": "e952f15b-325e-44a7-a7ae-a2666adc1b25",
+  "player_id": "5688476d-8c08-4e58-87ff-baa87eea8faf",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I noticed that my opponent tended to typically use paper or scissors, avoiding rock unless they would repeatedly lose. it seemed like they my opponent was performing repetitive moves in order to \"catch\" me, so whenever I noticed they were repeating paper and I would repeat scissors, I would switch to the paper in hindsight of my opponent switching to rock. I also noticed that my opponent tended to repeat the same move when they would win, and almost always switch moves when they would lose."
+}

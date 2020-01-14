@@ -1,0 +1,6 @@
+{
+  "game_id": "138c2f27-3a67-4b44-9ebe-1418559ffdcc",
+  "player_id": "489b81d6-071a-4b75-8e77-c6622d447735",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "Try to predict his next two moves and bait him by coming up with a pattern of play. ex: rock to paper to scissor. Then trying to tie is also an alternative as no points will be deducted so I would play something that would either allow to me tie or win for the next round."
+}
