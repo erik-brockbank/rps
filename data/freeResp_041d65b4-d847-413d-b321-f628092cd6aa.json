@@ -1,0 +1,6 @@
+{
+  "game_id": "1d738b11-5151-4ebe-beb1-c6f435b7483c",
+  "player_id": "041d65b4-d847-413d-b321-f628092cd6aa",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "tried to look at what sequence it chose after I chose. For example, rock, scissor, rock, then paper. But it never stayed the same."
+}

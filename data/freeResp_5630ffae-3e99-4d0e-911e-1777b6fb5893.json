@@ -1,0 +1,6 @@
+{
+  "game_id": "3617303c-61cf-4392-a1ba-a5acab401e33",
+  "player_id": "5630ffae-3e99-4d0e-911e-1777b6fb5893",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I tried to play the move that I would have lost to that I played on the previous round, because the other opponent might have wanted to beat my move that I just played on the next round, which would mean I win."
+}

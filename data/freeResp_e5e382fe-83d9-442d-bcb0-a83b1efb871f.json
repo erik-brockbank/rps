@@ -1,0 +1,6 @@
+{
+  "game_id": "bab2ab4e-6100-4605-8380-9e227b10a236",
+  "player_id": "e5e382fe-83d9-442d-bcb0-a83b1efb871f",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "If I beat the opponent, for example, my paper beats the opponent's rock, my next move would be what beats paper: scissor. If the opponent's paper beats my rock, my next move would be the same: rock. "
+}
