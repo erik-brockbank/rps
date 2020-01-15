@@ -1,0 +1,6 @@
+{
+  "game_id": "a37428a5-162a-48a4-92dc-3b5e99f1fc1b",
+  "player_id": "125cd7c2-92f7-479f-886d-41907e3d2df4",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I did not really have too much of a strategy. I sort of guessed for most part of the game. But at some times I did see almost a pattern depending on what the opponent previously guessed - or at least I thought I did. So if they used \"rock\" I would do \"scissors\" because maybe they think I am going to pick \"paper\" if they use \"rock\" again. The scissors would be least expected. "
+}

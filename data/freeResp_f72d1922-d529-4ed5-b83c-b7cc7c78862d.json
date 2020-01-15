@@ -1,0 +1,6 @@
+{
+  "game_id": "d4db449d-9c00-465f-aea4-f4393b042f5e",
+  "player_id": "f72d1922-d529-4ed5-b83c-b7cc7c78862d",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "If they won, they are more likely to put down what I had put that allowed them to win. \nIf we tied, I would think about what to put that would beat that one because there is a chance that the computer would put that down again. \n\n"
+}

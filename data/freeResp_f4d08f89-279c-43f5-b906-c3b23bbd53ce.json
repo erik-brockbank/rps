@@ -1,0 +1,6 @@
+{
+  "game_id": "65abbfab-0397-44e0-9820-53c237335d9f",
+  "player_id": "f4d08f89-279c-43f5-b906-c3b23bbd53ce",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I tried to predict what they would choose next, then choose the one that would beat what they would pick. I predicted what they would pick by thinking of which one they would have picked that would have made them win in the round that had just occurred. "
+}
