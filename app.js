@@ -9,6 +9,7 @@
  * 2. `node app.js`
  * 3. in browser, visit http://localhost:3000/index.html
  *    -> to run a test version, visit http://localhost:3000/index.html?&mode=test
+ *    -> to run a bot version, visit http://localhost:3000/index.html?&ver=2
  *    -> to view status of gameServer, visit http://localhost:3000/admin
  */
 
@@ -47,9 +48,11 @@ io.on("connection", function (client) {
 
 // Function to handle socket interactions between gameServer and clients
 initializeClient = function(client) {
-    // assign client to an existing game or start a new one
+    // extract relevant info from client request
     var istest = client.handshake.query.istest == "true";
-    gameServer.findGame(client, istest);
+    var version = client.handshake.query.version;
+    // assign client to an existing game or start a new one
+    gameServer.findGame(client, version, istest);
 
     // handle player move submissions
     client.on("player_move", function(data) {
