@@ -1,0 +1,6 @@
+{
+  "game_id": "00f9055b-2986-4a4b-8550-2695cedb7358",
+  "player_id": "55402ef8-01ba-4792-b74d-0b72df12a806",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I realized there was an order that had higher frequency of wins. I would go from scissors, to paper, to rock."
+}

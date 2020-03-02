@@ -1,0 +1,6 @@
+{
+  "game_id": "b8f0eec2-2d64-42c6-b3fd-6c94dd773413",
+  "player_id": "b58febc1-ef9c-4022-8686-403f82d88ec2",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "rock -> paper -> scissor"
+}

@@ -1,0 +1,6 @@
+{
+  "game_id": "4d24c56f-65a1-48cd-bb09-1ea959132b8b",
+  "player_id": "65d68cdc-5936-41b1-af45-8f68b546935d",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I looked for patterns in how the opponent was responding. At first the opponent was just going from left to right in selecting the action and then started alternating between 2 actions for some amount of time before switching to another pattern. "
+}

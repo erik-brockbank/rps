@@ -1,0 +1,6 @@
+{
+  "game_id": "fca92c82-5fd3-4703-b154-7184cf400e63",
+  "player_id": "18c32ef9-c46c-43aa-8fe0-1a8cc38f20de",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "To beat the opponent I tried to predict the card he/she was going to choose. I discovered the pattern, which was rock, paper and scissors and then rock again. Thus, I attempted to choose as quickly as possible the opposite card. "
+}

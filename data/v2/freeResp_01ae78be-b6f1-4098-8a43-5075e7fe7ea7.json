@@ -1,0 +1,6 @@
+{
+  "game_id": "e8cfd9d1-b356-4b80-b6ed-24618abb50c2",
+  "player_id": "01ae78be-b6f1-4098-8a43-5075e7fe7ea7",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I would find the patter and then figure out what would kill that pattern. For example, if after several rounds I found the opponent's pattern to be scissors, paper, rock, mine would be rock, scissors, paper."
+}

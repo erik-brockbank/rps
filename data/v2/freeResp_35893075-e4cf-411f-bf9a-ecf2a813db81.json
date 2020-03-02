@@ -1,0 +1,6 @@
+{
+  "game_id": "bd0681c1-5013-4132-b540-3098df50b662",
+  "player_id": "35893075-e4cf-411f-bf9a-ecf2a813db81",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "ok so i eventually figured out it goes in loop from left to right over and over but then it'll randomly re-start in a new place"
+}

@@ -1,0 +1,6 @@
+{
+  "game_id": "549f73f4-7a68-4d78-abb4-76d6dbb9e8f2",
+  "player_id": "7c2e9a45-3e56-4a41-96e5-b59868f2e5cb",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I noticed that there was a general pattern of the computer going rock, paper, scissors and then repeating that pattern so I simply followed the pattern necessary to beat it. Occasionally the computer would jump to a different position in the pattern but it would then follow the same pattern so I would just adjust my own pattern to match."
+}

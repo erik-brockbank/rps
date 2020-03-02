@@ -1,0 +1,6 @@
+{
+  "game_id": "1a0791ae-140f-44d3-8f81-7d56d32c0d4c",
+  "player_id": "71b9071c-357f-4067-b985-6f3bd55e5d96",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "try to find patterns in the opponents game play, after finding the patterns predict what they will choose next and choose the right path to beat what you predict they will choose"
+}

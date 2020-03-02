@@ -1,0 +1,6 @@
+{
+  "game_id": "28393a17-c8b7-47cf-bd20-ae49baf9646b",
+  "player_id": "d75c7e2e-b1ba-4877-a14d-628d817fa2af",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I noticed that usually the opponent would choose whichever move would have beaten my previous choice, so I would pick whatever beat that choice. For example, if I picked rock, in the next turn the opponent would pick paper so I would choose scissors."
+}

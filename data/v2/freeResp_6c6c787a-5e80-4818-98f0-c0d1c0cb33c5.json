@@ -1,0 +1,6 @@
+{
+  "game_id": "6f0aa4e2-1f8f-478e-b175-8fd752c8cec8",
+  "player_id": "6c6c787a-5e80-4818-98f0-c0d1c0cb33c5",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "If opponent picks rock, their next pick will likely be what beats rock, which is paper. So I will pick scissors. The opponent will likely pick what will beat the thing they lost with before. "
+}

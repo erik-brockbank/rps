@@ -1,0 +1,6 @@
+{
+  "game_id": "4f83446c-8546-4427-9814-9fb33449a802",
+  "player_id": "386e418a-8a16-45d5-acf7-3b85a2999814",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I found a pattern after the first 10-20 rounds and realized that my opponent was going from rock to paper to scissors consistently, but then only occasionally switching up the pattern to something else, one which was still predictable and could be matched and then the following move would be in that same order so I would just continue to repeat on my same order, one step ahead of the opponent"
+}

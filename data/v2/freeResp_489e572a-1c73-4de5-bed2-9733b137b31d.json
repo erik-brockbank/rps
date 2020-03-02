@@ -1,0 +1,6 @@
+{
+  "game_id": "c9fbe4e5-af61-47b1-a364-924cdde91d26",
+  "player_id": "489e572a-1c73-4de5-bed2-9733b137b31d",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "Strategies included knowing what the opponent played and how often it repeated. The opponent used rock, paper, scissors once before repeating the same three cards. Given this information, if I lose the first round, then the next round will either be a tie or a win. If it's a tie, then I will win for sure the next round. Every 5th or 6th time, the opponent plays the second card again, so if the first card was Rock and the second was Scissors, then I would play rock to beat Scissors. This did not happen often, but didn't notice beforehand."
+}

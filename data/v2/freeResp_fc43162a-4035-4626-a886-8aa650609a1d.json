@@ -1,0 +1,6 @@
+{
+  "game_id": "939669ea-9141-4a02-a9d0-46936f0c0a89",
+  "player_id": "fc43162a-4035-4626-a886-8aa650609a1d",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "It seemed that most of the timer the cpu picked the last move picked that last move I made. Thus, my strategy was to just alternate my moves by going clockwise as that order ensure that my current move would beat my last move."
+}

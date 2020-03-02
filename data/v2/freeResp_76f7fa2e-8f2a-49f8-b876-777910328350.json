@@ -1,0 +1,6 @@
+{
+  "game_id": "a1086b75-b314-41f5-8000-e7677c52e6e8",
+  "player_id": "76f7fa2e-8f2a-49f8-b876-777910328350",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "In the beginning, I did not have a strategy at all. After a while, I recognized a pattern that my opponent always chose the following object while occasionally doing the same object twice. If they did the object twice, then I would anticipate that they would move on after two times. "
+}

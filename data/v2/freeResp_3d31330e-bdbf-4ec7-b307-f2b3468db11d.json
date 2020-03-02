@@ -1,0 +1,6 @@
+{
+  "game_id": "2d59d1e2-19dd-4d13-a8cd-23fd37105100",
+  "player_id": "3d31330e-bdbf-4ec7-b307-f2b3468db11d",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I figured out the order the computer would generally go in. Sometimes it would skip a move but it would go back to that order. "
+}

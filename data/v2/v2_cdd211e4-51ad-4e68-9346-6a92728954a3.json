@@ -1,0 +1,30 @@
+{
+  "game_id": "cdd211e4-51ad-4e68-9346-6a92728954a3",
+  "version": "2",
+  "sona": "1",
+  "experiment_id": "1768",
+  "credit_token": "19421bc286424246b6b1e873e7a55a8e",
+  "survey_code": "33188",
+  "player1_id": "4361e295-9ce0-4ad4-bcb1-8b1ee72d37e1",
+  "player2_id": "bot",
+  "rounds": [],
+  "player2_botid": "562d8aef-b4b3-422b-b8c7-9d526469c53c",
+  "player2_bot_strategy": "opponent_prev_move_positive",
+  "player2_bot_move_probabilities": {
+    "rock": {
+      "rock": 0.04999999999999999,
+      "paper": 0.9,
+      "scissors": 0.04999999999999999
+    },
+    "paper": {
+      "rock": 0.04999999999999999,
+      "paper": 0.04999999999999999,
+      "scissors": 0.9
+    },
+    "scissors": {
+      "rock": 0.9,
+      "paper": 0.04999999999999999,
+      "scissors": 0.04999999999999999
+    }
+  }
+}

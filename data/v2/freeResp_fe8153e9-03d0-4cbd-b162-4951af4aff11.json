@@ -1,0 +1,6 @@
+{
+  "game_id": "e7477167-f461-4480-b357-eaece9044dd8",
+  "player_id": "fe8153e9-03d0-4cbd-b162-4951af4aff11",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I noticed that at some points there would be a long period where the opponent would repeatedly use rock, paper, scissors in that order. Since I could predict which move the opponent would play, it was easy for me to pick the move that would win. Whenever the opponent defied that pattern, I went back to assess what moves the opponent would make since it was rare for the opponent to go backwards in the rock, paper scissors pattern. The opponent, for example, if picking scissors, would either pick scissors again or pick rock. The opponent would never go backward and pick paper."
+}
