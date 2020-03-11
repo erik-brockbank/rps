@@ -1,0 +1,6 @@
+{
+  "game_id": "81ae0d90-deaf-4d9a-a29c-193bf0c809c2",
+  "player_id": "307092ad-541f-4bc5-bce8-2f4d8ccd7964",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "It seemed like the program would cycle through some of the past decisions I made. So, you could recognize some patterns of the choices it would make. Like if you press paper a bunch of times it would also do the same to keep the scores even, but then when you deviate from paper it would choose paper one more time and then pick something to beat what you chose."
+}

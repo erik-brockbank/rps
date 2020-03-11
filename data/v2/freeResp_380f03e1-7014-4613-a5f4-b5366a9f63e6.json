@@ -1,0 +1,6 @@
+{
+  "game_id": "83c1257b-4672-497f-9668-28e6ba914bff",
+  "player_id": "380f03e1-7014-4613-a5f4-b5366a9f63e6",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "At first, my options where just random, but I soon realized that the computer followed a pattern. I noticed that once I started winning the rounds, the computer would keep the same pattern going, but if I messed up, the pattern would change until all the options where gone through, then it would return to the same pattern. "
+}

@@ -1,0 +1,6 @@
+{
+  "game_id": "b6c6f1e7-f192-4807-ad29-40eac78bd73e",
+  "player_id": "8e03aa5d-dfb2-4273-847b-e839a9972a52",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I prioritize using rock multiple times, then move on to scissors, and occasionally use paper. \nRepeat using rock until the computer responds by playing paper, and then change my move."
+}

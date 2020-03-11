@@ -1,0 +1,6 @@
+{
+  "game_id": "d1c61fc5-5bbb-4dbd-b611-18bace3ee3a9",
+  "player_id": "7b94c71f-98ec-4000-a5d3-15423810e156",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "If we tied, they would most likely use the same gesture/option again that they used when we tied.\nAssuming that they're trying to beat the winning strategy, I would combat their expected move."
+}

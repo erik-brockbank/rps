@@ -1,0 +1,6 @@
+{
+  "game_id": "ca085436-9a60-49f1-8f93-610bb7b789df",
+  "player_id": "412cb607-552d-4ee8-b3ef-9e83efda1994",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "After the first couple rounds it was clear that there was a pattern, which made it extremely easy to win most games, but then after some point, it interrupted the pattern with a choice that made the round a tie, so after some number of patterns and then ties, it seemed that choosing the same card again as the human made it so the pattern of wins would continue while the computer continued. Otherwise, the majority of the game was just going in order of what the patterned initially determined."
+}

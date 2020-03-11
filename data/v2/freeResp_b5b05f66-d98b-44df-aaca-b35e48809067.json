@@ -1,0 +1,6 @@
+{
+  "game_id": "253b233c-ccfd-45b5-a14d-c99951dc403f",
+  "player_id": "b5b05f66-d98b-44df-aaca-b35e48809067",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "If I get it wrong, and the opponent consistently chose the same one I would then know which one to choose to beat it. It would start seeming like there was . a pattern until a stand still which I consider to be the portion where we both constantly tie. Then from there I would try to figure out/guess one that the opponent wouldn't do to beat it. In the beginning it was . a bit more hard but the more trials you do the more consistent it gets. I think I'd be thrown off especially when we start getting tied because I would have thought I was beating the algorithm when I ultimately didn't. And because it was so many trials it was easy to give up when given the 10s to think or make a decision that could possibly be backed up."
+}

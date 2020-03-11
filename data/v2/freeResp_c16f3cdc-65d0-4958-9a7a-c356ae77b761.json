@@ -1,0 +1,6 @@
+{
+  "game_id": "261ea05e-17e7-4ba2-abc6-2fd7fbc3d163",
+  "player_id": "c16f3cdc-65d0-4958-9a7a-c356ae77b761",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I tried to predict what the computer pattern was and how it changed depending on win or lose"
+}

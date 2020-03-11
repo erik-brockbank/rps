@@ -1,0 +1,6 @@
+{
+  "game_id": "4a4a73f6-75cb-4424-85be-0361f2399da5",
+  "player_id": "f61a51ea-8990-4280-926c-41251ade9764",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "The server would try to beat the last card i played, so playing the card that beat my previous hand would win the round for me."
+}

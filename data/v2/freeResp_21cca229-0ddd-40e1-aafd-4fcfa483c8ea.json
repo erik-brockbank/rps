@@ -1,0 +1,6 @@
+{
+  "game_id": "1c59e146-e60b-457c-8bed-84a91246378e",
+  "player_id": "21cca229-0ddd-40e1-aafd-4fcfa483c8ea",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "Let it believe you only choose scissor, then you give it a rock"
+}

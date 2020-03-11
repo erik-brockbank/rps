@@ -1,6 +1,0 @@
-{
-  "game_id": "4e5f3c6d-2dd1-44ae-96f6-ad2813ac96dc",
-  "player_id": "1309b8d5-3a95-4e93-8e0a-443fe91ac65b",
-  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
-  "free_resp_answer": "I tried to look for any patterns that emerged from the other player. I noticed that if the opponent beat me they would continue to use the same hand until it lost, which it would then switch to the next hand systematically. There were times where the opponent would not go in order but after that instance there were no more instances of any deviation for a while. It was difficult to note when they would deviate, but next time I would count which round they deviated and look for a pattern (i.e. if they did it every 5th round or every 2^x)."
-}

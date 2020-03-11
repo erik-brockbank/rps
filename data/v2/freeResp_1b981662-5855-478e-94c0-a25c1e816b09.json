@@ -1,0 +1,6 @@
+{
+  "game_id": "b8d9a7e6-9c64-4052-aae3-d71d316517c6",
+  "player_id": "1b981662-5855-478e-94c0-a25c1e816b09",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I assumed a computer opponent and thus started looking for patterns right away - there were a few clear patterns that the computer would cycle through (ex: rock --> scissor --> paper) over and over, with occasionally a few switchups (such as duplicating paper or going from paper --> rock when it should have been scissors next). After the pattern was found for that set of rounds, it was rather automatic responding. I think I did alright, though it could have been more optimized on my end as a few of the switchups made me think it was not a pattern and thus cost me more ties/losses than it should have."
+}

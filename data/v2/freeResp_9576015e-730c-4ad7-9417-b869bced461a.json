@@ -1,0 +1,6 @@
+{
+  "game_id": "06939345-e8b3-4375-a528-75d41bba21fe",
+  "player_id": "9576015e-730c-4ad7-9417-b869bced461a",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "At first, I was trying to find one of the options that I could repeatedly choose and keep winning. Eventually, I figured out that I rarely lost when I selected the card to the right of the previous card I chose. So after I figured that out I continuously selected rock paper and scissors in the right to left order. With this figured out, I then wanted to know if I would win or lose when I chose the same option that I had just lost from (ex. If i just lost by choosing rock, if I chose rock again, would I win or lose?). After trying this a couple times, I realized that selecting the same card over and over would often result in a tie. That got boring, so I went back to going from right to left (this time not repeating the card after I lost from it) and found that I rarely tied or lost."
+}

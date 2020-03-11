@@ -1,6 +1,0 @@
-{
-  "game_id": "3ea4a9dd-fd88-4090-aa38-008c50292bf9",
-  "player_id": "8730d6bd-1862-4250-87d7-04bc04391775",
-  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
-  "free_resp_answer": "I tried to detect if there was a pattern/order in which my opponent would choose either rock, paper, scissors. Then, based on that, I had to choose the opposite object in order to beat them."
-}

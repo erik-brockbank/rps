@@ -1,0 +1,6 @@
+{
+  "game_id": "918a010a-e7ed-4b26-b2e8-63d7f9f5a8f2",
+  "player_id": "fa5449d2-5c2e-4a6e-b029-8f87d636672f",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "Lead the computer into the loop of the tie, lets call the tie thing k, then recursively use the one that beat the k and the k."
+}

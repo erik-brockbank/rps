@@ -1,0 +1,6 @@
+{
+  "game_id": "24dc9293-8803-43ad-bd06-8eef2a8d5733",
+  "player_id": "cf46ccdb-54ca-4e92-b439-27bfc248f825",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "Initially I clicked randomly. Then, it seemed like my opponent was copying whatever my last move was, so I cycled between all three choices in the same order. I noticed that this work 100% of the time, occasionally the opponent would pick something else. However, it worked often enough that it was by far the best strategy. Perhaps there was some way of predicting when it would change to something besides what I just played, but I didn't care enough to find out. I think I had 600+ points, and the opponent had -110 or less points by the end"
+}

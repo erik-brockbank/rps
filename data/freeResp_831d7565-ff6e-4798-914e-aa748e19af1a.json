@@ -1,6 +1,0 @@
-{
-  "game_id": "a17bcc2d-0817-4753-8185-61bea8a7c168",
-  "player_id": "831d7565-ff6e-4798-914e-aa748e19af1a",
-  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
-  "free_resp_answer": "Initially I selected my options at random but after I noticed a pattern. There'd be only one possible move which would cause you to either tie or win every round until a certain point (when you lost), and then after that, the next move would be the one next to the initial possible one taken. "
-}

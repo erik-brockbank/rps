@@ -1,0 +1,87 @@
+{
+  "game_id": "752d331b-d063-4cfb-b7d2-e7ccef3b6aa1",
+  "version": "2",
+  "sona": "1",
+  "experiment_id": "1768",
+  "credit_token": "19421bc286424246b6b1e873e7a55a8e",
+  "survey_code": "34164",
+  "player1_id": "516a5ea8-97fc-4c22-8818-e1e8bc3b7e49",
+  "player2_id": "bot",
+  "rounds": [
+    {
+      "game_id": "752d331b-d063-4cfb-b7d2-e7ccef3b6aa1",
+      "version": "2",
+      "round_index": 1,
+      "player1_id": "516a5ea8-97fc-4c22-8818-e1e8bc3b7e49",
+      "player2_id": "bot",
+      "round_begin_ts": 1583527391677,
+      "player1_move": "paper",
+      "player2_move": "scissors",
+      "player1_rt": 8425,
+      "player2_rt": 0,
+      "player1_outcome": "loss",
+      "player2_outcome": "win",
+      "player1_outcome_viewtime": 630,
+      "player2_outcome_viewtime": 0,
+      "player1_points": -1,
+      "player2_points": 3,
+      "player1_total": 0,
+      "player2_total": 0
+    }
+  ],
+  "player2_botid": "14860043-f3c1-4f59-a30f-e05865e405d8",
+  "player2_bot_strategy": "prev_move_negative",
+  "player2_bot_move_probabilities": {
+    "win": {
+      "rock": {
+        "rock": 0.04999999999999999,
+        "paper": 0.04999999999999999,
+        "scissors": 0.9
+      },
+      "paper": {
+        "rock": 0.9,
+        "paper": 0.04999999999999999,
+        "scissors": 0.04999999999999999
+      },
+      "scissors": {
+        "rock": 0.04999999999999999,
+        "paper": 0.9,
+        "scissors": 0.04999999999999999
+      }
+    },
+    "loss": {
+      "rock": {
+        "rock": 0.04999999999999999,
+        "paper": 0.04999999999999999,
+        "scissors": 0.9
+      },
+      "paper": {
+        "rock": 0.9,
+        "paper": 0.04999999999999999,
+        "scissors": 0.04999999999999999
+      },
+      "scissors": {
+        "rock": 0.04999999999999999,
+        "paper": 0.9,
+        "scissors": 0.04999999999999999
+      }
+    },
+    "tie": {
+      "rock": {
+        "rock": 0.04999999999999999,
+        "paper": 0.04999999999999999,
+        "scissors": 0.9
+      },
+      "paper": {
+        "rock": 0.9,
+        "paper": 0.04999999999999999,
+        "scissors": 0.04999999999999999
+      },
+      "scissors": {
+        "rock": 0.04999999999999999,
+        "paper": 0.9,
+        "scissors": 0.04999999999999999
+      }
+    }
+  }
+}

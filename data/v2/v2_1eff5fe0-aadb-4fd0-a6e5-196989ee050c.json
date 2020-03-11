@@ -1,0 +1,215 @@
+{
+  "game_id": "1eff5fe0-aadb-4fd0-a6e5-196989ee050c",
+  "version": "2",
+  "sona": "1",
+  "experiment_id": "1768",
+  "credit_token": "19421bc286424246b6b1e873e7a55a8e",
+  "survey_code": "32465",
+  "player1_id": "e71d63b7-faa7-4000-994d-98b8f616e418",
+  "player2_id": "bot",
+  "rounds": [
+    {
+      "game_id": "1eff5fe0-aadb-4fd0-a6e5-196989ee050c",
+      "version": "2",
+      "round_index": 1,
+      "player1_id": "e71d63b7-faa7-4000-994d-98b8f616e418",
+      "player2_id": "bot",
+      "round_begin_ts": 1583387331839,
+      "player1_move": "scissors",
+      "player2_move": "paper",
+      "player1_rt": 8156,
+      "player2_rt": 0,
+      "player1_outcome": "win",
+      "player2_outcome": "loss",
+      "player1_outcome_viewtime": 1738,
+      "player2_outcome_viewtime": 0,
+      "player1_points": 3,
+      "player2_points": -1,
+      "player1_total": 0,
+      "player2_total": 0
+    },
+    {
+      "game_id": "1eff5fe0-aadb-4fd0-a6e5-196989ee050c",
+      "version": "2",
+      "round_index": 2,
+      "player1_id": "e71d63b7-faa7-4000-994d-98b8f616e418",
+      "player2_id": "bot",
+      "round_begin_ts": 1583387341875,
+      "player1_move": "paper",
+      "player2_move": "scissors",
+      "player1_rt": 3796,
+      "player2_rt": 0,
+      "player1_outcome": "loss",
+      "player2_outcome": "win",
+      "player1_outcome_viewtime": 1097,
+      "player2_outcome_viewtime": 0,
+      "player1_points": -1,
+      "player2_points": 3,
+      "player1_total": 3,
+      "player2_total": -1
+    }
+  ],
+  "player2_botid": "2a6e3171-e2bd-4f00-bc75-c0fdd37e78ba",
+  "player2_bot_strategy": "outcome_transition_dual_dependency",
+  "player2_bot_move_probabilities": {
+    "win": {
+      "0": {
+        "rock": {
+          "rock": 0.04999999999999999,
+          "paper": 0.9,
+          "scissors": 0.04999999999999999
+        },
+        "paper": {
+          "rock": 0.04999999999999999,
+          "paper": 0.04999999999999999,
+          "scissors": 0.9
+        },
+        "scissors": {
+          "rock": 0.9,
+          "paper": 0.04999999999999999,
+          "scissors": 0.04999999999999999
+        }
+      },
+      "+": {
+        "rock": {
+          "rock": 0.04999999999999999,
+          "paper": 0.04999999999999999,
+          "scissors": 0.9
+        },
+        "paper": {
+          "rock": 0.9,
+          "paper": 0.04999999999999999,
+          "scissors": 0.04999999999999999
+        },
+        "scissors": {
+          "rock": 0.04999999999999999,
+          "paper": 0.9,
+          "scissors": 0.04999999999999999
+        }
+      },
+      "-": {
+        "rock": {
+          "rock": 0.9,
+          "paper": 0.04999999999999999,
+          "scissors": 0.04999999999999999
+        },
+        "paper": {
+          "rock": 0.04999999999999999,
+          "paper": 0.9,
+          "scissors": 0.04999999999999999
+        },
+        "scissors": {
+          "rock": 0.04999999999999999,
+          "paper": 0.04999999999999999,
+          "scissors": 0.9
+        }
+      }
+    },
+    "loss": {
+      "0": {
+        "rock": {
+          "rock": 0.04999999999999999,
+          "paper": 0.04999999999999999,
+          "scissors": 0.9
+        },
+        "paper": {
+          "rock": 0.9,
+          "paper": 0.04999999999999999,
+          "scissors": 0.04999999999999999
+        },
+        "scissors": {
+          "rock": 0.04999999999999999,
+          "paper": 0.9,
+          "scissors": 0.04999999999999999
+        }
+      },
+      "+": {
+        "rock": {
+          "rock": 0.9,
+          "paper": 0.04999999999999999,
+          "scissors": 0.04999999999999999
+        },
+        "paper": {
+          "rock": 0.04999999999999999,
+          "paper": 0.9,
+          "scissors": 0.04999999999999999
+        },
+        "scissors": {
+          "rock": 0.04999999999999999,
+          "paper": 0.04999999999999999,
+          "scissors": 0.9
+        }
+      },
+      "-": {
+        "rock": {
+          "rock": 0.04999999999999999,
+          "paper": 0.9,
+          "scissors": 0.04999999999999999
+        },
+        "paper": {
+          "rock": 0.04999999999999999,
+          "paper": 0.04999999999999999,
+          "scissors": 0.9
+        },
+        "scissors": {
+          "rock": 0.9,
+          "paper": 0.04999999999999999,
+          "scissors": 0.04999999999999999
+        }
+      }
+    },
+    "tie": {
+      "0": {
+        "rock": {
+          "rock": 0.9,
+          "paper": 0.04999999999999999,
+          "scissors": 0.04999999999999999
+        },
+        "paper": {
+          "rock": 0.04999999999999999,
+          "paper": 0.9,
+          "scissors": 0.04999999999999999
+        },
+        "scissors": {
+          "rock": 0.04999999999999999,
+          "paper": 0.04999999999999999,
+          "scissors": 0.9
+        }
+      },
+      "+": {
+        "rock": {
+          "rock": 0.04999999999999999,
+          "paper": 0.9,
+          "scissors": 0.04999999999999999
+        },
+        "paper": {
+          "rock": 0.04999999999999999,
+          "paper": 0.04999999999999999,
+          "scissors": 0.9
+        },
+        "scissors": {
+          "rock": 0.9,
+          "paper": 0.04999999999999999,
+          "scissors": 0.04999999999999999
+        }
+      },
+      "-": {
+        "rock": {
+          "rock": 0.04999999999999999,
+          "paper": 0.04999999999999999,
+          "scissors": 0.9
+        },
+        "paper": {
+          "rock": 0.9,
+          "paper": 0.04999999999999999,
+          "scissors": 0.04999999999999999
+        },
+        "scissors": {
+          "rock": 0.04999999999999999,
+          "paper": 0.9,
+          "scissors": 0.04999999999999999
+        }
+      }
+    }
+  }
+}

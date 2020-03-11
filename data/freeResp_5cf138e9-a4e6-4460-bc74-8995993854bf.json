@@ -1,6 +1,0 @@
-{
-  "game_id": "a195a806-d892-4f03-aabf-2c8baf4060c0",
-  "player_id": "5cf138e9-a4e6-4460-bc74-8995993854bf",
-  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
-  "free_resp_answer": "After a while, I started to notice a pattern. Beating the computer once with a specific output, the system begins to go in order from 1 - 3 and then repeats itself until a certain number of trials."
-}

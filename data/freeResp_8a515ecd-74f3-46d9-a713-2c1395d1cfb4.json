@@ -1,6 +1,0 @@
-{
-  "game_id": "e506e392-9172-4121-af7e-652bc78e20c7",
-  "player_id": "8a515ecd-74f3-46d9-a713-2c1395d1cfb4",
-  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
-  "free_resp_answer": "I notice that if i kept selecting a choice: Example Paper --> the bot would alternatively go from Rock and then next turn paper then next turn paper again. If i kept picking paper, i could only gain win or tie. "
-}

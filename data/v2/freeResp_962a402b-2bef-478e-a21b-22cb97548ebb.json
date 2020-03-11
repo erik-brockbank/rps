@@ -1,0 +1,6 @@
+{
+  "game_id": "1b39ddc3-e6cf-43e0-9a21-57593703b61b",
+  "player_id": "962a402b-2bef-478e-a21b-22cb97548ebb",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I thought that if my opponent played one thing for one round (ex: rock) and won, they would choose the same thing in the next round. So I would alter my choice to the option that would beat their choice (in this example, paper). I would also find that they would change their choice if they lost, consecutively. So if they did Rock (the first in the sequence) and lost, they would go to paper. Then if they lost with paper (second in the sequence), they would go to scissors."
+}

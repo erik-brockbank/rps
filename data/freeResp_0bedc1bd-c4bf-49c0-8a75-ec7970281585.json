@@ -1,6 +1,0 @@
-{
-  "game_id": "93567ffb-83c3-4b45-9ae7-bd5350ecd1c8",
-  "player_id": "0bedc1bd-c4bf-49c0-8a75-ec7970281585",
-  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
-  "free_resp_answer": "At first I tried to predict the other player's move until I discovered a pattern. Then I found a pattern and stuck with answers to beat that pattern. Eventually, the pattern changed so I once again, tried to predict their choices. It was harder after the first pattern to figure out the new one (if there was one). At one point I thought I figured out the pattern but it seemed to change shortly after. So, I don't know if I just figured out the pattern too late where the pattern changed directly after, or if there wasn't a pattern and it was just random."
-}

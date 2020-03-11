@@ -1,0 +1,6 @@
+{
+  "game_id": "56faf8bd-139e-415f-a2ab-fa3f770d7407",
+  "player_id": "c9506a67-9a35-4b1c-b246-a953274f7fe7",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "For many of the matches, I chose between the two that the opponent did not pick on the previous match. For example, if the oppoonent chose rock, then on the next one I would choose between scissors and paper and then choose scissors since it beats paper."
+}

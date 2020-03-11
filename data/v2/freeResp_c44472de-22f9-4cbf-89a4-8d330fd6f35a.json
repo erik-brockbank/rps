@@ -1,0 +1,6 @@
+{
+  "game_id": "41ab8b3e-7cb4-4ebc-806a-10ccc799d790",
+  "player_id": "c44472de-22f9-4cbf-89a4-8d330fd6f35a",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "After a couple rounds I noticed that for the majority of the game my opponent went in order, i.e scissors then paper then rock, and would continue to repeat that pattern. After noticing the pattern I just simply selected the counter since they were demonstrating an obvious choice pattern.\n\nAfter about every 10 rounds, I noticed that my opponent would re-select the object from the previous round. Unfortunately, I could not capitalize because I only noticed that pattern during the final rounds."
+}

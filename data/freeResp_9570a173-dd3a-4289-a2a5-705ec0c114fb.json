@@ -1,6 +1,0 @@
-{
-  "game_id": "79025357-520e-4aba-8afb-763fd7c18885",
-  "player_id": "9570a173-dd3a-4289-a2a5-705ec0c114fb",
-  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
-  "free_resp_answer": "I tried to find a pattern between the 3 options and how the opponent response after each turn. Then you can kind of guess the pattern as it repeats itself through a couple turns. After that, it changes again so you will have to figure out the new pattern in order to win a maximum amount of times."
-}
