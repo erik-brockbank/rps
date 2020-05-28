@@ -3,7 +3,7 @@ Repo for rock, paper, scissors experiments
 
 ## To run experiment locallly:
 1. Clone repo
-2. This requires `node.js` and the node package manager `npm`. Google these to install locally :)
+2. This requires `node.js` and the node package manager `npm`. Google these to download and run locally :)
 3. cd to `rps/` directory
 2. Start server: `node app.js`
 3. In browser, navigate to URL below that matches the version you'd like to play
