@@ -5,11 +5,12 @@
 
 /*
  * To run this locally:
- * 1. cd /rps
+ * 1. cd rps/
  * 2. `node app.js`
  * 3. in browser, visit http://localhost:3000/index.html
  *    -> to run a test version, visit http://localhost:3000/index.html?&mode=test
  *    -> to run a bot version, visit http://localhost:3000/index.html?&ver=2
+ *    -> append the same &mode=test to the bot version for testing
  *    -> to view status of game_server, visit http://localhost:3000/admin
  */
 
