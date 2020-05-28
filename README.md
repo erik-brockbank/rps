@@ -14,8 +14,8 @@ Repo for rock, paper, scissors experiments
 
 ### Single play against a bot
 - Visit `http://localhost:3000/index.html?&ver=2` or `http://localhost:3000/index.html?&ver=2&mode=test` for test version (same as above)
-- For single bot version, the server chooses the bot strategy at random from among the strategies outlined in `/lib/server_constants.js` and prints the strategy out at runtime.
+- For single bot version, the server chooses the bot strategy at random from among the strategies outlined in `/lib/server_constants.js` and prints the strategy out at runtime
 
 ### Admin functions
-- Visit `http://localhost:3000/admin` to view the state of games currently in play, including the current round
+- Visit `http://localhost:3000/admin` to view the state of games currently in play (helpful when running this as an experiment)
 
