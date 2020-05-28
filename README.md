@@ -1,5 +1,5 @@
 # rps
-Repo for Rock, Paper, Scissors experiments
+Repo for rock, paper, scissors experiments
 
 ## To run experiment locallly:
 1. Clone repo
@@ -17,5 +17,5 @@ Repo for Rock, Paper, Scissors experiments
 - For single bot version, the server chooses the bot strategy at random from among the strategies outlined in `/lib/server_constants.js` and prints the strategy out at runtime.
 
 ### Admin functions
-- Visit http://localhost:3000/admin to view the state of games currently in play, including the current round
+- Visit `http://localhost:3000/admin` to view the state of games currently in play, including the current round
 
