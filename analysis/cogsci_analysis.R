@@ -9,6 +9,7 @@ setwd("/Users/erikbrockbank/web/vullab/rps/analysis")
 library(tidyverse)
 library(viridis)
 library(patchwork)
+library(pwr)
 
 
 
@@ -628,12 +629,10 @@ plot_win_count_differentials = function(win_count_diff_empirical, win_count_diff
 }
 
 
-plot_acf = function(acf_data, game_rounds) {
+plot_acf = function(acf_data, ci) {
   summary_acf = acf_data %>%
     group_by(lag) %>%
     summarize(mean_acf = mean(acf))
-  
-  ci_thresh = 2 / sqrt(game_rounds) # num. SDs from 0 over sqrt(N) obs to get 95% CI on mean of 0 auto-corr
   
   acf_data %>%
     ggplot(aes(x = lag, y = acf)) +
@@ -641,8 +640,8 @@ plot_acf = function(acf_data, game_rounds) {
     geom_point(data = summary_acf, aes(x = lag, y = mean_acf, color = "mean"), size = 4) +
     scale_x_continuous(breaks = seq(0, max(acf_data$lag))) +
     # significance thresholds
-    geom_hline(yintercept = ci_thresh, linetype = "dashed", size = 1, color = "black") +
-    geom_hline(yintercept = -ci_thresh, linetype = "dashed", size = 1, color = "black") +
+    geom_hline(yintercept = ci, linetype = "dashed", size = 1, color = "black") +
+    geom_hline(yintercept = -ci, linetype = "dashed", size = 1, color = "black") +
     scale_color_viridis(discrete = T,
                         labels = c("ind" = "Individual dyads", "mean" = "Average across dyads"),
                         # Set color range to avoid purple and yellow contrasts...
@@ -798,12 +797,18 @@ chisq.test(emp_win_count_bins_truncated$n, p = null_win_count_bins$prop)
 ### Autocorrelation Analysis
 
 unique_game_data = get_unique_game_data(data)
+
+# 1. Autocorrelation across all experimental dyads
+
 # Get ACF data
 acf_agg = get_game_acf(unique_game_data, MAX_LAG)
 # Plot ACF data
-plot_acf(acf_agg, GAME_ROUNDS)
+# significance threshold: 2 SDs from 0 over sqrt(N) obs to get 95% CI on mean of 0 auto-corr (subtract one because only 299 obs for lag-1)
+ci_thresh = 2 / sqrt(GAME_ROUNDS - 1)
+plot_acf(acf_agg, ci_thresh)
 
-# Auto-correlation for top-N win count differential dyads
+
+# 2. Auto-correlation for top-N win count differential dyads
 win_count_diff_empirical_top = win_count_diff_empirical %>%
   top_n(win_diff, n = 10)
 unique(win_count_diff_empirical_top$game_id)
@@ -814,20 +819,36 @@ unique_game_data_top = unique_game_data %>%
 acf_top = get_game_acf(unique_game_data_top, MAX_LAG)
 # Plot ACF data
 # NB: this plot not included in cog sci manuscript
-plot_acf(acf_top, GAME_ROUNDS)
+# significance threshold: 2 SDs from 0 over sqrt(N) obs to get 95% CI on mean of 0 auto-corr (subtract one because only 299 obs for lag-1)
+ci_thresh = 2 / sqrt(GAME_ROUNDS - 1)
+plot_acf(acf_top, ci_thresh)
 
-# What kind of streaks are needed to produce significant auto-correlations?
-streak_length = 30
+
+# 3. What kind of streaks are needed to produce significant auto-correlations?
+streak_length = 15
 streak_pct = (2 * streak_length) / GAME_ROUNDS
+sims = 1000 # set to high enough number that we're confident in power below
 # Get sample game data to match the empirical number of dyads
-sample_acf_data = get_sample_acf(streak_length, GAME_ROUNDS, length(unique(data$game_id)))
+sample_acf_data = get_sample_acf(streak_length, GAME_ROUNDS, sims) # takes about 15s for 1000 obs
 # Get ACF for sample game data
-acf_sample = get_game_acf(sample_acf_data, MAX_LAG)
+acf_sample = get_game_acf(sample_acf_data, MAX_LAG) # takes 5-10s for 1000 obs
 # Plot ACF data
-plot_acf(acf_sample, GAME_ROUNDS)
+# significance threshold: 2 SDs from 0 over sqrt(N) obs to get 95% CI on mean of 0 auto-corr (subtract one because only 299 obs for lag-1)
+ci_thresh = 2 / sqrt(GAME_ROUNDS - 1)
+plot_acf(acf_sample, ci_thresh)
 # Take-aways: 
 # streak_pct needs to be > 10% to detect significant auto-correlations
 # by 20% it's very visible
+
+# How much power do we have to detect significant autocorrelations?
+# i.e. what fraction of samples from the underlying distribution of non-zero auto-correlated outcomes
+# for an individual exceed the significance threshold?
+acf_sample %>%
+  mutate(sig = acf >= ci_thresh) %>%
+  group_by(lag) %>%
+  summarize(sig_count = sum(sig),
+            total = n(),
+            prop = sig_count / total)
 
 
 
