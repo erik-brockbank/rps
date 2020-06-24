@@ -1088,7 +1088,7 @@ unique_game_data = get_unique_game_data(dyad_data)
 # 1. Autocorrelation across all experimental dyads
 
 # Get ACF data
-acf_agg = get_game_acf(unique_game_data, MAX_LAG) # NB: this takes several secs. to run
+acf_agg = get_game_acf(unique_game_data, MAX_LAG) # NB: this takes 5-10 secs. to run
 # Plot ACF data
 # significance threshold: 2 SDs from 0 over sqrt(N) obs to get 95% CI on mean of 0 auto-corr (subtract one because only 299 obs for lag-1)
 ci_thresh = 2 / sqrt(GAME_ROUNDS - 1)
@@ -1242,7 +1242,6 @@ opponent_prev_move_utils_summary = opponent_prev_move_utils %>%
 player_prev_move_utils_summary = player_prev_move_utils %>%
   group_by(game_id) %>%
   summarize(max_exp_wcd_player_prev_move = mean(win_diff))
-
 
 ## 5. Distribution of transitions given previous outcome (9 cells)
 player_transition_prev_outcome_utils_summary = player_transition_prev_outcome_utils %>%
