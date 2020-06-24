@@ -1,6 +1,6 @@
 """
 To run this:
-- cd /Users/erikbrockbank/web/vullab/data_analysis/rps_data
+- cd /rps/analysis/
 - python json_to_csv_v1.py
 """
 
