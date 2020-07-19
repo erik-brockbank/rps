@@ -922,7 +922,7 @@ plot_bot_strategy_win_count_differential_summary = function(wcd_summary) {
     geom_errorbar(aes(color = bot_strategy, ymin = lower_se, ymax = upper_se),
                   width = 0.25, size = 1) +
     geom_hline(yintercept = 0, size = 1, linetype = "dashed", color = "red") +
-    labs(x = "", y = "mean win count differential") +
+    labs(x = "", y = "Mean win count differential") +
     ggtitle("Win count differential across bot strategies") +
     scale_x_discrete(labels = summary_labels) +
     scale_color_viridis(discrete = TRUE,
@@ -930,9 +930,9 @@ plot_bot_strategy_win_count_differential_summary = function(wcd_summary) {
     individ_plot_theme +
     theme(
       # plot.title = element_text(size = 32, face = "bold"),
-      # axis.title.y = element_text(size = 24, face = "bold"),
+      axis.title.y = element_text(size = 24, face = "bold"),
       # axis.text.x = element_text(size = 20, face = "bold", angle = 0, vjust = 1),
-      axis.text.x = element_text(angle = 0, vjust = 1),
+      axis.text.x = element_text(size = 20, face = "bold", angle = 0, vjust = 1),
       # axis.text.y = element_text(face = "bold", size = 20),
       legend.position = "none"
     )

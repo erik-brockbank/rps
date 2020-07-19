@@ -613,6 +613,7 @@ plot_win_count_differentials = function(win_count_diff_empirical, win_count_diff
                    breaks = c(seq(0, ceil, by = 10)),
                    position = "identity") +
     labs(x = "Dyad win count differential", y = "Count (equal scales)") +
+    # labs(x = "Dyad win count differential", y = "Count (dyads)") +
     scale_color_viridis(discrete = T,
                         name = element_blank(),
                         begin = 0.2,
