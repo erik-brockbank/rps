@@ -12,12 +12,8 @@ library(tidyverse)
 library(viridis)
 library(patchwork)
 
-
-# TODO get mean time per round for each experiment and mean completion time for each experiment
-# (used in procedure footnotes)
-
-
-# TODO get true N for experiment 2 and include participants who were excluded due to technical issues
+# CITATATIONS
+citation(package = 'patchwork') # repeat for all the above
 
 
 
@@ -58,7 +54,8 @@ STRATEGY_LOOKUP = list("prev_move_positive" = "Previous move (+)",
                        "opponent_prev_move_nil" = "Opponent previous move (0)",
                        "win_nil_lose_positive" = "Win-stay-lose-positive",
                        "win_positive_lose_negative" = "Win-positive-lose-negative",
-                       "outcome_transition_dual_dependency" = "Outcome-transition dual dependency")
+                       # "outcome_transition_dual_dependency" = "Outcome-transition dual dependency")
+                       "outcome_transition_dual_dependency" = "Previous outcome, previous transition")
 
 
 
@@ -923,8 +920,9 @@ plot_bot_strategy_win_count_differential_summary = function(wcd_summary) {
                   width = 0.25, size = 1) +
     geom_hline(yintercept = 0, size = 1, linetype = "dashed", color = "red") +
     labs(x = "", y = "Mean win count differential") +
-    ggtitle("Win count differential across bot strategies") +
-    scale_x_discrete(labels = summary_labels) +
+    #ggtitle("Win count differential across bot strategies") +
+    ggtitle("Aggregate") +
+    #scale_x_discrete(labels = summary_labels) +
     scale_color_viridis(discrete = TRUE,
                         name = element_blank()) +
     individ_plot_theme +
@@ -932,7 +930,8 @@ plot_bot_strategy_win_count_differential_summary = function(wcd_summary) {
       # plot.title = element_text(size = 32, face = "bold"),
       axis.title.y = element_text(size = 24, face = "bold"),
       # axis.text.x = element_text(size = 20, face = "bold", angle = 0, vjust = 1),
-      axis.text.x = element_text(size = 20, face = "bold", angle = 0, vjust = 1),
+      # axis.text.x = element_text(size = 20, face = "bold", angle = 0, vjust = 1),
+      axis.text.x = element_blank(),
       # axis.text.y = element_text(face = "bold", size = 20),
       legend.position = "none"
     )
@@ -940,7 +939,7 @@ plot_bot_strategy_win_count_differential_summary = function(wcd_summary) {
 
 # Plot average of each participant's win percent in blocks of trials by strategy
 plot_bot_strategy_win_pct_by_block = function(block_data_summary) {
-  label_width = 20
+  label_width = 12
   strategy_labels = c("prev_move_positive" = str_wrap(STRATEGY_LOOKUP[["prev_move_positive"]], label_width), 
                       "prev_move_negative" = str_wrap(STRATEGY_LOOKUP[["prev_move_negative"]], label_width),
                       "opponent_prev_move_nil" = str_wrap(STRATEGY_LOOKUP[["opponent_prev_move_nil"]], label_width),
@@ -958,18 +957,20 @@ plot_bot_strategy_win_pct_by_block = function(block_data_summary) {
     geom_errorbar(aes(ymin = lower_ci, ymax = upper_ci), size = 1, width = 0.25, alpha = 0.75) +
     geom_hline(yintercept = 1 / 3, linetype = "dashed", color = "red", size = 1) +
     labs(x = "Game round", y = "Mean win percentage") +
-    ggtitle("Participant win percentage against bot strategies") +
+    # ggtitle("Participant win percentage against bot strategies") +
+    ggtitle("By Round") +
     scale_color_viridis(discrete = T,
                         name = element_blank(),
                         labels = strategy_labels) +
     scale_x_continuous(labels = block_labels, breaks = seq(1:10)) +
     individ_plot_theme +
     theme(#axis.text.x = element_blank(),
+      axis.title.y = element_text(size = 24, face = "bold"),
       legend.text = element_text(face = "bold", size = 14),
       legend.position = "right",
-      legend.spacing.y = unit(5.0, 'cm'),
-      #legend.key = element_rect(size = 5),
-      legend.key.size = unit(4, 'lines'))
+      legend.spacing.y = unit(1.0, 'lines'),
+      #legend.key = element_rect(size = 2),
+      legend.key.size = unit(4.75, 'lines'))
 }
 
 # Plot average win percent based on previous move dependency
@@ -1024,6 +1025,20 @@ bot_data %>%
   group_by(bot_strategy) %>%
   summarize(n = n() / GAME_ROUNDS)
 
+
+# Experiment completion time: summary stats
+dyad_data %>%
+  group_by(player_id) %>%
+  summarize(expt_completion_sec = (round_begin_ts[round_index == 300] - round_begin_ts[round_index == 1]) / 1000) %>%
+  summarize(mean_expt_completion_sec = mean(expt_completion_sec),
+            sd_expt_completion_sec = sd(expt_completion_sec))
+
+bot_data %>%
+  filter(is_bot == 0) %>%
+  group_by(player_id) %>%
+  summarize(expt_completion_sec = (round_begin_ts[round_index == 300] - round_begin_ts[round_index == 1]) / 1000) %>%
+  summarize(mean_expt_completion_sec = mean(expt_completion_sec),
+            sd_expt_completion_sec = sd(expt_completion_sec))
 
 
 #### Win Count Differential Analysis ####
@@ -1305,7 +1320,7 @@ summary(mod_resids)
 wcd_all = get_bot_strategy_win_count_differential(bot_data)
 wcd_summary = get_bot_strategy_win_count_differential_summary(wcd_all)
 
-plot_bot_strategy_win_count_differential_summary(wcd_summary)
+overall_wcd = plot_bot_strategy_win_count_differential_summary(wcd_summary)
 
 
 #### Bot Strategy Learning Curves ####
@@ -1313,8 +1328,12 @@ plot_bot_strategy_win_count_differential_summary(wcd_summary)
 subject_block_data = get_subject_block_data(bot_data, blocksize = 30)
 block_data_summary = get_block_data_summary(subject_block_data)
 
-plot_bot_strategy_win_pct_by_block(block_data_summary)
+rounds = plot_bot_strategy_win_pct_by_block(block_data_summary)
 
+overall_wcd + rounds +
+  plot_layout(widths = c(1, 2)) +
+  plot_annotation(tag_levels = 'A') & 
+  theme(plot.tag = element_text(size = 24))
 
 #### Bot Strategy Conditional Analysis ####
 
