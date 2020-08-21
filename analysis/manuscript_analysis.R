@@ -683,10 +683,10 @@ get_block_data_summary = function(subject_block_data) {
 }
 
 # Get loss percent for each bot dependent on their previous move
-get_bot_prev_move_loss_pct = function(data) {
+get_bot_prev_move_loss_pct = function(data, cutoff) {
   data %>%
-    filter(# round_index <= 15, # TODO exploratory
-      bot_strategy == "prev_move_positive" | bot_strategy == "prev_move_negative") %>%
+    filter(round_index > cutoff, # TODO exploratory
+           bot_strategy == "prev_move_positive" | bot_strategy == "prev_move_negative") %>%
     group_by(player_id) %>%
     mutate(prev_move = lag(player_move, 1)) %>%
     filter(is_bot == 1, # look only at bot prev moves
@@ -701,10 +701,10 @@ get_bot_prev_move_loss_pct = function(data) {
 }
 
 # Get win percent for each player dependent on their own previous move
-get_player_prev_move_win_pct = function(data) {
+get_player_prev_move_win_pct = function(data, cutoff) {
   data %>%
     filter(is_bot == 0,
-           # round_index <= 15, # TODO exploratory
+           round_index > cutoff, # TODO exploratory
            bot_strategy == "opponent_prev_move_nil" | bot_strategy == "opponent_prev_move_positive") %>%
     group_by(player_id) %>%
     mutate(prev_move = lag(player_move, 1)) %>%
@@ -719,12 +719,12 @@ get_player_prev_move_win_pct = function(data) {
 }
 
 # Get loss percent for each bot dependent on the bot's previous outcome
-get_bot_prev_outcome_loss_pct = function(data) {
+get_bot_prev_outcome_loss_pct = function(data, cutoff) {
   data %>%
-    filter(# round_index >= 270, # TODO exploratory
-      bot_strategy == "win_nil_lose_positive" | bot_strategy == "win_positive_lose_negative") %>%
+    filter(round_index > cutoff, # TODO exploratory
+           bot_strategy == "win_nil_lose_positive" | bot_strategy == "win_positive_lose_negative") %>%
     group_by(player_id) %>%
-    mutate(prev_outcome = lag(player_outcome, 1)) %>%
+    mutate(prev_outcome = lag(player_outcome, 1)) %>% # player_outcome is bot's outcome for bot rows
     filter(is_bot == 1, # look only at bot prev moves
            !is.na(prev_outcome)) %>% # lag call above sets NA for lag on first move: ignore it here
     group_by(bot_strategy, game_id, player_id, prev_outcome) %>%
@@ -747,7 +747,7 @@ get_bot_prev_move_win_pct_summary = function(prev_move_data) {
 }
 
 # Get summary win percent by strategy (dependent on previous outcome by bot or player)
-get_prev_outcome_win_pct_summary = function(bot_loss_prev_outcome) {
+get_bot_prev_outcome_win_pct_summary = function(bot_loss_prev_outcome) {
   bot_loss_prev_outcome %>%
     group_by(bot_strategy, prev_outcome) %>%
     summarize(mean_player_win_pct = mean(player_win_pct),
@@ -981,9 +981,9 @@ plot_prev_move_win_pct = function(bot_loss_summary_prev_move, strategy, xlabel) 
     geom_bar(stat = "identity", alpha = 0.5, color = "grey50", fill = "steelblue") +
     geom_errorbar(aes(ymin = se_lower, ymax = se_upper), width = 0.5, size = 1, color = "midnightblue") +
     geom_hline(yintercept = 1 / 3, linetype = "dashed", color = "red", size = 1) +
-    scale_y_continuous(labels = seq(0, 0.8, by = 0.2),
-                       breaks = seq(0, 0.8, by = 0.2),
-                       limits = c(0, 0.8)) +
+    scale_y_continuous(labels = seq(0, 0.9, by = 0.3),
+                       breaks = seq(0, 0.9, by = 0.3),
+                       limits = c(0, 0.9)) +
     labs(x = xlabel, y = "Avg. player win pct.") +
     ggtitle(STRATEGY_LOOKUP[[strategy]]) +
     individ_plot_theme +
@@ -999,16 +999,15 @@ plot_outcome_win_pct = function(bot_loss_summary_prev_outcome, strategy, xlabel)
     geom_bar(stat = "identity", alpha = 0.5, color = "grey50", fill = "steelblue") +
     geom_errorbar(aes(ymin = se_lower, ymax = se_upper), width = 0.5, size = 1, color = "midnightblue") +
     geom_hline(yintercept = 1 / 3, linetype = "dashed", color = "red", size = 1) +
-    scale_y_continuous(labels = seq(0, 0.8, by = 0.2),
-                       breaks = seq(0, 0.8, by = 0.2),
-                       limits = c(0, 0.8)) +
+    scale_y_continuous(labels = seq(0, 0.9, by = 0.3),
+                       breaks = seq(0, 0.9, by = 0.3),
+                       limits = c(0, 0.9)) +
     labs(x = xlabel, y = "Avg. player win pct") +
     ggtitle(STRATEGY_LOOKUP[[strategy]]) +
     individ_plot_theme +
     theme(legend.position = "none",
           axis.text.x = element_text(angle = 0, vjust = 1))
 }
-
 
 #### ANALYSIS ####
 
@@ -1335,11 +1334,14 @@ overall_wcd + rounds +
   plot_annotation(tag_levels = 'A') & 
   theme(plot.tag = element_text(size = 24))
 
+
 #### Bot Strategy Conditional Analysis ####
 
 # Which aspects of each strategy did players detect?
+CUTOFF = 200
+
 # 1. Bot previous move strategies
-bot_loss_prev_move = get_bot_prev_move_loss_pct(bot_data)
+bot_loss_prev_move = get_bot_prev_move_loss_pct(bot_data, CUTOFF)
 bot_loss_summary_prev_move = get_bot_prev_move_win_pct_summary(bot_loss_prev_move)
 
 # Generate plots
@@ -1347,7 +1349,7 @@ prev_move_positive_plot = plot_prev_move_win_pct(bot_loss_summary_prev_move, "pr
 prev_move_negative_plot = plot_prev_move_win_pct(bot_loss_summary_prev_move, "prev_move_negative", "Bot previous move")
 
 # 2. Player previous move strategies
-player_win_prev_move = get_player_prev_move_win_pct(bot_data)
+player_win_prev_move = get_player_prev_move_win_pct(bot_data, CUTOFF)
 player_win_summary_prev_move = get_bot_prev_move_win_pct_summary(player_win_prev_move)
 
 # Generate plots
@@ -1355,8 +1357,8 @@ opponent_prev_move_positive_plot = plot_prev_move_win_pct(player_win_summary_pre
 opponent_prev_move_nil_plot = plot_prev_move_win_pct(player_win_summary_prev_move, "opponent_prev_move_nil", "Player previous move")
 
 # 3. Bot previous outcome
-bot_loss_prev_outcome = get_bot_prev_outcome_loss_pct(bot_data)
-bot_loss_summary_prev_outcome = get_prev_outcome_win_pct_summary(bot_loss_prev_outcome)
+bot_loss_prev_outcome = get_bot_prev_outcome_loss_pct(bot_data, CUTOFF)
+bot_loss_summary_prev_outcome = get_bot_prev_outcome_win_pct_summary(bot_loss_prev_outcome)
 
 # Generate plots
 win_nil_lose_positive_plot_outcome = plot_outcome_win_pct(bot_loss_summary_prev_outcome, "win_nil_lose_positive", "Bot previous outcome")
@@ -1367,9 +1369,9 @@ win_positive_lose_negative_plot_outcome = plot_outcome_win_pct(bot_loss_summary_
 prev_move_positive_plot + prev_move_negative_plot +
   opponent_prev_move_positive_plot + opponent_prev_move_nil_plot +
   win_nil_lose_positive_plot_outcome + win_positive_lose_negative_plot_outcome +
-  plot_layout(ncol = 2)
-
-
+  plot_layout(ncol = 2) +
+  plot_annotation(tag_levels = 'A') & 
+  theme(plot.tag = element_text(size = 24))
 
 
 
