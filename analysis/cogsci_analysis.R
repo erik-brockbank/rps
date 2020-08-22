@@ -9,6 +9,7 @@ setwd("/Users/erikbrockbank/web/vullab/rps/analysis")
 library(tidyverse)
 library(viridis)
 library(patchwork)
+library(pwr)
 
 
 
@@ -613,7 +614,6 @@ plot_win_count_differentials = function(win_count_diff_empirical, win_count_diff
                    breaks = c(seq(0, ceil, by = 10)),
                    position = "identity") +
     labs(x = "Dyad win count differential", y = "Count (equal scales)") +
-    # labs(x = "Dyad win count differential", y = "Count (dyads)") +
     scale_color_viridis(discrete = T,
                         name = element_blank(),
                         begin = 0.2,
@@ -810,6 +810,7 @@ acf_plot = plot_acf(acf_agg, ci_thresh)
 # Plot histogram and autocorrelation together
 win_hist + acf_plot #+ 
   #plot_layout(ncol = 1)
+
 
 # 2. Auto-correlation for top-N win count differential dyads
 win_count_diff_empirical_top = win_count_diff_empirical %>%

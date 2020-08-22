@@ -24,6 +24,8 @@ if EXPERIMENT == "rps_v1": DATA_PATH = "/Users/erikbrockbank/web/vullab/rps/data
 elif EXPERIMENT == "rps_v2": DATA_PATH = "/Users/erikbrockbank/web/vullab/rps/data/v2/"
 
 # Read and write data
+DATA_PATH = "/Users/erikbrockbank/web/vullab/rps/data/v1/" # path to data files: modify as needed for particular experiments
+
 output_file = "{}_data_freeResp.csv".format(EXPERIMENT) # name of csv file to write to
 with io.open(output_file, "w") as csv_output:
     csvwriter = csv.writer(csv_output)
