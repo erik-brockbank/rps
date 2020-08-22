@@ -751,7 +751,7 @@ win_count_diff_null = win_count_diff_null %>%
 empirical_n = win_count_diff_empirical %>% nrow()
 scale_factor = empirical_n / NULL_SAMPLES
 
-win_hist = plot_win_count_differentials(win_count_diff_empirical, win_count_diff_null, scale_factor, WIN_COUNT_DIFF_CEILING)
+plot_win_count_differentials(win_count_diff_empirical, win_count_diff_null, scale_factor, WIN_COUNT_DIFF_CEILING)
 
 # Chi-squared comparison of empirical and null win count differentials
 # NB: setting distinct bin_width below has similar results
@@ -804,12 +804,7 @@ acf_agg = get_game_acf(unique_game_data, MAX_LAG)
 # Plot ACF data
 # significance threshold: 2 SDs from 0 over sqrt(N) obs to get 95% CI on mean of 0 auto-corr (subtract one because only 299 obs for lag-1)
 ci_thresh = 2 / sqrt(GAME_ROUNDS - 1)
-acf_plot = plot_acf(acf_agg, ci_thresh)
-
-
-# Plot histogram and autocorrelation together
-win_hist + acf_plot #+ 
-  #plot_layout(ncol = 1)
+plot_acf(acf_agg, ci_thresh)
 
 
 # 2. Auto-correlation for top-N win count differential dyads
