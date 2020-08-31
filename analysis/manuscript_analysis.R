@@ -66,10 +66,10 @@ STRATEGY_LOOKUP = list("prev_move_positive" = "Previous move (+)",
 read_dyad_data = function(filename, game_rounds) {
   data = read_csv(filename)
   incomplete_data = data %>%
-    group_by(player_id) %>%
+    group_by(game_id, player_id) %>%
     summarize(rounds = max(round_index)) %>%
     filter(rounds < game_rounds) %>%
-    select(player_id)
+    select(player_id, game_id)
   
   data = data %>%
     filter(!(player_id %in% incomplete_data$player_id))
@@ -77,6 +77,13 @@ read_dyad_data = function(filename, game_rounds) {
   return(data)
 }
 
+# Note: the raw data csv has substantially more unique participant data
+# than we keep in this function. Many participants did not complete the full set of rounds.
+# Several managed to complete 300 rounds twice with the same survey code: in this instance,
+# we keep the earlier of the two to ensure parity with other participants.
+# Finally, one participant emailed assuring that she had completed the full set of rounds,
+# though we don't have complete data. Thus, 218 students are given credit in SONA,
+# while the below produces 217 complete participant data sets.
 read_bot_data = function(filename, strategies, game_rounds) {
   data = read_csv(filename)
   data$bot_strategy = factor(data$bot_strategy, levels = strategies)
