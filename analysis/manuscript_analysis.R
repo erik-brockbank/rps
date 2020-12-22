@@ -1,6 +1,6 @@
 #'
 #' This script contains the final analysis for the rps journal submission
-#' 
+#'
 
 
 #### SETUP ####
@@ -31,7 +31,7 @@ E2_SLIDER_FILE = "rps_v2_data_sliderData.csv" # name of file containing slider L
 
 
 GAME_ROUNDS = 300
-NULL_SAMPLES = 10000 
+NULL_SAMPLES = 10000
 MAX_LAG = 10 # lag for autocorrelation analysis
 MOVE_SET = c("rock", "paper", "scissors")
 TRANSITION_SET = c("+", "-", "0")
@@ -70,10 +70,10 @@ read_dyad_data = function(filename, game_rounds) {
     summarize(rounds = max(round_index)) %>%
     filter(rounds < game_rounds) %>%
     select(player_id, game_id)
-  
+
   data = data %>%
     filter(!(player_id %in% incomplete_data$player_id))
-  
+
   return(data)
 }
 
@@ -87,7 +87,7 @@ read_dyad_data = function(filename, game_rounds) {
 read_bot_data = function(filename, strategies, game_rounds) {
   data = read_csv(filename)
   data$bot_strategy = factor(data$bot_strategy, levels = strategies)
-  
+
   # Remove all incomplete games
   incomplete_games = data %>%
     group_by(game_id, player_id) %>%
@@ -95,10 +95,10 @@ read_bot_data = function(filename, strategies, game_rounds) {
     filter(rounds < game_rounds) %>%
     select(game_id) %>%
     unique()
-  
+
   data = data %>%
     filter(!(game_id %in% incomplete_games$game_id))
-  
+
   # Remove any duplicate complete games that have the same SONA survey code
   # NB: this can happen if somebody played all the way through but exited before receiving credit
   # First, fetch sona survey codes with multiple complete games
@@ -106,9 +106,9 @@ read_bot_data = function(filename, strategies, game_rounds) {
     group_by(sona_survey_code) %>%
     filter(is_bot == 0) %>%
     summarize(trials = n()) %>%
-    filter(trials > 300) %>%
+    filter(trials > game_rounds) %>%
     select(sona_survey_code)
-  
+
   # Next, get game id for the earlier complete game
   # NB: commented out code checks that we have slider/free resp data for at least one of the games
   duplicate_games = data %>%
@@ -122,10 +122,10 @@ read_bot_data = function(filename, strategies, game_rounds) {
     # inner_join(fr_data, by = c("game_id", "player_id")) %>%
     # inner_join(slider_data, by = c("game_id", "player_id")) %>%
     distinct(game_id)
-  
+
   data = data %>%
     filter(!game_id %in% duplicate_games$game_id)
-  
+
   return(data)
 }
 
@@ -158,7 +158,7 @@ get_sample_win_count_differential = function(reps, game_rounds) {
 #### Autocorrelation Analysis Functions ####
 
 # Function for selecting a single player's data from each game
-# (avoids duplcate auto-correlation calculations for each game since outcomes 
+# (avoids duplcate auto-correlation calculations for each game since outcomes
 # for each player in a given game are complementary)
 get_unique_game_data = function(data) {
   data %>%
@@ -183,7 +183,7 @@ get_game_acf = function(unique_game_data, max_lag) {
     game_data = unique_game_data %>%
       filter(game_id == game)
     game_acf = acf(game_data$points_symmetric, lag.max = max_lag, plot = F)
-    
+
     acf_agg = rbind(acf_agg, data.frame(game = game, lag = seq(0, max_lag), acf = game_acf[[1]]))
   }
   return(acf_agg)
@@ -206,16 +206,16 @@ add_game_streaks = function(sample_game, streak_length) {
 get_sample_acf = function(streak_length, rounds, n_participants) {
   sample_df = data.frame(game_id = numeric(), round_index = numeric(), player_outcome = character(),
                          stringsAsFactors = F)
-  
+
   for (game in seq(1, n_participants)) {
     sample_game = get_sample_game(rounds)
     sample_game = add_game_streaks(sample_game, streak_length)
-    
-    sample_df = rbind(sample_df, 
+
+    sample_df = rbind(sample_df,
                       data.frame(game_id = game, round_index = seq(1, rounds), player_outcome = sample_game,
                                  stringsAsFactors = F))
   }
-  
+
   return(sample_df)
 }
 
@@ -278,7 +278,7 @@ get_player_transition_cournot_dist = function(data) {
            p.transition = n / total.transitions)
 }
 
-# Function to summarize probability of each move for each participant, conditioned on their *opponent's* previous move 
+# Function to summarize probability of each move for each participant, conditioned on their *opponent's* previous move
 get_opponent_prev_move_cond = function(data) {
   data %>%
     # add each player's previous move, then use that when referencing opponent's previous move
@@ -353,7 +353,7 @@ get_player_transition_outcome_cond = function(data) {
 # Function to summarize probability of each move for each participant, conditioned on their *own* previous *two* moves.
 get_player_prev_2move_cond = function(data, moves) {
   game_player_set = data %>% distinct(game_id, player_id)
-  prev.2move.df = data.frame(game_id = character(), player_id = character(), 
+  prev.2move.df = data.frame(game_id = character(), player_id = character(),
                              player_move = character(), prev.move = character(), prev.move2 = character(),
                              n = numeric(), row.totals = numeric(),
                              stringsAsFactors = F)
@@ -369,7 +369,7 @@ get_player_prev_2move_cond = function(data, moves) {
                                                         prev.move2 = prev.move2,
                                                         n = 1, row.totals = length(moves),
                                                         stringsAsFactors = F))
-        
+
       }
     }
   }
@@ -387,13 +387,13 @@ get_player_prev_2move_cond = function(data, moves) {
            prev.move2 = strsplit(move_2prev.move, "-")[[1]][3]) %>% # add prev.move2 back in because we lose it in the count() call above
     group_by(game_id, player_id, prev.move, prev.move2) %>%
     mutate(row.totals = sum(n))
-  
+
   # return initial counts set to 1 in prev.2move.df plus counts calculated in tmp above
   left_join(prev.2move.df, tmp, by = c("game_id", "player_id", "player_move", "prev.move", "prev.move2")) %>%
     mutate(n.agg = ifelse(is.na(n.y), n.x, n.x + n.y),
            row.totals.agg = ifelse(is.na(row.totals.y), row.totals.x, row.totals.x + row.totals.y),
            pmove_2prev.move = n.agg / row.totals.agg) %>%
-    select(game_id, player_id, player_move, prev.move, prev.move2, 
+    select(game_id, player_id, player_move, prev.move, prev.move2,
            n.agg, row.totals.agg, pmove_2prev.move) %>%
     arrange(game_id, player_id, player_move, prev.move, prev.move2)
 }
@@ -401,7 +401,7 @@ get_player_prev_2move_cond = function(data, moves) {
 # Function to summarize probability of each move for each participant, conditioned on the combination of their previous move *and* their opponent's previous move
 get_player_opponent_prev_move_cond = function(data, moves) {
   game_player_set = data %>% distinct(game_id, player_id)
-  prev.2move.df = data.frame(game_id = character(), player_id = character(), 
+  prev.2move.df = data.frame(game_id = character(), player_id = character(),
                              player_move = character(), opponent.prev.move = character(), opponent.prev.move2 = character(),
                              n = numeric(), row.totals = numeric(),
                              stringsAsFactors = F)
@@ -417,11 +417,11 @@ get_player_opponent_prev_move_cond = function(data, moves) {
                                                         opponent.prev.move = prev.move2,
                                                         n = 1, row.totals = length(moves),
                                                         stringsAsFactors = F))
-        
+
       }
     }
   }
-  
+
   tmp = data %>%
     # add each player's previous move, then use that when referencing opponent's previous move
     group_by(game_id, player_id) %>%
@@ -441,13 +441,13 @@ get_player_opponent_prev_move_cond = function(data, moves) {
            opponent.prev.move = strsplit(move_prev.move_opponent.prev.move, "-")[[1]][3]) %>% # add opponent.prev.move back in because we lose it in the count() call above
     group_by(game_id, player_id, prev.move, opponent.prev.move) %>%
     mutate(row.totals = sum(n))
-  
+
   # return initial counts set to 1 in prev.2move.df plus counts calculated in tmp above
   left_join(prev.2move.df, tmp, by = c("game_id", "player_id", "player_move", "prev.move", "opponent.prev.move")) %>%
     mutate(n.agg = ifelse(is.na(n.y), n.x, n.x + n.y),
            row.totals.agg = ifelse(is.na(row.totals.y), row.totals.x, row.totals.x + row.totals.y),
            pmove_prev.move_opponent.prev.move = n.agg / row.totals.agg) %>%
-    select(game_id, player_id, player_move, prev.move, opponent.prev.move, 
+    select(game_id, player_id, player_move, prev.move, opponent.prev.move,
            n.agg, row.totals.agg, pmove_prev.move_opponent.prev.move) %>%
     arrange(game_id, player_id, player_move, prev.move, opponent.prev.move)
 }
@@ -455,7 +455,7 @@ get_player_opponent_prev_move_cond = function(data, moves) {
 # Function to get conditional distribution of each player's transition (+/-/0), given the combination of *their previous transition and their previous outcome*
 get_player_transition_prev_transition_prev_outcome_cond = function(data, transitions, outcomes) {
   game_player_set = data %>% distinct(game_id, player_id)
-  player.transition.prev.transition.prev.outcome.df = data.frame(game_id = character(), player_id = character(), 
+  player.transition.prev.transition.prev.outcome.df = data.frame(game_id = character(), player_id = character(),
                                                                  player.transition = character(), player.prev.transition = character(), prev.outcome = character(),
                                                                  n = numeric(), row.totals = numeric(),
                                                                  stringsAsFactors = F)
@@ -464,15 +464,15 @@ get_player_transition_prev_transition_prev_outcome_cond = function(data, transit
   for (player.trans in transitions) {
     for (prev.trans in transitions) {
       for (prev.outcome in outcomes) {
-        player.transition.prev.transition.prev.outcome.df = rbind(player.transition.prev.transition.prev.outcome.df, 
-                                                                  data.frame(game_id = game_player_set$game_id, 
+        player.transition.prev.transition.prev.outcome.df = rbind(player.transition.prev.transition.prev.outcome.df,
+                                                                  data.frame(game_id = game_player_set$game_id,
                                                                              player_id = game_player_set$player_id,
                                                                              player.transition = player.trans,
                                                                              player.prev.transition = prev.trans,
                                                                              prev.outcome = prev.outcome,
                                                                              n = 1, row.totals = length(transitions),
                                                                              stringsAsFactors = F))
-        
+
       }
     }
   }
@@ -484,7 +484,7 @@ get_player_transition_prev_transition_prev_outcome_cond = function(data, transit
            prev.move2 = lag(player_move, 2)) %>%
     filter(!is.na(prev.outcome), # lag call above sets NA for lag on first outcome: ignore it here
            !is.na(prev.move), !is.na(prev.move2), # lag call above sets NA for lag on first two moves: ignore it here
-           prev.move2 != "none", prev.move != "none", player_move != "none") %>% 
+           prev.move2 != "none", prev.move != "none", player_move != "none") %>%
     # TODO move to a model where we add all these cols once at the beginning then just summarize in each analysis
     mutate(player.transition = case_when(prev.move == player_move ~ "0",
                                          ((prev.move == "rock" & player_move == "paper") |
@@ -508,13 +508,13 @@ get_player_transition_prev_transition_prev_outcome_cond = function(data, transit
            prev.outcome = strsplit(player.transition.prev.transition.prev.outcome, sep)[[1]][3]) %>% # add prev. outcome back in because we lose it in the count() call above
     group_by(game_id, player_id, player.prev.transition, prev.outcome) %>%
     mutate(row.totals = sum(n))
-  
+
   # return initial counts set to 1 in smoothing df plus counts calculated in tmp above
   left_join(player.transition.prev.transition.prev.outcome.df, tmp, by = c("game_id", "player_id", "player.transition", "player.prev.transition", "prev.outcome")) %>%
     mutate(n.agg = ifelse(is.na(n.y), n.x, n.x + n.y),
            row.totals.agg = ifelse(is.na(row.totals.y), row.totals.x, row.totals.x + row.totals.y),
            p.transition.prev.transition.prev.outcome = n.agg / row.totals.agg) %>%
-    select(game_id, player_id, player.transition, player.prev.transition, prev.outcome, 
+    select(game_id, player_id, player.transition, player.prev.transition, prev.outcome,
            n.agg, row.totals.agg, p.transition.prev.transition.prev.outcome) %>%
     arrange(game_id, player_id, player.transition, player.prev.transition, prev.outcome)
 }
@@ -529,7 +529,7 @@ get_expected_win_count_differential_moves = function(player_summary, outcomes, g
 }
 
 # Get maximum expected win count differential based on transition probabilities in player_summary
-# TODO can we unify this with the get_expected_win_count_differential_moves function above? 
+# TODO can we unify this with the get_expected_win_count_differential_moves function above?
 # only difference is column name (pmove, p.transition)
 get_expected_win_count_differential_trans = function(player_summary, outcomes, game_rounds) {
   player_summary %>%
@@ -784,7 +784,7 @@ individ_plot_theme = theme(
   # backgrounds, lines
   panel.background = element_blank(),
   strip.background = element_blank(),
-  
+
   panel.grid = element_line(color = "gray"),
   axis.line = element_line(color = "black"),
   # positioning
@@ -800,7 +800,7 @@ plot_win_count_differentials = function(win_count_diff_empirical, win_count_diff
     ggplot(aes(x = win_diff, color = cat, fill = cat)) +
     geom_histogram(
       alpha = 0.4,
-      breaks = c(seq(0, ceil, by = 10)), 
+      breaks = c(seq(0, ceil, by = 10)),
       position = "identity") +
     geom_histogram(data = win_count_diff_null,
                    aes(y = ..count.. * scale_factor, x = win_diff, color = cat, fill = cat),
@@ -814,18 +814,18 @@ plot_win_count_differentials = function(win_count_diff_empirical, win_count_diff
                         end = 0.8) +
     scale_fill_viridis(discrete = T,
                        name = element_blank(),
-                       begin = 0.2, 
+                       begin = 0.2,
                        end = 0.8) +
     ggtitle("Distribution of win count differentials") +
     individ_plot_theme
-  
+
 }
 
 plot_acf = function(acf_data, ci) {
   summary_acf = acf_data %>%
     group_by(lag) %>%
     summarize(mean_acf = mean(acf))
-  
+
   acf_data %>%
     ggplot(aes(x = lag, y = acf)) +
     geom_jitter(aes(color = "ind"), alpha = 0.5, width = 0.1, size = 2) +
@@ -858,30 +858,30 @@ plot_dyad_win_count_differential_summary = function(win_count_diff_summary, win_
                      "prev_2move_probability" = str_wrap("Choice given player's prior two choices", legend.width),
                      "prev_move_opponent_prev_move_probability" = str_wrap("Choice given player's prior choice & opponent's prior choice", legend.width),
                      "player_transition_prev_transition_prev_outcome_probability" = str_wrap("Transition given prior transition & prior outcome", legend.width))
-  summary_values = c("move_probability", 
+  summary_values = c("move_probability",
                      "cournot_probability", "trans_probability",
                      "opponent_prev_move_probability", "prev_move_probability",
                      "player_transition_prev_outcome_probability",
                      "prev_2move_probability", "prev_move_opponent_prev_move_probability",
                      "player_transition_prev_transition_prev_outcome_probability")
-  x_values = c("empirical", 
-               "null_sample", "move_probability", 
-               "cournot_probability", "trans_probability", 
+  x_values = c("empirical",
+               "null_sample", "move_probability",
+               "cournot_probability", "trans_probability",
                "opponent_prev_move_probability", "prev_move_probability",
                "player_transition_prev_outcome_probability",
                "prev_2move_probability", "prev_move_opponent_prev_move_probability",
                "player_transition_prev_transition_prev_outcome_probability")
-  
+
   win_count_diff_summary %>%
-    ggplot(aes(x = factor(category, 
+    ggplot(aes(x = factor(category,
                           # TODO extract these automatically from the data object above rather than making a variable
-                          levels = summary_values), 
+                          levels = summary_values),
                y = mean_wins)) +
     # points for expected value win count diffs
-    geom_point(aes(color = factor(category, 
+    geom_point(aes(color = factor(category,
                                   levels = summary_values)), size = 6) +
     # errorbars for expected value win count diffs
-    geom_errorbar(aes(color = factor(category, 
+    geom_errorbar(aes(color = factor(category,
                                      levels = summary_values),
                       ymin = ci_lower, ymax = ci_upper), width = 0.25, size = 1) +
     # raw data for empirical win count diffs
@@ -889,7 +889,7 @@ plot_dyad_win_count_differential_summary = function(win_count_diff_summary, win_
                 color = "blue", alpha = 0.5, width = 0.2, size = 4) +
     geom_point(data = win_count_diff_empirical, aes(x = factor("empirical"), y = mean(win_diff)),
                color = "red", size = 6) +
-    geom_errorbar(data = win_count_diff_empirical_summary, aes(x = factor("empirical"), 
+    geom_errorbar(data = win_count_diff_empirical_summary, aes(x = factor("empirical"),
                                                                ymin = ci_lower, ymax = ci_upper),
                   color = "red", width = 0.25, size = 1) +
     # point for mean null win count diff
@@ -918,7 +918,7 @@ plot_bot_strategy_win_count_differential_summary = function(wcd_summary) {
                      "win_nil_lose_positive" = str_wrap(STRATEGY_LOOKUP[["win_nil_lose_positive"]], label_width),
                      "win_positive_lose_negative" = str_wrap(STRATEGY_LOOKUP[["win_positive_lose_negative"]], label_width),
                      "outcome_transition_dual_dependency" = str_wrap(STRATEGY_LOOKUP[["outcome_transition_dual_dependency"]], label_width))
-  
+
   wcd_summary %>%
     ggplot(aes(x = bot_strategy, y = mean_win_count_diff)) +
     geom_point(aes(color = bot_strategy),
@@ -947,17 +947,17 @@ plot_bot_strategy_win_count_differential_summary = function(wcd_summary) {
 # Plot average of each participant's win percent in blocks of trials by strategy
 plot_bot_strategy_win_pct_by_block = function(block_data_summary) {
   label_width = 12
-  strategy_labels = c("prev_move_positive" = str_wrap(STRATEGY_LOOKUP[["prev_move_positive"]], label_width), 
+  strategy_labels = c("prev_move_positive" = str_wrap(STRATEGY_LOOKUP[["prev_move_positive"]], label_width),
                       "prev_move_negative" = str_wrap(STRATEGY_LOOKUP[["prev_move_negative"]], label_width),
                       "opponent_prev_move_nil" = str_wrap(STRATEGY_LOOKUP[["opponent_prev_move_nil"]], label_width),
                       "opponent_prev_move_positive" = str_wrap(STRATEGY_LOOKUP[["opponent_prev_move_positive"]], label_width),
                       "win_nil_lose_positive" = str_wrap(STRATEGY_LOOKUP[["win_nil_lose_positive"]], label_width),
                       "win_positive_lose_negative" = str_wrap(STRATEGY_LOOKUP[["win_positive_lose_negative"]], label_width),
                       "outcome_transition_dual_dependency" = str_wrap(STRATEGY_LOOKUP[["outcome_transition_dual_dependency"]], label_width))
-  
+
   block_labels = c("1" = "30", "2" = "60", "3" = "90", "4" = "120", "5" = "150",
                    "6" = "180", "7" = "210", "8" = "240", "9" = "270", "10" = "300")
-  
+
   block_data_summary %>%
     ggplot(aes(x = round_block, y = mean_win_pct, color = bot_strategy)) +
     geom_point(size = 6, alpha = 0.75) +
@@ -1035,16 +1035,31 @@ bot_data %>%
 # Experiment completion time: summary stats
 dyad_data %>%
   group_by(player_id) %>%
-  summarize(expt_completion_sec = (round_begin_ts[round_index == 300] - round_begin_ts[round_index == 1]) / 1000) %>%
+  summarize(expt_completion_sec = (round_begin_ts[round_index == GAME_ROUNDS] - round_begin_ts[round_index == 1]) / 1000) %>%
   summarize(mean_expt_completion_sec = mean(expt_completion_sec),
             sd_expt_completion_sec = sd(expt_completion_sec))
 
 bot_data %>%
   filter(is_bot == 0) %>%
   group_by(player_id) %>%
-  summarize(expt_completion_sec = (round_begin_ts[round_index == 300] - round_begin_ts[round_index == 1]) / 1000) %>%
+  summarize(expt_completion_sec = (round_begin_ts[round_index == GAME_ROUNDS] - round_begin_ts[round_index == 1]) / 1000) %>%
   summarize(mean_expt_completion_sec = mean(expt_completion_sec),
             sd_expt_completion_sec = sd(expt_completion_sec))
+
+
+# Power analysis: E2
+# With 30 participants in lowest bot condition, what effect size do we have 90% power to detect?
+# and what win percentage does that correspond to?
+# https://cran.r-project.org/web/packages/pwr/vignettes/pwr-vignette.html
+power = pwr.t.test(n = 30, sig.level = 0.05, power = 0.9, type = "one.sample", alternative = "two.sided")
+# we have 90% power to detect an effect size of d = 0.61
+(1 / 3) + power$d * sqrt(1 / 12)
+# this is equivalent to an average win rate of about 51% assuming individual win rates are uniformly distributed (unlikely)
+
+
+
+
+
 
 
 #### Win Count Differential Analysis ####
@@ -1070,12 +1085,12 @@ win_hist = plot_win_count_differentials(win_count_diff_empirical, win_count_diff
 # NB: setting distinct bin_width below has similar results
 bin_width = 10
 emp_win_count_bins = win_count_diff_empirical %>%
-  group_by(bin = cut(win_diff, breaks = seq(0, WIN_COUNT_DIFF_CEILING, by = bin_width), include.lowest = TRUE)) %>% 
+  group_by(bin = cut(win_diff, breaks = seq(0, WIN_COUNT_DIFF_CEILING, by = bin_width), include.lowest = TRUE)) %>%
   summarise(n = n())
 
 null_win_count_bins = win_count_diff_null %>%
   filter(win_diff <= max(win_count_diff_empirical$win_diff)) %>%
-  group_by(bin = cut(win_diff, breaks = seq(0, WIN_COUNT_DIFF_CEILING, by = bin_width), include.lowest = TRUE)) %>% 
+  group_by(bin = cut(win_diff, breaks = seq(0, WIN_COUNT_DIFF_CEILING, by = bin_width), include.lowest = TRUE)) %>%
   summarise(n = n()) %>%
   mutate(prop = n / sum(n))
 
@@ -1090,12 +1105,12 @@ win_count_diff_empirical_truncated = win_count_diff_empirical %>%
   filter(!game_id %in% win_count_diff_empirical_top$game_id)
 
 emp_win_count_bins_truncated = win_count_diff_empirical_truncated %>%
-  group_by(bin = cut(win_diff, breaks = seq(0, WIN_COUNT_DIFF_CEILING, by = bin_width), include.lowest = TRUE)) %>% 
+  group_by(bin = cut(win_diff, breaks = seq(0, WIN_COUNT_DIFF_CEILING, by = bin_width), include.lowest = TRUE)) %>%
   summarise(n = n())
 
 null_win_count_bins = win_count_diff_null %>%
   filter(win_diff <= max(win_count_diff_empirical_truncated$win_diff)) %>%
-  group_by(bin = cut(win_diff, breaks = seq(0, WIN_COUNT_DIFF_CEILING, by = bin_width), include.lowest = TRUE)) %>% 
+  group_by(bin = cut(win_diff, breaks = seq(0, WIN_COUNT_DIFF_CEILING, by = bin_width), include.lowest = TRUE)) %>%
   summarise(n = n()) %>%
   mutate(prop = n / sum(n))
 
@@ -1132,7 +1147,7 @@ acf_sample = get_game_acf(sample_acf_data, MAX_LAG) # takes 5-10s for 1000 obs
 # significance threshold: 2 SDs from 0 over sqrt(N) obs to get 95% CI on mean of 0 auto-corr (subtract one because only 299 obs for lag-1)
 ci_thresh = 2 / sqrt(GAME_ROUNDS - 1)
 plot_acf(acf_sample, ci_thresh) # NB: this plot not included in results
-# Take-aways: 
+# Take-aways:
 # streak_pct needs to be > 10% to detect significant auto-correlations
 # by 20% it's very visible
 
@@ -1186,7 +1201,7 @@ player_prev_move_utils = get_expected_win_count_differential_prev_move(player_pr
 
 ## 5. Distribution of transitions given previous outcome (9 cells)
 # get probability of each transition for each player given their previous outcome
-player_transition_prev_outcome_summary = get_player_transition_outcome_cond(dyad_data) 
+player_transition_prev_outcome_summary = get_player_transition_outcome_cond(dyad_data)
 # get max utility value for opponent of ech player based on each player's transition probabilities *given their previous outcome*
 player_transition_prev_outcome_utils = get_expected_win_count_differential_prev_outcome(player_transition_prev_outcome_summary, OUTCOME_MATRIX, GAME_ROUNDS)
 
@@ -1200,14 +1215,14 @@ player_prev_2move_utils = get_expected_win_count_differential_prev_2moves(player
 
 ## 7. Distribution of moves given player's previous move, opponent's previous move (27 cells)
 # get probability of each move for each player given their previous move, their opponent's previous move
-player_opponent_prev_move_summary = get_player_opponent_prev_move_cond(dyad_data, MOVE_SET) 
+player_opponent_prev_move_summary = get_player_opponent_prev_move_cond(dyad_data, MOVE_SET)
 # get max utility value for opponent of each player based on each player's move probabilities *given their previous move and their opponent's previous move*
 player_opponent_prev_move_utils = get_expected_win_count_differential_prev_move_opponent_prev_move(player_opponent_prev_move_summary, OUTCOME_MATRIX, GAME_ROUNDS)
 
 
 ## 8. Distribution of transitions given player's previous transition and previous outcome (27 cells)
 # get probability of each transition for each player given their previous transition and player's previous outcome
-player_transition_prev_transition_prev_outcome_summary = get_player_transition_prev_transition_prev_outcome_cond(dyad_data, TRANSITION_SET, OUTCOME_SET) 
+player_transition_prev_transition_prev_outcome_summary = get_player_transition_prev_transition_prev_outcome_cond(dyad_data, TRANSITION_SET, OUTCOME_SET)
 # get max utility value for opponent of each player based on each player's transition probabilities *given their previous transition and previous outcome*
 player_transition_prev_transition_prev_outcome_utils = get_expected_win_count_differential_prev_transition_prev_outcome(player_transition_prev_transition_prev_outcome_summary, OUTCOME_MATRIX, GAME_ROUNDS)
 
@@ -1308,9 +1323,9 @@ summary_win_diff = summary_win_diff %>%
 # Full model based on residuals
 # This should tell us whether variables composed of other predictors (e.g. transition as subset of prev move) are significant
 # above and beyond the compressed predictors they're made up of
-mod_resids = with(summary_win_diff, 
-                  lm(empirical_wcd ~ max_exp_wcd_move_dist + 
-                       max_exp_wcd_transition + 
+mod_resids = with(summary_win_diff,
+                  lm(empirical_wcd ~ max_exp_wcd_move_dist +
+                       max_exp_wcd_transition +
                        max_exp_wcd_transition_cournot +
                        opponent_prev_move_resid +
                        player_prev_move_resid +
@@ -1318,7 +1333,7 @@ mod_resids = with(summary_win_diff,
                        player_prev_2move_resid +
                        transition_outcome_resid +
                        transition_prev_trans_outcome_resid))
-summary(mod_resids) 
+summary(mod_resids)
 
 
 #### Bot Strategy Win Count Differential ####
@@ -1338,7 +1353,7 @@ rounds = plot_bot_strategy_win_pct_by_block(block_data_summary)
 
 overall_wcd + rounds +
   plot_layout(widths = c(1, 2)) +
-  plot_annotation(tag_levels = 'A') & 
+  plot_annotation(tag_levels = 'A') &
   theme(plot.tag = element_text(size = 24))
 
 
@@ -1377,7 +1392,7 @@ prev_move_positive_plot + prev_move_negative_plot +
   opponent_prev_move_positive_plot + opponent_prev_move_nil_plot +
   win_nil_lose_positive_plot_outcome + win_positive_lose_negative_plot_outcome +
   plot_layout(ncol = 2) +
-  plot_annotation(tag_levels = 'A') & 
+  plot_annotation(tag_levels = 'A') &
   theme(plot.tag = element_text(size = 24))
 
 
