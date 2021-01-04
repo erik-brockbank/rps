@@ -1,0 +1,167 @@
+{
+  "game_id": "a8bbb6d3-8fdc-4111-8eb6-8bc5265eb45c",
+  "version": "3",
+  "sona": "0",
+  "experiment_id": "",
+  "credit_token": "",
+  "survey_code": "",
+  "player1_id": "fce52723-962d-43a2-a521-2ba8e0e2a175",
+  "player2_id": "adaptive_bot",
+  "rounds": [
+    {
+      "game_id": "a8bbb6d3-8fdc-4111-8eb6-8bc5265eb45c",
+      "version": "3",
+      "round_index": 1,
+      "player1_id": "fce52723-962d-43a2-a521-2ba8e0e2a175",
+      "player2_id": "adaptive_bot",
+      "round_begin_ts": 1608772926853,
+      "player1_move": "scissors",
+      "player2_move": "rock",
+      "player1_rt": 4783,
+      "player2_rt": 0,
+      "player1_outcome": "loss",
+      "player2_outcome": "win",
+      "player1_outcome_viewtime": 740,
+      "player2_outcome_viewtime": 0,
+      "player1_points": -1,
+      "player2_points": 3,
+      "player1_total": 0,
+      "player2_total": 0
+    },
+    {
+      "game_id": "a8bbb6d3-8fdc-4111-8eb6-8bc5265eb45c",
+      "version": "3",
+      "round_index": 2,
+      "player1_id": "fce52723-962d-43a2-a521-2ba8e0e2a175",
+      "player2_id": "adaptive_bot",
+      "round_begin_ts": 1608772932572,
+      "player1_move": "paper",
+      "player2_move": "paper",
+      "player1_rt": 2415,
+      "player2_rt": 0,
+      "player1_outcome": "tie",
+      "player2_outcome": "tie",
+      "player1_outcome_viewtime": 1220,
+      "player2_outcome_viewtime": 0,
+      "player1_points": 0,
+      "player2_points": 0,
+      "player1_total": -1,
+      "player2_total": 3
+    },
+    {
+      "game_id": "a8bbb6d3-8fdc-4111-8eb6-8bc5265eb45c",
+      "version": "3",
+      "round_index": 3,
+      "player1_id": "fce52723-962d-43a2-a521-2ba8e0e2a175",
+      "player2_id": "adaptive_bot",
+      "round_begin_ts": 1608772936334,
+      "player1_move": "paper",
+      "player2_move": "paper",
+      "player1_rt": 744,
+      "player2_rt": 0,
+      "player1_outcome": "tie",
+      "player2_outcome": "tie",
+      "player1_outcome_viewtime": 1023,
+      "player2_outcome_viewtime": 0,
+      "player1_points": 0,
+      "player2_points": 0,
+      "player1_total": -1,
+      "player2_total": 3
+    },
+    {
+      "game_id": "a8bbb6d3-8fdc-4111-8eb6-8bc5265eb45c",
+      "version": "3",
+      "round_index": 4,
+      "player1_id": "fce52723-962d-43a2-a521-2ba8e0e2a175",
+      "player2_id": "adaptive_bot",
+      "round_begin_ts": 1608772938226,
+      "player1_move": "paper",
+      "player2_move": "scissors",
+      "player1_rt": 721,
+      "player2_rt": 0,
+      "player1_outcome": "loss",
+      "player2_outcome": "win",
+      "player1_outcome_viewtime": 1003,
+      "player2_outcome_viewtime": 0,
+      "player1_points": -1,
+      "player2_points": 3,
+      "player1_total": -1,
+      "player2_total": 3
+    },
+    {
+      "game_id": "a8bbb6d3-8fdc-4111-8eb6-8bc5265eb45c",
+      "version": "3",
+      "round_index": 5,
+      "player1_id": "fce52723-962d-43a2-a521-2ba8e0e2a175",
+      "player2_id": "adaptive_bot",
+      "round_begin_ts": 1608772940081,
+      "player1_move": "rock",
+      "player2_move": "paper",
+      "player1_rt": 798,
+      "player2_rt": 0,
+      "player1_outcome": "loss",
+      "player2_outcome": "win",
+      "player1_outcome_viewtime": 1219,
+      "player2_outcome_viewtime": 0,
+      "player1_points": -1,
+      "player2_points": 3,
+      "player1_total": -2,
+      "player2_total": 6
+    }
+  ],
+  "player2_botid": "c4718bec-55f4-41f1-b576-e79ecaa1c6ac",
+  "player2_bot_strategy": "opponent_bot_prev_move",
+  "player2_opponent_memory": {
+    "rock": {
+      "rock": {
+        "rock": 0,
+        "paper": 0,
+        "scissors": 0
+      },
+      "paper": {
+        "rock": 0,
+        "paper": 0,
+        "scissors": 0
+      },
+      "scissors": {
+        "rock": 0,
+        "paper": 0,
+        "scissors": 0
+      }
+    },
+    "paper": {
+      "rock": {
+        "rock": 0,
+        "paper": 0,
+        "scissors": 0
+      },
+      "paper": {
+        "rock": 0,
+        "paper": 2,
+        "scissors": 0
+      },
+      "scissors": {
+        "rock": 1,
+        "paper": 0,
+        "scissors": 0
+      }
+    },
+    "scissors": {
+      "rock": {
+        "rock": 0,
+        "paper": 1,
+        "scissors": 0
+      },
+      "paper": {
+        "rock": 0,
+        "paper": 0,
+        "scissors": 0
+      },
+      "scissors": {
+        "rock": 0,
+        "paper": 0,
+        "scissors": 0
+      }
+    }
+  }
+}

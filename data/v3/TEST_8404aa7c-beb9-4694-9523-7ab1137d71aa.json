@@ -1,0 +1,18 @@
+{
+  "game_id": "8404aa7c-beb9-4694-9523-7ab1137d71aa",
+  "version": "3",
+  "sona": "0",
+  "experiment_id": "",
+  "credit_token": "",
+  "survey_code": "",
+  "player1_id": "fab727a7-de8d-45e5-9722-12ded35d0f1b",
+  "player2_id": "adaptive_bot",
+  "rounds": [],
+  "player2_botid": "0e303a92-fb62-42df-b293-4d9d7e7aa429",
+  "player2_bot_strategy": "opponent_prev_moves",
+  "player2_opponent_memory": {
+    "rock": 12,
+    "paper": 12,
+    "scissors": 12
+  }
+}

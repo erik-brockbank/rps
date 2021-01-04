@@ -2,7 +2,7 @@
 To run this:
 - cd /rps/analysis/
 - python json_to_csv_freeResp.py --experiment {name}
-    - the `experiment` flag should be followed by either "rps_v1" or "rps_v2"
+    - the `experiment` flag should be followed by either "rps_v1", "rps_v2", or "rps_v3"
 """
 
 import argparse
@@ -15,16 +15,15 @@ from os.path import isfile, join
 
 # Parse command line flags
 parser = argparse.ArgumentParser(description = "Script for encoding free response questionnaire data.")
-parser.add_argument("--experiment", required = True, choices=["rps_v1", "rps_v2"],
+parser.add_argument("--experiment", required = True, choices=["rps_v1", "rps_v2", "rps_v3"],
                     help="Name of experiment (used for file output), e.g., 'rps_v1'")
 
 args = parser.parse_args()
 EXPERIMENT = args.experiment
 if EXPERIMENT == "rps_v1": DATA_PATH = "/Users/erikbrockbank/web/vullab/rps/data/v1/"
 elif EXPERIMENT == "rps_v2": DATA_PATH = "/Users/erikbrockbank/web/vullab/rps/data/v2/"
+elif EXPERIMENT == "rps_v3": DATA_PATH = "/Users/erikbrockbank/web/vullab/rps/data/v3/"
 
-# Read and write data
-DATA_PATH = "/Users/erikbrockbank/web/vullab/rps/data/v1/" # path to data files: modify as needed for particular experiments
 
 output_file = "{}_data_freeResp.csv".format(EXPERIMENT) # name of csv file to write to
 with io.open(output_file, "w") as csv_output:
