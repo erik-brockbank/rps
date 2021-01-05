@@ -1,4 +1,9 @@
 game_id,player_id,statement,index,resp
+e6e34c91-95ac-4b31-aea1-f850b64c9b5f,d8019d31-9781-4313-a82e-527380ab5288,My opponent was a real person and not a robot.,0,4
+e6e34c91-95ac-4b31-aea1-f850b64c9b5f,d8019d31-9781-4313-a82e-527380ab5288,I was trying to win each round against my opponent.,1,4
+e6e34c91-95ac-4b31-aea1-f850b64c9b5f,d8019d31-9781-4313-a82e-527380ab5288,I was focused on winning for the entire time I was playing.,2,4
+e6e34c91-95ac-4b31-aea1-f850b64c9b5f,d8019d31-9781-4313-a82e-527380ab5288,I paid attention to my opponent’s moves in order to try and predict their next move.,3,3
+e6e34c91-95ac-4b31-aea1-f850b64c9b5f,d8019d31-9781-4313-a82e-527380ab5288,There were noticeable patterns in my opponent’s moves that allowed me to predict their next move.,4,3
 1c4e23ca-7bf5-48f0-842c-804e9e16dde5,cad75339-ec30-4a07-a6e1-506cc81f7c92,My opponent was a real person and not a robot.,0,1
 1c4e23ca-7bf5-48f0-842c-804e9e16dde5,cad75339-ec30-4a07-a6e1-506cc81f7c92,I was trying to win each round against my opponent.,1,1
 1c4e23ca-7bf5-48f0-842c-804e9e16dde5,cad75339-ec30-4a07-a6e1-506cc81f7c92,I was focused on winning for the entire time I was playing.,2,2
