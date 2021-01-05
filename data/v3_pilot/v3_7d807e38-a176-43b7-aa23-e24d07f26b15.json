@@ -1,0 +1,18 @@
+{
+  "game_id": "7d807e38-a176-43b7-aa23-e24d07f26b15",
+  "version": "3",
+  "sona": "1",
+  "experiment_id": "1768",
+  "credit_token": "19421bc286424246b6b1e873e7a55a8e",
+  "survey_code": "36067",
+  "player1_id": "16396d63-20fa-4a09-b5cb-4b726859ee12",
+  "player2_id": "adaptive_bot",
+  "rounds": [],
+  "player2_botid": "4f715211-2af6-4776-a8c5-a2e0b74ee852",
+  "player2_bot_strategy": "opponent_transitions",
+  "player2_opponent_memory": {
+    "0": 0,
+    "+": 0,
+    "-": 0
+  }
+}

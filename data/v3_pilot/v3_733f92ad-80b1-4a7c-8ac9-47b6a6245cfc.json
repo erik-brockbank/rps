@@ -1,0 +1,66 @@
+{
+  "game_id": "733f92ad-80b1-4a7c-8ac9-47b6a6245cfc",
+  "version": "3",
+  "sona": "1",
+  "experiment_id": "1768",
+  "credit_token": "19421bc286424246b6b1e873e7a55a8e",
+  "survey_code": "36067",
+  "player1_id": "d6ca34f3-9b62-4286-b2fd-d8005faa7f92",
+  "player2_id": "adaptive_bot",
+  "rounds": [],
+  "player2_botid": "56e70022-d596-49e8-9fef-c2394fe7bf76",
+  "player2_bot_strategy": "opponent_outcome_prev_transition_dual",
+  "player2_opponent_memory": {
+    "0": {
+      "win": {
+        "0": 0,
+        "+": 0,
+        "-": 0
+      },
+      "loss": {
+        "0": 0,
+        "+": 0,
+        "-": 0
+      },
+      "tie": {
+        "0": 0,
+        "+": 0,
+        "-": 0
+      }
+    },
+    "+": {
+      "win": {
+        "0": 0,
+        "+": 0,
+        "-": 0
+      },
+      "loss": {
+        "0": 0,
+        "+": 0,
+        "-": 0
+      },
+      "tie": {
+        "0": 0,
+        "+": 0,
+        "-": 0
+      }
+    },
+    "-": {
+      "win": {
+        "0": 0,
+        "+": 0,
+        "-": 0
+      },
+      "loss": {
+        "0": 0,
+        "+": 0,
+        "-": 0
+      },
+      "tie": {
+        "0": 0,
+        "+": 0,
+        "-": 0
+      }
+    }
+  }
+}

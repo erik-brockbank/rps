@@ -1,0 +1,44 @@
+{
+  "game_id": "5f0118d5-e527-49a0-b814-35bd30188b6d",
+  "version": "3",
+  "sona": "1",
+  "experiment_id": "1768",
+  "credit_token": "19421bc286424246b6b1e873e7a55a8e",
+  "survey_code": "36067",
+  "player1_id": "6dfbaf5a-daac-4eff-87f0-b4a872ced635",
+  "player2_id": "adaptive_bot",
+  "rounds": [
+    {
+      "game_id": "5f0118d5-e527-49a0-b814-35bd30188b6d",
+      "version": "3",
+      "round_index": 1,
+      "player1_id": "6dfbaf5a-daac-4eff-87f0-b4a872ced635",
+      "player2_id": "adaptive_bot",
+      "round_begin_ts": 1609816914841,
+      "player1_move": "none",
+      "player2_move": "rock",
+      "player1_rt": 10000,
+      "player2_rt": 0,
+      "player1_outcome": "loss",
+      "player2_outcome": "win",
+      "player1_outcome_viewtime": 1239,
+      "player2_outcome_viewtime": 0,
+      "player1_points": -1,
+      "player2_points": 3,
+      "player1_total": 0,
+      "player2_total": 0,
+      "player2_memory_struct": {
+        "0": 0,
+        "+": 0,
+        "-": 0
+      }
+    }
+  ],
+  "player2_botid": "f46fe7a6-fb8d-4716-bd84-0ae5e94523e3",
+  "player2_bot_strategy": "opponent_transitions",
+  "player2_opponent_memory": {
+    "0": 0,
+    "+": 0,
+    "-": 0
+  }
+}

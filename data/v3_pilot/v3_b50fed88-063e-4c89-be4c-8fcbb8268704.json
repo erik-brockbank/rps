@@ -1,0 +1,105 @@
+{
+  "game_id": "b50fed88-063e-4c89-be4c-8fcbb8268704",
+  "version": "3",
+  "sona": "1",
+  "experiment_id": "1768",
+  "credit_token": "19421bc286424246b6b1e873e7a55a8e",
+  "survey_code": "30507",
+  "player1_id": "1b0c9e16-22bb-49d1-b0ac-1ed637ae8eb3",
+  "player2_id": "adaptive_bot",
+  "rounds": [
+    {
+      "game_id": "b50fed88-063e-4c89-be4c-8fcbb8268704",
+      "version": "3",
+      "round_index": 1,
+      "player1_id": "1b0c9e16-22bb-49d1-b0ac-1ed637ae8eb3",
+      "player2_id": "adaptive_bot",
+      "round_begin_ts": 1609817044465,
+      "player1_move": "none",
+      "player2_move": "rock",
+      "player1_rt": 10000,
+      "player2_rt": 0,
+      "player1_outcome": "loss",
+      "player2_outcome": "win",
+      "player1_outcome_viewtime": 933,
+      "player2_outcome_viewtime": 0,
+      "player1_points": -1,
+      "player2_points": 3,
+      "player1_total": 0,
+      "player2_total": 0,
+      "player2_memory_struct": {
+        "win": {
+          "0": 0,
+          "+": 0,
+          "-": 0
+        },
+        "loss": {
+          "0": 0,
+          "+": 0,
+          "-": 0
+        },
+        "tie": {
+          "0": 0,
+          "+": 0,
+          "-": 0
+        }
+      }
+    },
+    {
+      "game_id": "b50fed88-063e-4c89-be4c-8fcbb8268704",
+      "version": "3",
+      "round_index": 2,
+      "player1_id": "1b0c9e16-22bb-49d1-b0ac-1ed637ae8eb3",
+      "player2_id": "adaptive_bot",
+      "round_begin_ts": 1609817068267,
+      "player1_move": "rock",
+      "player2_move": "paper",
+      "player1_rt": 741,
+      "player2_rt": 0,
+      "player1_outcome": "loss",
+      "player2_outcome": "win",
+      "player1_outcome_viewtime": 795,
+      "player2_outcome_viewtime": 0,
+      "player1_points": -1,
+      "player2_points": 3,
+      "player1_total": -15,
+      "player2_total": 45,
+      "player2_memory_struct": {
+        "win": {
+          "0": 0,
+          "+": 0,
+          "-": 0
+        },
+        "loss": {
+          "0": 0,
+          "+": 0,
+          "-": 0
+        },
+        "tie": {
+          "0": 0,
+          "+": 0,
+          "-": 0
+        }
+      }
+    }
+  ],
+  "player2_botid": "21909ab3-9153-44f1-a1b1-0dffb5a007ce",
+  "player2_bot_strategy": "opponent_outcome_transitions",
+  "player2_opponent_memory": {
+    "win": {
+      "0": 0,
+      "+": 0,
+      "-": 0
+    },
+    "loss": {
+      "0": 0,
+      "+": 0,
+      "-": 0
+    },
+    "tie": {
+      "0": 0,
+      "+": 0,
+      "-": 0
+    }
+  }
+}

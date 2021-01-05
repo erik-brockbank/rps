@@ -1,0 +1,6 @@
+{
+  "game_id": "d3ab58a3-9893-40c5-957d-8c70415a7bc3",
+  "player_id": "fcee9123-528f-48fa-b48e-bc3fb61c4dc7",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I noticed a pattern as the game went on. For example, at one point I noticed the bot was going scissors, paper, rock, so I continued countering that until the pattern switched."
+}

@@ -1,0 +1,6 @@
+game_id,player_id,statement,index,resp
+cd6f768e-e0e8-4149-8cb7-fc7ab316fa6d,54c50e63-2c92-4d75-b541-d1d7579685fc,My opponent was a real person and not a robot.,0,1
+cd6f768e-e0e8-4149-8cb7-fc7ab316fa6d,54c50e63-2c92-4d75-b541-d1d7579685fc,I was trying to win each round against my opponent.,1,1
+cd6f768e-e0e8-4149-8cb7-fc7ab316fa6d,54c50e63-2c92-4d75-b541-d1d7579685fc,I was focused on winning for the entire time I was playing.,2,1
+cd6f768e-e0e8-4149-8cb7-fc7ab316fa6d,54c50e63-2c92-4d75-b541-d1d7579685fc,I paid attention to my opponent’s moves in order to try and predict their next move.,3,1
+cd6f768e-e0e8-4149-8cb7-fc7ab316fa6d,54c50e63-2c92-4d75-b541-d1d7579685fc,There were noticeable patterns in my opponent’s moves that allowed me to predict their next move.,4,1

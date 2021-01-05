@@ -11,7 +11,7 @@ from os import listdir
 from os.path import isfile, join
 
 EXPERIMENT = "rps_v3" # useful identifier for experiment data: modify this to reflect the particular experiment
-DATA_PATH = "/Users/erikbrockbank/web/vullab/rps/data/v3/" # path to data files: modify as needed for particular experiments
+DATA_PATH = "/Users/erikbrockbank/web/vullab/rps/data/" # path to data files: modify as needed for particular experiments
 
 
 output_file = "{}_data.csv".format(EXPERIMENT) # name of csv file to write to
@@ -19,7 +19,7 @@ with io.open(output_file, "w") as csv_output:
     csvwriter = csv.writer(csv_output)
     write_index = 0
     files = [f for f in listdir(DATA_PATH) if f.endswith(".json")
-                # and not "TEST" in f
+                and not "TEST" in f
                 and not "freeResp" in f
                 and not "sliderData" in f
             ]

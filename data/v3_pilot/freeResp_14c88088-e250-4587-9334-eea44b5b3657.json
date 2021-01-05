@@ -1,0 +1,6 @@
+{
+  "game_id": "60cf4137-a6c7-46ca-bbd6-d3328e66d12b",
+  "player_id": "14c88088-e250-4587-9334-eea44b5b3657",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I would choose the same object 2 or three times in a row because I was picking up that the opponent chose the same object several times. Once that failed I would choose the object that would beat it the next turn. If we were choosing the same object, I would notice that we would cycle together, so I would assume the next choice would still follow a cycle, so I countered. "
+}

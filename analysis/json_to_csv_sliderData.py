@@ -22,7 +22,7 @@ args = parser.parse_args()
 EXPERIMENT = args.experiment
 if EXPERIMENT == "rps_v1": DATA_PATH = "/Users/erikbrockbank/web/vullab/rps/data/v1/"
 elif EXPERIMENT == "rps_v2": DATA_PATH = "/Users/erikbrockbank/web/vullab/rps/data/v2/"
-elif EXPERIMENT == "rps_v3": DATA_PATH = "/Users/erikbrockbank/web/vullab/rps/data/v3/"
+elif EXPERIMENT == "rps_v3": DATA_PATH = "/Users/erikbrockbank/web/vullab/rps/data/"
 
 
 output_file = "{}_data_sliderData.csv".format(EXPERIMENT) # name of csv file to write to
