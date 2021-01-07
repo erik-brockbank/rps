@@ -44,6 +44,8 @@ with io.open(output_file, "w") as csv_output:
                 write_index = 1
 
             for r in round_data:
+                if "player2_memory_struct" in r: memory_struct = r["player2_memory_struct"]
+                else: memory_struct = "NA"
                 p1_vals = [r["game_id"],
                     parsed_data["version"], parsed_data["sona"], parsed_data["experiment_id"], parsed_data["credit_token"], parsed_data["survey_code"],
                     r["round_index"], r["player1_id"], 0,
@@ -54,7 +56,8 @@ with io.open(output_file, "w") as csv_output:
                 p2_vals = [r["game_id"],
                     parsed_data["version"], parsed_data["sona"], parsed_data["experiment_id"], parsed_data["credit_token"], parsed_data["survey_code"],
                     r["round_index"], parsed_data["player2_botid"], 1,
-                    parsed_data["player2_bot_strategy"], r["player2_memory_struct"],
+                    parsed_data["player2_bot_strategy"],
+                    memory_struct,
                     r["round_begin_ts"],
                     r["player2_move"], r["player2_rt"], r["player2_outcome"], r["player2_outcome_viewtime"],
                     r["player2_points"], r["player2_total"]]
