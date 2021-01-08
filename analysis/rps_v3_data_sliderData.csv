@@ -1,4 +1,9 @@
 game_id,player_id,statement,index,resp
+e691decc-0fdb-473d-81a4-00744b4b049a,c9803f83-c472-4df7-b408-34e0335a6441,My opponent was a real person and not a robot.,0,1
+e691decc-0fdb-473d-81a4-00744b4b049a,c9803f83-c472-4df7-b408-34e0335a6441,I was trying to win each round against my opponent.,1,7
+e691decc-0fdb-473d-81a4-00744b4b049a,c9803f83-c472-4df7-b408-34e0335a6441,I was focused on winning for the entire time I was playing.,2,7
+e691decc-0fdb-473d-81a4-00744b4b049a,c9803f83-c472-4df7-b408-34e0335a6441,I paid attention to my opponent’s moves in order to try and predict their next move.,3,5
+e691decc-0fdb-473d-81a4-00744b4b049a,c9803f83-c472-4df7-b408-34e0335a6441,There were noticeable patterns in my opponent’s moves that allowed me to predict their next move.,4,2
 d43fbb13-2480-4e0e-b96e-4cb73b8523df,9b94a2d7-9e4c-446e-a3e6-8e293bc88a6b,My opponent was a real person and not a robot.,0,3
 d43fbb13-2480-4e0e-b96e-4cb73b8523df,9b94a2d7-9e4c-446e-a3e6-8e293bc88a6b,I was trying to win each round against my opponent.,1,5
 d43fbb13-2480-4e0e-b96e-4cb73b8523df,9b94a2d7-9e4c-446e-a3e6-8e293bc88a6b,I was focused on winning for the entire time I was playing.,2,5
@@ -19,6 +24,11 @@ d63a8322-8e64-4392-96d8-f8908e18a394,42c13814-5c14-453c-a30d-42f1869f08a9,There 
 2c49fa91-4f36-44f7-8a17-11fd8fb640c1,48b02244-88c1-4adb-9f68-a9e7c7f489e6,I was focused on winning for the entire time I was playing.,2,5
 2c49fa91-4f36-44f7-8a17-11fd8fb640c1,48b02244-88c1-4adb-9f68-a9e7c7f489e6,I paid attention to my opponent’s moves in order to try and predict their next move.,3,6
 2c49fa91-4f36-44f7-8a17-11fd8fb640c1,48b02244-88c1-4adb-9f68-a9e7c7f489e6,There were noticeable patterns in my opponent’s moves that allowed me to predict their next move.,4,6
+a6440e3c-0903-4140-a058-af52d8587d00,cd9f99bd-d8ef-49e2-83c8-876de813f120,My opponent was a real person and not a robot.,0,2
+a6440e3c-0903-4140-a058-af52d8587d00,cd9f99bd-d8ef-49e2-83c8-876de813f120,I was trying to win each round against my opponent.,1,7
+a6440e3c-0903-4140-a058-af52d8587d00,cd9f99bd-d8ef-49e2-83c8-876de813f120,I was focused on winning for the entire time I was playing.,2,7
+a6440e3c-0903-4140-a058-af52d8587d00,cd9f99bd-d8ef-49e2-83c8-876de813f120,I paid attention to my opponent’s moves in order to try and predict their next move.,3,7
+a6440e3c-0903-4140-a058-af52d8587d00,cd9f99bd-d8ef-49e2-83c8-876de813f120,There were noticeable patterns in my opponent’s moves that allowed me to predict their next move.,4,7
 8c5dbc44-8c5f-4c72-be08-7550752b3262,71bc354f-5fa6-4893-9832-5305012cb3b6,My opponent was a real person and not a robot.,0,2
 8c5dbc44-8c5f-4c72-be08-7550752b3262,71bc354f-5fa6-4893-9832-5305012cb3b6,I was trying to win each round against my opponent.,1,6
 8c5dbc44-8c5f-4c72-be08-7550752b3262,71bc354f-5fa6-4893-9832-5305012cb3b6,I was focused on winning for the entire time I was playing.,2,3
@@ -34,6 +44,11 @@ d63a8322-8e64-4392-96d8-f8908e18a394,42c13814-5c14-453c-a30d-42f1869f08a9,There 
 55093b4d-227c-46f9-9deb-52cf70d8080d,f02d849b-731c-424f-8433-b50cd1faca57,I was focused on winning for the entire time I was playing.,2,6
 55093b4d-227c-46f9-9deb-52cf70d8080d,f02d849b-731c-424f-8433-b50cd1faca57,I paid attention to my opponent’s moves in order to try and predict their next move.,3,5
 55093b4d-227c-46f9-9deb-52cf70d8080d,f02d849b-731c-424f-8433-b50cd1faca57,There were noticeable patterns in my opponent’s moves that allowed me to predict their next move.,4,6
+1fa18ed8-1772-442c-832b-efbbe5c0609b,7da4f629-6bcf-441b-a65d-7200f857362e,My opponent was a real person and not a robot.,0,1
+1fa18ed8-1772-442c-832b-efbbe5c0609b,7da4f629-6bcf-441b-a65d-7200f857362e,I was trying to win each round against my opponent.,1,4
+1fa18ed8-1772-442c-832b-efbbe5c0609b,7da4f629-6bcf-441b-a65d-7200f857362e,I was focused on winning for the entire time I was playing.,2,4
+1fa18ed8-1772-442c-832b-efbbe5c0609b,7da4f629-6bcf-441b-a65d-7200f857362e,I paid attention to my opponent’s moves in order to try and predict their next move.,3,7
+1fa18ed8-1772-442c-832b-efbbe5c0609b,7da4f629-6bcf-441b-a65d-7200f857362e,There were noticeable patterns in my opponent’s moves that allowed me to predict their next move.,4,5
 9c221914-6c87-42c9-949c-4cb1e3497e0e,7cfdbdb3-7b6d-4210-8cf1-5a49ffd9e2d9,My opponent was a real person and not a robot.,0,6
 9c221914-6c87-42c9-949c-4cb1e3497e0e,7cfdbdb3-7b6d-4210-8cf1-5a49ffd9e2d9,I was trying to win each round against my opponent.,1,7
 9c221914-6c87-42c9-949c-4cb1e3497e0e,7cfdbdb3-7b6d-4210-8cf1-5a49ffd9e2d9,I was focused on winning for the entire time I was playing.,2,7
@@ -69,11 +84,21 @@ b608bd9d-6881-40fa-87c4-b347a24a32eb,f3ae6d34-77f7-468c-9ab3-7ec94bf24a60,There 
 6e95112d-c012-486a-ad9d-302c2a8c24c2,a6070a2e-5e3e-4782-8866-af5336250b21,I was focused on winning for the entire time I was playing.,2,7
 6e95112d-c012-486a-ad9d-302c2a8c24c2,a6070a2e-5e3e-4782-8866-af5336250b21,I paid attention to my opponent’s moves in order to try and predict their next move.,3,7
 6e95112d-c012-486a-ad9d-302c2a8c24c2,a6070a2e-5e3e-4782-8866-af5336250b21,There were noticeable patterns in my opponent’s moves that allowed me to predict their next move.,4,6
+fae922d1-bd4b-45c0-83df-e92cd3db2168,83f785dd-126f-4ca2-8f7c-f22a48c0057b,My opponent was a real person and not a robot.,0,2
+fae922d1-bd4b-45c0-83df-e92cd3db2168,83f785dd-126f-4ca2-8f7c-f22a48c0057b,I was trying to win each round against my opponent.,1,5
+fae922d1-bd4b-45c0-83df-e92cd3db2168,83f785dd-126f-4ca2-8f7c-f22a48c0057b,I was focused on winning for the entire time I was playing.,2,5
+fae922d1-bd4b-45c0-83df-e92cd3db2168,83f785dd-126f-4ca2-8f7c-f22a48c0057b,I paid attention to my opponent’s moves in order to try and predict their next move.,3,6
+fae922d1-bd4b-45c0-83df-e92cd3db2168,83f785dd-126f-4ca2-8f7c-f22a48c0057b,There were noticeable patterns in my opponent’s moves that allowed me to predict their next move.,4,7
 7178afff-aaa6-48e2-9ad6-6b0bb94108b6,eeeecf46-bb88-4e3f-aea7-71bf4630c0b8,My opponent was a real person and not a robot.,0,1
 7178afff-aaa6-48e2-9ad6-6b0bb94108b6,eeeecf46-bb88-4e3f-aea7-71bf4630c0b8,I was trying to win each round against my opponent.,1,7
 7178afff-aaa6-48e2-9ad6-6b0bb94108b6,eeeecf46-bb88-4e3f-aea7-71bf4630c0b8,I was focused on winning for the entire time I was playing.,2,5
 7178afff-aaa6-48e2-9ad6-6b0bb94108b6,eeeecf46-bb88-4e3f-aea7-71bf4630c0b8,I paid attention to my opponent’s moves in order to try and predict their next move.,3,2
 7178afff-aaa6-48e2-9ad6-6b0bb94108b6,eeeecf46-bb88-4e3f-aea7-71bf4630c0b8,There were noticeable patterns in my opponent’s moves that allowed me to predict their next move.,4,3
+7e9e96eb-1c1d-4562-9ed5-10420403c5ac,7e9e9ff5-33c1-45ec-a14e-e8e2d07f27f8,My opponent was a real person and not a robot.,0,1
+7e9e96eb-1c1d-4562-9ed5-10420403c5ac,7e9e9ff5-33c1-45ec-a14e-e8e2d07f27f8,I was trying to win each round against my opponent.,1,6
+7e9e96eb-1c1d-4562-9ed5-10420403c5ac,7e9e9ff5-33c1-45ec-a14e-e8e2d07f27f8,I was focused on winning for the entire time I was playing.,2,7
+7e9e96eb-1c1d-4562-9ed5-10420403c5ac,7e9e9ff5-33c1-45ec-a14e-e8e2d07f27f8,I paid attention to my opponent’s moves in order to try and predict their next move.,3,6
+7e9e96eb-1c1d-4562-9ed5-10420403c5ac,7e9e9ff5-33c1-45ec-a14e-e8e2d07f27f8,There were noticeable patterns in my opponent’s moves that allowed me to predict their next move.,4,7
 779afce5-e6a7-4918-a6d0-9ef3b9c5cc74,8ffa8d33-1a43-40eb-bad0-564dbd504377,My opponent was a real person and not a robot.,0,2
 779afce5-e6a7-4918-a6d0-9ef3b9c5cc74,8ffa8d33-1a43-40eb-bad0-564dbd504377,I was trying to win each round against my opponent.,1,5
 779afce5-e6a7-4918-a6d0-9ef3b9c5cc74,8ffa8d33-1a43-40eb-bad0-564dbd504377,I was focused on winning for the entire time I was playing.,2,3
@@ -104,6 +129,16 @@ f7290e62-697c-46ec-b42d-51090ce3eed5,e19aac94-d16b-4afc-8878-b23efa456ed9,There 
 95905cbf-54b8-4d20-8a01-a302698fe454,b9a5d4c3-4e36-46c5-86ee-eeabaf0d9e7d,I was focused on winning for the entire time I was playing.,2,4
 95905cbf-54b8-4d20-8a01-a302698fe454,b9a5d4c3-4e36-46c5-86ee-eeabaf0d9e7d,I paid attention to my opponent’s moves in order to try and predict their next move.,3,4
 95905cbf-54b8-4d20-8a01-a302698fe454,b9a5d4c3-4e36-46c5-86ee-eeabaf0d9e7d,There were noticeable patterns in my opponent’s moves that allowed me to predict their next move.,4,4
+72a333f7-9f7f-4239-b3c2-8ff9af817bd4,f907da50-a6fb-43e0-bb7d-e3efd27c5abd,My opponent was a real person and not a robot.,0,4
+72a333f7-9f7f-4239-b3c2-8ff9af817bd4,f907da50-a6fb-43e0-bb7d-e3efd27c5abd,I was trying to win each round against my opponent.,1,6
+72a333f7-9f7f-4239-b3c2-8ff9af817bd4,f907da50-a6fb-43e0-bb7d-e3efd27c5abd,I was focused on winning for the entire time I was playing.,2,5
+72a333f7-9f7f-4239-b3c2-8ff9af817bd4,f907da50-a6fb-43e0-bb7d-e3efd27c5abd,I paid attention to my opponent’s moves in order to try and predict their next move.,3,6
+72a333f7-9f7f-4239-b3c2-8ff9af817bd4,f907da50-a6fb-43e0-bb7d-e3efd27c5abd,There were noticeable patterns in my opponent’s moves that allowed me to predict their next move.,4,6
+14d9f1e5-73c2-4236-9e67-cb2b1a11152a,b8b3ee54-28b6-4bd2-9f5f-ed6927eaa891,My opponent was a real person and not a robot.,0,1
+14d9f1e5-73c2-4236-9e67-cb2b1a11152a,b8b3ee54-28b6-4bd2-9f5f-ed6927eaa891,I was trying to win each round against my opponent.,1,7
+14d9f1e5-73c2-4236-9e67-cb2b1a11152a,b8b3ee54-28b6-4bd2-9f5f-ed6927eaa891,I was focused on winning for the entire time I was playing.,2,7
+14d9f1e5-73c2-4236-9e67-cb2b1a11152a,b8b3ee54-28b6-4bd2-9f5f-ed6927eaa891,I paid attention to my opponent’s moves in order to try and predict their next move.,3,7
+14d9f1e5-73c2-4236-9e67-cb2b1a11152a,b8b3ee54-28b6-4bd2-9f5f-ed6927eaa891,There were noticeable patterns in my opponent’s moves that allowed me to predict their next move.,4,7
 1b97892b-0eb9-40bd-8a8d-45d3d67034d4,7ad7b833-8e94-424c-8ecf-f8deae1c5fdc,My opponent was a real person and not a robot.,0,2
 1b97892b-0eb9-40bd-8a8d-45d3d67034d4,7ad7b833-8e94-424c-8ecf-f8deae1c5fdc,I was trying to win each round against my opponent.,1,7
 1b97892b-0eb9-40bd-8a8d-45d3d67034d4,7ad7b833-8e94-424c-8ecf-f8deae1c5fdc,I was focused on winning for the entire time I was playing.,2,7
@@ -119,11 +154,21 @@ e447b4a4-befa-4d24-af81-f329f2b23471,d89756da-e681-49e0-b873-fe425f1d4f1a,I was 
 e447b4a4-befa-4d24-af81-f329f2b23471,d89756da-e681-49e0-b873-fe425f1d4f1a,I was focused on winning for the entire time I was playing.,2,1
 e447b4a4-befa-4d24-af81-f329f2b23471,d89756da-e681-49e0-b873-fe425f1d4f1a,I paid attention to my opponent’s moves in order to try and predict their next move.,3,4
 e447b4a4-befa-4d24-af81-f329f2b23471,d89756da-e681-49e0-b873-fe425f1d4f1a,There were noticeable patterns in my opponent’s moves that allowed me to predict their next move.,4,6
+7c6645e0-2713-48ff-9af0-f074360e0123,9c853430-5756-4ed9-b6ee-0cff463da6f0,My opponent was a real person and not a robot.,0,4
+7c6645e0-2713-48ff-9af0-f074360e0123,9c853430-5756-4ed9-b6ee-0cff463da6f0,I was trying to win each round against my opponent.,1,5
+7c6645e0-2713-48ff-9af0-f074360e0123,9c853430-5756-4ed9-b6ee-0cff463da6f0,I was focused on winning for the entire time I was playing.,2,4
+7c6645e0-2713-48ff-9af0-f074360e0123,9c853430-5756-4ed9-b6ee-0cff463da6f0,I paid attention to my opponent’s moves in order to try and predict their next move.,3,4
+7c6645e0-2713-48ff-9af0-f074360e0123,9c853430-5756-4ed9-b6ee-0cff463da6f0,There were noticeable patterns in my opponent’s moves that allowed me to predict their next move.,4,5
 4c231d3b-bbd3-43ca-b084-becafecdf2ae,99726197-e172-4ea0-a8b1-f798999c54c6,My opponent was a real person and not a robot.,0,2
 4c231d3b-bbd3-43ca-b084-becafecdf2ae,99726197-e172-4ea0-a8b1-f798999c54c6,I was trying to win each round against my opponent.,1,4
 4c231d3b-bbd3-43ca-b084-becafecdf2ae,99726197-e172-4ea0-a8b1-f798999c54c6,I was focused on winning for the entire time I was playing.,2,2
 4c231d3b-bbd3-43ca-b084-becafecdf2ae,99726197-e172-4ea0-a8b1-f798999c54c6,I paid attention to my opponent’s moves in order to try and predict their next move.,3,5
 4c231d3b-bbd3-43ca-b084-becafecdf2ae,99726197-e172-4ea0-a8b1-f798999c54c6,There were noticeable patterns in my opponent’s moves that allowed me to predict their next move.,4,7
+286120bc-d45a-4d22-9b19-5f5147e9825b,b2b52207-d758-4c81-bb18-5a2679e31418,My opponent was a real person and not a robot.,0,1
+286120bc-d45a-4d22-9b19-5f5147e9825b,b2b52207-d758-4c81-bb18-5a2679e31418,I was trying to win each round against my opponent.,1,5
+286120bc-d45a-4d22-9b19-5f5147e9825b,b2b52207-d758-4c81-bb18-5a2679e31418,I was focused on winning for the entire time I was playing.,2,5
+286120bc-d45a-4d22-9b19-5f5147e9825b,b2b52207-d758-4c81-bb18-5a2679e31418,I paid attention to my opponent’s moves in order to try and predict their next move.,3,6
+286120bc-d45a-4d22-9b19-5f5147e9825b,b2b52207-d758-4c81-bb18-5a2679e31418,There were noticeable patterns in my opponent’s moves that allowed me to predict their next move.,4,6
 dadb7be5-86c6-4ad9-84c0-b74ba269202c,eeac5a8a-b5a0-4b00-a295-969695bb881f,My opponent was a real person and not a robot.,0,3
 dadb7be5-86c6-4ad9-84c0-b74ba269202c,eeac5a8a-b5a0-4b00-a295-969695bb881f,I was trying to win each round against my opponent.,1,5
 dadb7be5-86c6-4ad9-84c0-b74ba269202c,eeac5a8a-b5a0-4b00-a295-969695bb881f,I was focused on winning for the entire time I was playing.,2,5
@@ -149,6 +194,16 @@ f515c7ea-6d62-44a1-8ebc-5fbf9ab0f7ad,baed76d6-b21c-4445-a636-eb73d7599827,There 
 9dbaf3b0-f596-4c58-a3bd-8dda37ce4204,bd270545-68cc-408e-ba90-39b1bc87bfd7,I was focused on winning for the entire time I was playing.,2,3
 9dbaf3b0-f596-4c58-a3bd-8dda37ce4204,bd270545-68cc-408e-ba90-39b1bc87bfd7,I paid attention to my opponent’s moves in order to try and predict their next move.,3,4
 9dbaf3b0-f596-4c58-a3bd-8dda37ce4204,bd270545-68cc-408e-ba90-39b1bc87bfd7,There were noticeable patterns in my opponent’s moves that allowed me to predict their next move.,4,3
+52b03224-654b-468f-84ad-7f1e51dc239e,64594cd9-dda0-4d7e-bea0-1058edddc350,My opponent was a real person and not a robot.,0,3
+52b03224-654b-468f-84ad-7f1e51dc239e,64594cd9-dda0-4d7e-bea0-1058edddc350,I was trying to win each round against my opponent.,1,4
+52b03224-654b-468f-84ad-7f1e51dc239e,64594cd9-dda0-4d7e-bea0-1058edddc350,I was focused on winning for the entire time I was playing.,2,6
+52b03224-654b-468f-84ad-7f1e51dc239e,64594cd9-dda0-4d7e-bea0-1058edddc350,I paid attention to my opponent’s moves in order to try and predict their next move.,3,6
+52b03224-654b-468f-84ad-7f1e51dc239e,64594cd9-dda0-4d7e-bea0-1058edddc350,There were noticeable patterns in my opponent’s moves that allowed me to predict their next move.,4,6
+ac1aaa3c-e83f-4df7-8df7-0af90c77fc86,8286e932-14a2-4e4b-be9d-29f93aece2f2,My opponent was a real person and not a robot.,0,1
+ac1aaa3c-e83f-4df7-8df7-0af90c77fc86,8286e932-14a2-4e4b-be9d-29f93aece2f2,I was trying to win each round against my opponent.,1,1
+ac1aaa3c-e83f-4df7-8df7-0af90c77fc86,8286e932-14a2-4e4b-be9d-29f93aece2f2,I was focused on winning for the entire time I was playing.,2,1
+ac1aaa3c-e83f-4df7-8df7-0af90c77fc86,8286e932-14a2-4e4b-be9d-29f93aece2f2,I paid attention to my opponent’s moves in order to try and predict their next move.,3,4
+ac1aaa3c-e83f-4df7-8df7-0af90c77fc86,8286e932-14a2-4e4b-be9d-29f93aece2f2,There were noticeable patterns in my opponent’s moves that allowed me to predict their next move.,4,4
 dcfe36cc-d56f-44b6-9079-477f59de5db3,5c294892-6bf5-4bb8-9c2e-ed817e88311f,My opponent was a real person and not a robot.,0,1
 dcfe36cc-d56f-44b6-9079-477f59de5db3,5c294892-6bf5-4bb8-9c2e-ed817e88311f,I was trying to win each round against my opponent.,1,1
 dcfe36cc-d56f-44b6-9079-477f59de5db3,5c294892-6bf5-4bb8-9c2e-ed817e88311f,I was focused on winning for the entire time I was playing.,2,6
@@ -164,3 +219,8 @@ f3b95382-b74f-4925-a14f-9268a558334b,2cd612d6-b13f-46ff-91d0-0061abbafda9,I was 
 f3b95382-b74f-4925-a14f-9268a558334b,2cd612d6-b13f-46ff-91d0-0061abbafda9,I was focused on winning for the entire time I was playing.,2,7
 f3b95382-b74f-4925-a14f-9268a558334b,2cd612d6-b13f-46ff-91d0-0061abbafda9,I paid attention to my opponent’s moves in order to try and predict their next move.,3,2
 f3b95382-b74f-4925-a14f-9268a558334b,2cd612d6-b13f-46ff-91d0-0061abbafda9,There were noticeable patterns in my opponent’s moves that allowed me to predict their next move.,4,1
+7beabc1b-9f13-4850-b343-2dff22fc7817,49f4b018-2f39-4871-89aa-44f2dc2128b8,My opponent was a real person and not a robot.,0,3
+7beabc1b-9f13-4850-b343-2dff22fc7817,49f4b018-2f39-4871-89aa-44f2dc2128b8,I was trying to win each round against my opponent.,1,4
+7beabc1b-9f13-4850-b343-2dff22fc7817,49f4b018-2f39-4871-89aa-44f2dc2128b8,I was focused on winning for the entire time I was playing.,2,2
+7beabc1b-9f13-4850-b343-2dff22fc7817,49f4b018-2f39-4871-89aa-44f2dc2128b8,I paid attention to my opponent’s moves in order to try and predict their next move.,3,5
+7beabc1b-9f13-4850-b343-2dff22fc7817,49f4b018-2f39-4871-89aa-44f2dc2128b8,There were noticeable patterns in my opponent’s moves that allowed me to predict their next move.,4,5
