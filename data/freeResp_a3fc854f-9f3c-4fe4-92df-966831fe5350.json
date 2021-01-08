@@ -1,6 +1,0 @@
-{
-  "game_id": "8857ca23-a687-4cb7-b0f3-8d4a35a3dd53",
-  "player_id": "a3fc854f-9f3c-4fe4-92df-966831fe5350",
-  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
-  "free_resp_answer": "I just considered for the patterns. It seemed that the opponent did not use \"papers\" a lot, while it used \"rocks\" and \"scissors\" many times. Therefore, I usually avoided using \"papers\", and sometimes avoided \"rocks\" in case the opponent used \"rocks\" and \"scissors\"."
-}

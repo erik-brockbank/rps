@@ -1,6 +1,0 @@
-{
-  "game_id": "e2c11094-08b1-4a2a-b398-a014308e0f9b",
-  "player_id": "fd0180a0-3b74-44c6-9c70-989b1bbdf260",
-  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
-  "free_resp_answer": "I tried seeing if there was a pattern being used or if the opponent was choosing scissors for a while I would keep choosing rock. For a while it seemed like let's say I chose rock and the CPU chose scissors and I won. In the next round I would choose paper since the CPU would guess that I would choose scissors since it is not very likely to choose the same one twice in a row and win. I would actually choose paper as it is likely the CPU would choose rock in an effort to beat me when I was supposed to have scissors if that makes sense, it is kind of a weird way of thinking and kind of hard to explain, but it actually worked for quite a few rounds. "
-}
