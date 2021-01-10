@@ -1,0 +1,6 @@
+{
+  "game_id": "43983efe-dbf5-4e31-8efe-b27f3df831e4",
+  "player_id": "9e6efd85-fe27-4e57-a9d6-d0010a3937b5",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I picked up on patterns of what the computer was doing. If it consistently began to play rock after paper then I would start to play paper right after it played paper until it changed its pattern."
+}

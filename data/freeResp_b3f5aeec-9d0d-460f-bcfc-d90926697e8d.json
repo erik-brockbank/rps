@@ -1,0 +1,6 @@
+{
+  "game_id": "531ba169-9a36-4587-935f-902d2824a668",
+  "player_id": "b3f5aeec-9d0d-460f-bcfc-d90926697e8d",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I tried to pay attention to what two answers they gave most recently and tried to use third answer. I also tried to look for patterns. For instance, many times when we gave the same answer, their next answer would be the option that would beat the answer we both just gave (I believe). For example, if we both answered scissors, many times their next answer would be rock. "
+}

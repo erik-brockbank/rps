@@ -1,0 +1,6 @@
+{
+  "game_id": "ca23c7f9-a145-43c0-8fd3-c523881581ef",
+  "player_id": "c179743e-58db-4ac3-8088-179dae2755ba",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "The simulator is often repeating a pattern."
+}

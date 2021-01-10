@@ -1,0 +1,6 @@
+{
+  "game_id": "222b6277-4b3a-468d-92a9-f0ec46d57cde",
+  "player_id": "2852cf44-7172-40f8-bd8f-c46f3b7c6095",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "My main strategy was to first try to use what the opponent used in the next step. But after getting 2 wrong in a row, I can try to decipher a pattern and that helped me win a few rounds until the pattern change. After I got 2-3 more wrong, I could use that pattern to help me win. "
+}

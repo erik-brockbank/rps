@@ -1,0 +1,6 @@
+{
+  "game_id": "ad4c9828-0319-4a65-9df0-5a3f612dee8e",
+  "player_id": "25855c4b-dce4-48cc-8caa-41ee082ce5f1",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "The computer makes a lot of short cycles when it comes to rock-paper-scissors. Basically, we can predict it."
+}

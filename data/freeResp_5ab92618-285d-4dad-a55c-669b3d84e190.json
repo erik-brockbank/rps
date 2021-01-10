@@ -1,0 +1,6 @@
+{
+  "game_id": "5f890245-e3c5-442a-b79e-75fe3e90f7e6",
+  "player_id": "5ab92618-285d-4dad-a55c-669b3d84e190",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "When I observe him show a rock at this round, I will show a scissor in the next round. When I observe him show a paper at this round, I will show rock in the next round. When I observe him show a scissor at this round, I will show a paper in the next round."
+}

@@ -1,0 +1,6 @@
+{
+  "game_id": "10764a68-28dd-4234-bbca-c58c7b148a52",
+  "player_id": "c53c7529-288a-423b-adbc-3e236a2446f1",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I noticed patterns in how the cpu answered, so I based my strategy on these patterns."
+}

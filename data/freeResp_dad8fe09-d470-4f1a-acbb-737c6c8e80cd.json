@@ -1,0 +1,6 @@
+{
+  "game_id": "74e2c4a5-5dd0-461e-b910-999d32665653",
+  "player_id": "dad8fe09-d470-4f1a-acbb-737c6c8e80cd",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "Just try to predict what my opponent is likely to choose. For example, if I win by choosing paper, I predict my opponent is going to choose scissor the next time, so I would choose a stone.But as it goes by so many rounds and so fast, I just follow my intuition most of the time."
+}

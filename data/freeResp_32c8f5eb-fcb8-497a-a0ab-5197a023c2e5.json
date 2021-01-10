@@ -1,0 +1,6 @@
+{
+  "game_id": "911fe152-431f-4f86-acc7-cfa0776f674b",
+  "player_id": "32c8f5eb-fcb8-497a-a0ab-5197a023c2e5",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I noticed that there was a pattern to the opponent's plays... I didn't get the whole pattern as it seemed to switch up a bit, but there were periods of time where the opponent's plays went in order (as the cards were presented) so I could predict the next move and choose accordingly. There were also multiple instances where \"paper\" or \"scissors\" was selected repeatedly by the opponent, so I was able to recognize that I should just keep clicking the respective winning card in these instances until the opponent changed to a different pattern. "
+}

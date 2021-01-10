@@ -1,0 +1,6 @@
+{
+  "game_id": "92f46236-42c7-4490-99df-57605d319d88",
+  "player_id": "9946a150-ab1e-4279-a7b7-62771dc18fd2",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I tried looking for any patterns that the opponent had. Maybe it was only my imagination, but it seemed like the AI would follow a certain pattern if they held a winning streak of a certain length and would switch to a new pattern once that streak was broken. I tried to think of the next move they would do if I was in their position (ex. if I lost playing rock the previous round, that meant the opponent played paper. Since they won, they would probably switch to using rock because they imagined I'd retaliate with scissors but I would actually play paper instead). Although I tried implementing certain strategies, I also selected one of the three options at random and hoped for the best."
+}
