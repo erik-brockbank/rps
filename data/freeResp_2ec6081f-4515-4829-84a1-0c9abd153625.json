@@ -1,0 +1,6 @@
+{
+  "game_id": "e22c447a-aa28-46e7-a954-9d834c98ba59",
+  "player_id": "2ec6081f-4515-4829-84a1-0c9abd153625",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "The opponent has repetitive strategy sequences, and I can keep beating the opponent's sequence until it changes to the next new repetition sequence."
+}

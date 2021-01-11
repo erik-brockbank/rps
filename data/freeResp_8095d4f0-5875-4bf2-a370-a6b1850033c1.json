@@ -1,0 +1,6 @@
+{
+  "game_id": "4010cab5-9d84-4dcf-b762-0385f7afbb91",
+  "player_id": "8095d4f0-5875-4bf2-a370-a6b1850033c1",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "if the opponent chose one item more than once in a row, then I would switch my item to be the one that would beat theirs. I also would try to predict when the opponent would switch based on my responses."
+}

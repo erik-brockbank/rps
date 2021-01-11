@@ -1,0 +1,6 @@
+{
+  "game_id": "84bc57b6-7eae-43f6-9e06-f4985386d67c",
+  "player_id": "0bde9044-2b78-4eda-a47d-765d2c01e9d3",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I tried to search for any patterns; for example, I figured that if they beat my paper with their scissors, they would anticipate that I might try using rock next - so I'd choose scissors instead. Obviously, this didn't always work."
+}
