@@ -1,0 +1,6 @@
+{
+  "game_id": "816b8277-b97f-42e7-801e-4fcce64cb06d",
+  "player_id": "27bd4d2e-403a-4108-b7ba-64b5dac4691c",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "If they placed the same card more than twice, I placed what would beat them until I lose. Sometimes they would do a pattern and I would try to figure it out and show the card that would beat the pattern until they changed it."
+}

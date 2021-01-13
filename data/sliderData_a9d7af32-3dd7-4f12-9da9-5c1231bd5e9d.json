@@ -1,0 +1,41 @@
+{
+  "game_id": "8933fadd-6a1b-4840-bab4-d7f961edf864",
+  "player_id": "a9d7af32-3dd7-4f12-9da9-5c1231bd5e9d",
+  "slider_responses": [
+    {
+      "game_id": "8933fadd-6a1b-4840-bab4-d7f961edf864",
+      "player_id": "a9d7af32-3dd7-4f12-9da9-5c1231bd5e9d",
+      "statement": "My opponent was a real person and not a robot.",
+      "index": 0,
+      "resp": 1
+    },
+    {
+      "game_id": "8933fadd-6a1b-4840-bab4-d7f961edf864",
+      "player_id": "a9d7af32-3dd7-4f12-9da9-5c1231bd5e9d",
+      "statement": "I was trying to win each round against my opponent.",
+      "index": 1,
+      "resp": 4
+    },
+    {
+      "game_id": "8933fadd-6a1b-4840-bab4-d7f961edf864",
+      "player_id": "a9d7af32-3dd7-4f12-9da9-5c1231bd5e9d",
+      "statement": "I was focused on winning for the entire time I was playing.",
+      "index": 2,
+      "resp": 4
+    },
+    {
+      "game_id": "8933fadd-6a1b-4840-bab4-d7f961edf864",
+      "player_id": "a9d7af32-3dd7-4f12-9da9-5c1231bd5e9d",
+      "statement": "I paid attention to my opponent’s moves in order to try and predict their next move.",
+      "index": 3,
+      "resp": 5
+    },
+    {
+      "game_id": "8933fadd-6a1b-4840-bab4-d7f961edf864",
+      "player_id": "a9d7af32-3dd7-4f12-9da9-5c1231bd5e9d",
+      "statement": "There were noticeable patterns in my opponent’s moves that allowed me to predict their next move.",
+      "index": 4,
+      "resp": 5
+    }
+  ]
+}

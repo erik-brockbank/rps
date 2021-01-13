@@ -1,0 +1,6 @@
+{
+  "game_id": "d09dc8c6-d68c-4c1f-a049-536b9bf27de8",
+  "player_id": "994ec44e-dbb9-476d-b2e8-7b471b9626a6",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I tried to predict the computer's moves. So I had tried seeing a pattern in their way of playing and would try to guess until I found the pattern. I would continue to exploit that pattern until I saw the pattern changed and would spend time again looking for the computer's pattern and when I did I exploited it again."
+}

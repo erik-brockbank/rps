@@ -1,0 +1,6 @@
+{
+  "game_id": "f1e1bb6e-43b7-4bfc-b51d-4043f57801e9",
+  "player_id": "3c73fbe6-352a-44b6-80fb-6f5a1d952b74",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "I just chose randomly for the most part. In some instances, I noticed that choosing the same symbol over and over (up to about 10 times) results in a string of wins."
+}

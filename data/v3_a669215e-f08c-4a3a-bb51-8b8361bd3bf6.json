@@ -1,0 +1,140 @@
+{
+  "game_id": "a669215e-f08c-4a3a-bb51-8b8361bd3bf6",
+  "version": "3",
+  "sona": "1",
+  "experiment_id": "1996",
+  "credit_token": "2a73382e8c16449f86f5b46dc02007e9",
+  "survey_code": "36723",
+  "player1_id": "37bb1153-1e6c-49d6-9a52-a5a5e3ce2ef3",
+  "player2_id": "adaptive_bot",
+  "rounds": [
+    {
+      "game_id": "a669215e-f08c-4a3a-bb51-8b8361bd3bf6",
+      "version": "3",
+      "round_index": 1,
+      "player1_id": "37bb1153-1e6c-49d6-9a52-a5a5e3ce2ef3",
+      "player2_id": "adaptive_bot",
+      "round_begin_ts": 1610538206863,
+      "player1_move": "paper",
+      "player2_move": "scissors",
+      "player1_rt": 3510,
+      "player2_rt": 0,
+      "player1_outcome": "loss",
+      "player2_outcome": "win",
+      "player1_outcome_viewtime": 1521,
+      "player2_outcome_viewtime": 0,
+      "player1_points": -1,
+      "player2_points": 3,
+      "player1_total": 0,
+      "player2_total": 0,
+      "player2_memory_struct": {
+        "0": {
+          "win": {
+            "0": 0,
+            "+": 0,
+            "-": 0
+          },
+          "loss": {
+            "0": 0,
+            "+": 0,
+            "-": 0
+          },
+          "tie": {
+            "0": 0,
+            "+": 0,
+            "-": 0
+          }
+        },
+        "+": {
+          "win": {
+            "0": 0,
+            "+": 0,
+            "-": 0
+          },
+          "loss": {
+            "0": 0,
+            "+": 0,
+            "-": 0
+          },
+          "tie": {
+            "0": 0,
+            "+": 0,
+            "-": 0
+          }
+        },
+        "-": {
+          "win": {
+            "0": 0,
+            "+": 0,
+            "-": 0
+          },
+          "loss": {
+            "0": 0,
+            "+": 0,
+            "-": 0
+          },
+          "tie": {
+            "0": 0,
+            "+": 0,
+            "-": 0
+          }
+        }
+      }
+    }
+  ],
+  "player2_botid": "464483b4-eca3-4821-9166-0d78fdcd54c4",
+  "player2_bot_strategy": "opponent_outcome_prev_transition_dual",
+  "player2_final_memory": {
+    "0": {
+      "win": {
+        "0": 0,
+        "+": 0,
+        "-": 0
+      },
+      "loss": {
+        "0": 0,
+        "+": 0,
+        "-": 0
+      },
+      "tie": {
+        "0": 0,
+        "+": 0,
+        "-": 0
+      }
+    },
+    "+": {
+      "win": {
+        "0": 0,
+        "+": 0,
+        "-": 0
+      },
+      "loss": {
+        "0": 0,
+        "+": 0,
+        "-": 0
+      },
+      "tie": {
+        "0": 0,
+        "+": 0,
+        "-": 0
+      }
+    },
+    "-": {
+      "win": {
+        "0": 0,
+        "+": 0,
+        "-": 0
+      },
+      "loss": {
+        "0": 0,
+        "+": 0,
+        "-": 0
+      },
+      "tie": {
+        "0": 0,
+        "+": 0,
+        "-": 0
+      }
+    }
+  }
+}
