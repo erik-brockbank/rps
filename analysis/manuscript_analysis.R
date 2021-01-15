@@ -5,12 +5,13 @@
 
 #### SETUP ####
 
-rm(list = ls())
+# rm(list = ls())
 setwd("/Users/erikbrockbank/web/vullab/rps/analysis")
 
 library(tidyverse)
 library(viridis)
 library(patchwork)
+library(pwr)
 
 # CITATATIONS
 citation(package = 'patchwork') # repeat for all the above

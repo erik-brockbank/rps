@@ -1,0 +1,6 @@
+{
+  "game_id": "549b3c64-91bc-4b37-9a20-8e80d0ee68a7",
+  "player_id": "e5a9c550-f4bc-4541-8224-26e557124c21",
+  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
+  "free_resp_answer": "when I lost the last round, the computer will guess that I will use the winning gesture to beat it for the next round, so it will choose a gesture than will beat my gesture, so I have to choose one that beat the gesture it is pulling "
+}

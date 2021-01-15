@@ -1,0 +1,30 @@
+{
+  "game_id": "3381c8df-8a41-459b-a4ac-b15a42ad86ac",
+  "version": "3",
+  "sona": "1",
+  "experiment_id": "1996",
+  "credit_token": "2a73382e8c16449f86f5b46dc02007e9",
+  "survey_code": "23267",
+  "player1_id": "b4002061-80c1-44c1-8a0e-cbc512bc50e6",
+  "player2_id": "adaptive_bot",
+  "rounds": [],
+  "player2_botid": "d7d1152d-949d-40cc-b9c5-549c4f7a6e48",
+  "player2_bot_strategy": "opponent_outcome_transitions",
+  "player2_final_memory": {
+    "win": {
+      "0": 0,
+      "+": 0,
+      "-": 0
+    },
+    "loss": {
+      "0": 0,
+      "+": 0,
+      "-": 0
+    },
+    "tie": {
+      "0": 0,
+      "+": 0,
+      "-": 0
+    }
+  }
+}
