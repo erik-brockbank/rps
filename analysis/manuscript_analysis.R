@@ -131,6 +131,55 @@ read_bot_data = function(filename, strategies, game_rounds) {
 }
 
 
+# Read in and process slider data
+read_dyad_slider_data = function(filename, game_data) {
+  data = read_csv(filename)
+  data = data %>%
+    inner_join(game_data, by = c("game_id", "player_id")) %>%
+    distinct(game_id, player_id, index, statement, resp)
+  return(data)
+}
+
+get_dyad_slider_summary = function(slider_data) {
+  slider_data %>%
+    group_by(statement) %>%
+    summarize(n = n(),
+              mean_resp = mean(resp),
+              se = sd(resp) / sqrt(n),
+              se_upper = mean_resp + se,
+              se_lower = mean_resp - se)
+}
+
+read_bot_slider_data = function(filename, game_data) {
+  data = read_csv(filename)
+  data = data %>%
+    inner_join(game_data, by = c("game_id", "player_id")) %>%
+    distinct(game_id, player_id, bot_strategy, index, statement, resp)
+  # Order bot strategies
+  data$bot_strategy = factor(data$bot_strategy, levels = STRATEGY_LEVELS)
+  # Add plain english strategy
+  data = data %>%
+    group_by(bot_strategy, player_id, index) %>%
+    mutate(strategy = STRATEGY_LOOKUP[[bot_strategy]]) %>%
+    ungroup()
+
+  return(data)
+}
+
+# NB: we can probably consolidate this with dyad slider summary above
+# Leaving separate for now to allow grouping by bot strategy
+get_bot_slider_summary = function(slider_data) {
+  slider_data %>%
+    # group_by(statement, bot_strategy, strategy) %>%
+    group_by(statement) %>%
+    summarize(n = n(),
+              mean_resp = mean(resp),
+              se = sd(resp) / sqrt(n),
+              se_upper = mean_resp + se,
+              se_lower = mean_resp - se)
+}
+
+
 ##### Win Count Differential Analysis Functions #####
 
 # Function to extract win count differentials from empirical game data
@@ -1398,9 +1447,62 @@ prev_move_positive_plot + prev_move_negative_plot +
 
 
 
+#### APPENDIX: Motivation analysis ####
+
+slider_data_dyads = read_dyad_slider_data(E1_SLIDER_FILE, dyad_data)
+slider_summary_dyads = get_dyad_slider_summary(slider_data_dyads)
+
+slider_qs = unique(slider_summary_dyads$statement)
+
+slider_summary_dyads %>%
+  ggplot(aes(x = statement, y = mean_resp, color = statement)) +
+  geom_point(size = 6) +
+  geom_errorbar(aes(ymin = se_lower, ymax = se_upper), size = 1, width = 0.25) +
+  geom_jitter(data = slider_data_dyads, aes(x = statement, y = resp),
+              alpha = 0.5, size = 1, width = 0.25, height = 0.1) +
+  scale_color_viridis(discrete = T,
+                      name = element_blank()) +
+  scale_y_discrete(breaks = seq(1:7),
+                   limits = c("1", "2", "3", "4", "5", "6", "7"),
+                   labels = seq(1:7)) +
+  labs(y = "Mean response (1: Strongly disagree, 7: Strongly agree)") +
+  ggtitle("Dyad experiment slider responses") +
+  individ_plot_theme +
+  theme(axis.text.x = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text.y = element_text(size = 12),
+        axis.title.y = element_text(size = 14),
+        legend.position = "bottom",
+        legend.text = element_text(size = 12, face = "plain")) +
+  guides(color=guide_legend(ncol = 1))
 
 
+# NB: we are missing slider data for a number of participants
+# unique(slider_data_bots$player_id)
+# unique(bot_data$player_id[bot_data$is_bot == 0])
 
+slider_data_bots = read_bot_slider_data(E2_SLIDER_FILE, bot_data)
+slider_summary_bots = get_bot_slider_summary(slider_data_bots)
 
-
+slider_summary_bots %>%
+  ggplot(aes(x = statement, y = mean_resp, color = statement)) +
+  geom_point(size = 6) +
+  geom_errorbar(aes(ymin = se_lower, ymax = se_upper), size = 1, width = 0.25) +
+  geom_jitter(data = slider_data_bots, aes(x = statement, y = resp),
+              alpha = 0.5, size = 1, width = 0.25, height = 0.1) +
+  scale_color_viridis(discrete = T,
+                      name = element_blank()) +
+  scale_y_discrete(breaks = seq(1:7),
+                   limits = c("1", "2", "3", "4", "5", "6", "7"),
+                   labels = seq(1:7)) +
+  labs(y = "Mean response (1: Strongly disagree, 7: Strongly agree)") +
+  ggtitle("Bot experiment slider responses") +
+  individ_plot_theme +
+  theme(axis.text.x = element_blank(),
+        axis.title.x = element_blank(),
+        axis.text.y = element_text(size = 12),
+        axis.title.y = element_text(size = 14),
+        legend.position = "bottom",
+        legend.text = element_text(size = 12, face = "plain")) +
+  guides(color=guide_legend(ncol = 1))
 

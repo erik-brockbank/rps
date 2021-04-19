@@ -11,7 +11,7 @@ from os import listdir
 from os.path import isfile, join
 
 EXPERIMENT = "rps_v3" # useful identifier for experiment data: modify this to reflect the particular experiment
-DATA_PATH = "/Users/erikbrockbank/web/vullab/rps/data/" # path to data files: modify as needed for particular experiments
+DATA_PATH = "/Users/erikbrockbank/web/vullab/rps/data/v3/" # path to data files: modify as needed for particular experiments
 
 
 output_file = "{}_data.csv".format(EXPERIMENT) # name of csv file to write to

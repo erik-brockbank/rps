@@ -1,6 +1,0 @@
-{
-  "game_id": "dcfe36cc-d56f-44b6-9079-477f59de5db3",
-  "player_id": "5c294892-6bf5-4bb8-9c2e-ed817e88311f",
-  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
-  "free_resp_answer": "There was usually a pattern in which the opponent would either choose the same thing for 4 or 5 rounds or it would go clockwise or counterclockwise between the choices and so I figured out which pattern it was using to make a prediction about what it was going to pick next and then I picked the one that would beat it."
-}

@@ -22,7 +22,7 @@ args = parser.parse_args()
 EXPERIMENT = args.experiment
 if EXPERIMENT == "rps_v1": DATA_PATH = "/Users/erikbrockbank/web/vullab/rps/data/v1/"
 elif EXPERIMENT == "rps_v2": DATA_PATH = "/Users/erikbrockbank/web/vullab/rps/data/v2/"
-elif EXPERIMENT == "rps_v3": DATA_PATH = "/Users/erikbrockbank/web/vullab/rps/data/"
+elif EXPERIMENT == "rps_v3": DATA_PATH = "/Users/erikbrockbank/web/vullab/rps/data/v3/"
 
 
 output_file = "{}_data_freeResp.csv".format(EXPERIMENT) # name of csv file to write to

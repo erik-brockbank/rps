@@ -1,6 +1,0 @@
-{
-  "game_id": "779afce5-e6a7-4918-a6d0-9ef3b9c5cc74",
-  "player_id": "8ffa8d33-1a43-40eb-bad0-564dbd504377",
-  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
-  "free_resp_answer": "seeing repeated patterns\nguessing opponent will change to the previous winner when losing"
-}

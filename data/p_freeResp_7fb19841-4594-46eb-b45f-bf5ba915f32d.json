@@ -1,6 +1,0 @@
-{
-  "game_id": "5a3a0315-9259-41d0-8ec0-a8188333609a",
-  "player_id": "7fb19841-4594-46eb-b45f-bf5ba915f32d",
-  "free_resp_prompt": "In the text box below, please describe any strategies you used to try and beat your opponent.",
-  "free_resp_answer": "I would usually try to assume that the opponent thinks I'll do a repeat and beat what would beat my previous throw (ex I just threw rock so maybe I'll throw scissors to foil paper in case they think I throw rock again). There were multiple instances where I just repeated what I threw, to see if the opponent would continue playing the same throw and losing (ex me throwing scissors repeatedly vs their paper)."
-}
