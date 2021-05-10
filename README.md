@@ -39,7 +39,8 @@ In each of the folders above, file naming conventions are as follows:
 ## Analysis
 Analysis code is in the `/analysis` directory
 - The python files `json_to_csv_v1.py`, `json_to_csv_v2.py`, `json_to_csv_v3.py`, `json_to_csv_sliderData.py`, and `json_to_csv_freeResp.py` each convert the individual data files from json to a single csv output file for analysis (these are in the same directory and have matched names)
-- `cogsci_analysis.R` contains the full analysis for the CogSci 2020 proceedings manuscript.
+- `cogsci_analysis-2020.R` contains the full analysis for the CogSci 2020 proceedings manuscript.
+- `cogsci_analysis-2021.R` contains the full analysis for the CogSci 2021 proceedings manuscript.
 - `manuscript_analysis.R` contains the full analysis for manuscript submission.
 
 

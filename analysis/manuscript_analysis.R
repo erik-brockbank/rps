@@ -1081,6 +1081,8 @@ bot_data %>%
   group_by(bot_strategy) %>%
   summarize(n = n() / GAME_ROUNDS)
 
+# OPTIONAL: write clean data to csv for easier processing later
+write_csv(bot_data, "rps_v2_clean.csv")
 
 # Experiment completion time: summary stats
 dyad_data %>%
