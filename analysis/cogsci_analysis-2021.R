@@ -615,79 +615,15 @@ combined_wcd %>%
   guides(color=guide_legend(ncol = 2))
 
 
-# APPENDIX: Bot strategy win percentages by block ==============================
 
-block_win_data = get_bot_block_data(data, blocksize = (NUM_ROUNDS / 2))
-block_data_summary = get_block_data_summary(block_win_data)
-
-block_data_summary = block_data_summary %>%
-  rowwise() %>%
-  mutate(complexity = complexity_lookup[bot_strategy])
-block_data_summary$complexity = factor(block_data_summary$complexity,
-                                       levels = c("3 cell memory", "9 cell memory", "27 cell memory"))
-
-
-
-# Plot win percentage by block for each strategy
-plot_block_summary(summary_data = block_data_summary %>% filter(bot_strategy == "opponent_transitions"),
-                   individ_data = block_win_data %>% filter(bot_strategy == "opponent_transitions"))
-
-plot_block_summary(summary_data = block_data_summary %>% filter(bot_strategy == "opponent_courn_transitions"),
-                   individ_data = block_win_data %>% filter(bot_strategy == "opponent_courn_transitions"))
-
-plot_block_summary(summary_data = block_data_summary %>% filter(bot_strategy == "opponent_prev_move"),
-                   individ_data = block_win_data %>% filter(bot_strategy == "opponent_prev_move"))
-
-plot_block_summary(summary_data = block_data_summary %>% filter(bot_strategy == "bot_prev_move"),
-                   individ_data = block_win_data %>% filter(bot_strategy == "bot_prev_move"))
-
-plot_block_summary(summary_data = block_data_summary %>% filter(bot_strategy == "opponent_outcome_transitions"),
-                   individ_data = block_win_data %>% filter(bot_strategy == "opponent_outcome_transitions"))
-
-plot_block_summary(summary_data = block_data_summary %>% filter(bot_strategy == "opponent_bot_prev_move"),
-                   individ_data = block_win_data %>% filter(bot_strategy == "opponent_bot_prev_move"))
-
-plot_block_summary(summary_data = block_data_summary %>% filter(bot_strategy == "opponent_prev_two_moves"),
-                   individ_data = block_win_data %>% filter(bot_strategy == "opponent_prev_two_moves"))
-
-plot_block_summary(summary_data = block_data_summary %>% filter(bot_strategy == "opponent_outcome_prev_transition_dual"),
-                   individ_data = block_win_data %>% filter(bot_strategy == "opponent_outcome_prev_transition_dual"))
-
-
-block_labels = c("1" = "30", "2" = "60", "3" = "90", "4" = "120", "5" = "150",
-                 "6" = "180", "7" = "210", "8" = "240", "9" = "270", "10" = "300")
-
-ggplot(data = block_data_summary, aes(x = round_block, y = mean_win_pct, color = complexity)) +
-  geom_point(size = 6, alpha = 0.75) +
-  geom_errorbar(aes(ymin = lower_ci, ymax = upper_ci), size = 1, width = 0.25, alpha = 0.75) +
-  # geom_jitter(data = individ_data, aes(x = round_block, y = win_pct),
-  # width = 0.1, height = 0, size = 2, alpha = 0.5) +
-  geom_hline(yintercept = 1 / 3, linetype = "dashed", color = "red", size = 1) +
-  labs(x = "Game round", y = "Bot win percentage") +
-  # ggtitle("Bot win percentage against participants") +
-  scale_color_viridis(discrete = T,
-                      # name = element_blank(),
-                      # labels = strategy_labels) +
-  ) +
-  scale_x_continuous(labels = block_labels, breaks = seq(1:10)) +
-  # ylim(c(0, 1)) +
-  default_plot_theme +
-  theme(#axis.text.x = element_blank(),
-    axis.title.y = element_text(size = 24, face = "bold"),
-    legend.text = element_text(face = "plain", size = 10),
-    legend.spacing.y = unit(1.0, 'lines'),
-  ) +
-  guides(color = guide_legend(ncol = 1))
-
-
-# ANALYSIS: Free response ======================================================
+# APPENDIX: Free response ======================================================
 
 fr_data %>%
   arrange(bot_strategy, strategy, game_id, player_id, free_resp_answer) %>%
   select(strategy, game_id, player_id, free_resp_answer)
 
 
-# ANALYSIS: Slider scales ======================================================
+# APPENDIX: Slider scales ======================================================
 
 slider_qs = unique(slider_summary$statement)
 
@@ -716,80 +652,4 @@ q1_plot + q2_plot + q3_plot + q4_plot + q5_plot +
   plot_layout(ncol = 2)
 
 
-
-# ANALYSIS: Scratch ============================================================
-
-# library(rjson)
-
-data %>%
-  filter(is_bot == 0, round_index == NUM_ROUNDS) %>%
-  group_by(bot_strategy) %>%
-  summarize(subjects = n())
-# summarize(sum(subjects))
-
-mem = data %>%
-  filter(round_index == NUM_ROUNDS & is_bot == 1) %>%
-  group_by(bot_strategy, game_id) %>%
-  select(bot_strategy, game_id, bot_round_memory)
-
-
-mem = mem %>%
-  rowwise() %>%
-  mutate(memory_sum =
-           sum(as.numeric(unlist(regmatches(bot_round_memory, gregexpr("[[:digit:]]+", bot_round_memory))))))
-
-
-# mem = data %>% filter(game_id == "b684bbe7-ba7c-41f8-8589-674c2979f0f6", is_bot == 1, round_index == NUM_ROUNDS) %>%
-#   select(bot_round_memory)
-
-data %>% filter(game_id == "b684bbe7-ba7c-41f8-8589-674c2979f0f6", is_bot == 0) %>%
-  group_by(player_id) %>%
-  summarize(n())
-
-mem$bot_round_memory
-
-# 21 below, 21 in first pilot round
-#' opponent_bot_prev_move (27 cells): 299
-#' opponent_prev_two_moves (27 cells): 298
-#' bot_prev_move (9 cells): 299, 750
-#' opponent_outcome_transitions (9 cells): 596, 566
-#' opponent_courn_transitions (3 cells): 299, 297, 299
-#' opponent_outcome_prev_transition_dual (27 cells): 574, 2081, 298, 298
-#' opponent_prev_move (9 cells): 598, 357, 299, 641
-#' opponent_transitions (3 cells): 300, 299, 598, 299 (NB: 300 doesn't count here, counts go 0s in round 1 to 2 + transitions in round 2)
-#'
-# -> From above, 11 are usable
-safe_game_ids = c(
-  "c9b597bc-ff5e-4e76-9cf7-7048bac572a6", # opponent_bot_prev_move
-  "ff64c8a4-babc-4874-a895-a21215c22b43", # opponent_prev_two_moves
-  "7af733f0-7253-4dc5-9cea-1e89f7dbc3a6", # bot_prev_move
-  "a0e44570-8d8d-4472-b087-5046773411fa", # opponent_courn_transitions
-  "c169a038-ca59-4ede-801f-476ec48cba2f", # opponent_courn_transitions
-  "7833ab77-0d2c-4f01-8127-a84ff09daef2", # opponent_courn_transitions
-  "fcc1cce0-e209-4a78-9581-8bfb7bb53751", # opponent_prev_move
-  "e6e34c91-95ac-4b31-aea1-f850b64c9b5f", # opponent_outcome_prev_transition_dual,
-  "de6123c4-e8fd-4699-95d1-f41d35e49ca3", # opponent_outcome_prev_transition_dual (no slider data for this person)
-  "5a3a0315-9259-41d0-8ec0-a8188333609a", # opponent_transitions
-  "b684bbe7-ba7c-41f8-8589-674c2979f0f6" # opponent_transitions
-)
-
-
-
-mem$bot_round_memory[mem$sona_survey_code == "31656"]
-
-#' Subsequent batch
-#' 34181: 299
-#' 22809: 299
-#' 23814: 295
-#' 24723: 298
-#' 26084: 299
-#' 30527: 297
-#' 36067: 299 # NB: we may want to cut this person, they played paper 268 times in a losing sequence...
-#' 30289: 298
-#' 26999: 299
-#' 34027: 299
-#' 31656: 298
-#'
-
-jsonlite::fromJSON(mem$bot_round_memory[1])
 
