@@ -226,18 +226,22 @@ plot_block_summary = function(summary_data, individ_data) {
       legend.key.size = unit(4.75, 'lines'))
 }
 
-plot_slider_data = function(slider_data) {
-  q = unique(slider_data$statement)
-  slider_data %>%
+plot_slider_data = function(slider_summary, slider_indiv) {
+  q = unique(slider_summary$statement)
+  slider_summary %>%
     ggplot(aes(x = bot_strategy, y = mean_resp, color = bot_strategy)) +
     geom_point(size = 6) +
+    # NB: comment out the jitter below to remove individual data points for easier summary
+    geom_jitter(data = slider_indiv,
+                aes(x = bot_strategy, y = resp, color = bot_strategy),
+                alpha = 0.75) +
     geom_errorbar(aes(ymin = se_lower, ymax = se_upper), size = 1, width = 0.25) +
     scale_color_viridis(discrete = T,
                         name = element_blank(),
                         labels = element_blank()) +
     scale_x_discrete(name = element_blank(),
                      labels = strategy_labels) +
-    ylim(c(1, 7)) +
+    # ylim(c(1, 7)) +
     labs(y = "Mean response (1: Strongly disagree, 7: Strongly agree)") +
     ggtitle(str_wrap(q, 50)) +
     default_plot_theme +
@@ -544,36 +548,8 @@ dyad_wcd_summary = bind_rows(
   get_win_count_differential_summary(player_transition_prev_transition_prev_outcome_utils, "opponent_outcome_prev_transition_dual")
 )
 
-# NB: before running this, need to re-declare STRATEGY_LEVELS above...
 dyad_wcd_summary$category = factor(dyad_wcd_summary$category, levels = STRATEGY_LEVELS)
 
-# dyad_wcd_summary %>%
-#   ggplot(aes(x = category, y = mean_wins)) +
-#   geom_point(#aes(color = category),
-#              size = 6) +
-#   geom_errorbar(aes(#color = category,
-#                     ymin = ci_lower, ymax = ci_upper),
-#                 width = 0.1, size = 1) +
-#   # geom_jitter(data = wcd_all, aes(x = bot_strategy, y = win_count_diff),
-#   # size = 2, alpha = 0.75, width = 0.25, height = 0) +
-#   # geom_hline(yintercept = 0, size = 1, linetype = "dashed", color = "red") +
-#   labs(x = "", y = "Expected win count differential") +
-#   ggtitle("Exploitability in human dyad play") +
-#   scale_x_discrete(name = element_blank(),
-#                    labels = strategy_labels) +
-#   ylim(c(0, 90)) +
-#   #scale_color_viridis(discrete = TRUE,
-#   #                    name = element_blank()) +
-#   default_plot_theme +
-#   theme(
-#     plot.title = element_text(size = 32, face = "bold"),
-#     axis.title.y = element_text(size = 24, face = "bold"),
-#     # axis.text.x = element_text(size = 20, face = "bold", angle = 0, vjust = 1),
-#     axis.text.x = element_text(size = 12, face = "bold", angle = 0, vjust = 1),
-#     # axis.text.x = element_blank(),
-#     # axis.text.y = element_text(face = "bold", size = 20),
-#     legend.position = "none"
-#   )
 
 
 # Correlation between expected win count diff.
@@ -625,27 +601,55 @@ fr_data %>%
 
 # APPENDIX: Slider scales ======================================================
 
+slider_game_data = wcd_all %>%
+  inner_join(slider_data, by = c("game_id"))
+
+
+
 slider_qs = unique(slider_summary$statement)
+
+# Do slider responses vary significantly across bot strategies?
+anova_q1 = with(slider_data[slider_data$statement == slider_qs[1],],
+                aov(resp ~ bot_strategy))
+summary(anova_q1)
+
+anova_q2 = with(slider_data[slider_data$statement == slider_qs[2],],
+                aov(resp ~ bot_strategy))
+summary(anova_q2)
+
+anova_q3 = with(slider_data[slider_data$statement == slider_qs[3],],
+                aov(resp ~ bot_strategy))
+summary(anova_q3)
+
+anova_q4 = with(slider_data[slider_data$statement == slider_qs[4],],
+                aov(resp ~ bot_strategy))
+summary(anova_q4)
+
+anova_q5 = with(slider_data[slider_data$statement == slider_qs[5],],
+                aov(resp ~ bot_strategy))
+summary(anova_q5)
+
+
 
 q1_plot = slider_summary %>%
   filter(statement == slider_qs[1]) %>%
-  plot_slider_data()
+  plot_slider_data(., slider_data[slider_data$statement == slider_qs[1],])
 
 q2_plot = slider_summary %>%
   filter(statement == slider_qs[2]) %>%
-  plot_slider_data()
+  plot_slider_data(., slider_data[slider_data$statement == slider_qs[2],])
 
 q3_plot = slider_summary %>%
   filter(statement == slider_qs[3]) %>%
-  plot_slider_data()
+  plot_slider_data(., slider_data[slider_data$statement == slider_qs[3],])
 
 q4_plot = slider_summary %>%
   filter(statement == slider_qs[4]) %>%
-  plot_slider_data()
+  plot_slider_data(., slider_data[slider_data$statement == slider_qs[4],])
 
 q5_plot = slider_summary %>%
   filter(statement == slider_qs[5]) %>%
-  plot_slider_data()
+  plot_slider_data(., slider_data[slider_data$statement == slider_qs[5],])
 
 
 q1_plot + q2_plot + q3_plot + q4_plot + q5_plot +
